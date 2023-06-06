@@ -50,14 +50,14 @@ about_profile_image: images/profile.jpg
 about_content: | # this will include new lines to allow paragraphs
   Hi, my name's Minjoon Jung and I'm a first-year Ph.D student at Seoul National University, advised by Prof. Byoung-Tak Zhang.
   My primary research focuses on vision-and-language and video understanding.
-  Currently, I'm looking for a visiting student or other position in video understanding and multimodal learning.
+#  Currently, I'm looking for a visiting student or other position in video understanding and multimodal learning.
 #  As well as administrating systems I also have experience making software and web apps.
 #  I have worked at a number of companies gaining teamwork and leadership skills.
 
 #  I am most skilled in: <mark>AWS</mark> and <mark>Eating Pizza</mark>
 
 content:
-  - title: Publications # Title for the section
+  - title: Publication # Title for the section
     layout: list # Type of content section (list/text)
     content:
       - layout: top-middle
@@ -122,8 +122,8 @@ content:
   - title: Education # Title for the section
     layout: list # Type of content section (list/text)
     content:
-      - layout: left
-        title: Chung-ang
+      - layout: middle
+        title: Chung-ang University
         caption: 2015 - 2021
         sub_title: BSc Computer Science
         #        quote: >
@@ -133,7 +133,7 @@ content:
       #
       #          I spent a lot of my free time as a committee member of the *Harvard Mountaineering Club* taking on roles such as *Trip Secretary* and *Vice-President*.
 
-      - layout: left
+      - layout: middle
         title: Seoul National University
         caption: 2021 - present
         sub_title: Ph.d Interdisciplinary Program in Artificial Intelligence
