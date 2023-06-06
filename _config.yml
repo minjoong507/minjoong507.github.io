@@ -1,5 +1,5 @@
 # Site
-repository: https://github.com/minjoong507/minjoong507.github.io
+#repository: https://github.com/minjoong507/minjoong507.github.io
 favicon: images/favicon.ico
 
 # Content configuration version
@@ -7,7 +7,7 @@ version: 2
 
 # Personal info
 name: Minjoon Jung
-#title: Ph.d student
+title: Ph.D student
 email: mjjung@bi.snu.ac.kr
 website: https://minjoong507.github.io/
 
@@ -30,10 +30,10 @@ linkedin_username: minjoonjung
 # orcid_username: 0000-0000-0000-0000
 
 # Additional icon links
-additional_links:
-  - title: itsgoingto.be
-    icon: fas fa-globe
-    url: https://www.itsgoingto.be
+#additional_links:
+#  - title: itsgoingto.be
+#    icon: fas fa-globe
+#    url: https://www.itsgoingto.be
 # - title: another link
 #   icon: font awesome brand icon name (eg. fab fa-twitter) (https://fontawesome.com/icons?d=gallery&m=free)
 #   url: Link url (eg. https://google.com)
@@ -62,15 +62,20 @@ content:
     content:
       - layout: top-middle
         title: Overcoming Weak Visual-Textual Alignment for Video Moment Retrieval
-        link: https://arxiv.org/abs/2306.02728
-        # link_text: Project Website
+#        link: https://arxiv.org/abs/2306.02728
+#        link_text: Project Website
+
         additional_links:
-          - title: sproogen/modern-resume-theme
-            icon: fab fa-github
-            url: https://github.com/minjoong507/BM-DETR
+          - title: paper url
+            icon: far fa-file-alt
+            url: https://arxiv.org/abs/2306.02728
+#        additional_links:
+#          - title: sproogen/modern-resume-theme
+#            icon: fab fa-github
+#            url: https://github.com/minjoong507/BM-DETR
         quote: >
-          Preprints
-      #        description: | # this will include new lines to allow paragraphs
+          Minjoon Jung, Youwon Jang, Seongho Choi, Joochan Kim, Jin-Hwa Kim, Byoung-Tak Zhang [arXiv, 2023]
+#        description: Minjoon Jung
       #                     I started this project as a way if learning <mark>React</mark> and it has since grown into a fully fledged app. I have learned many skills through this and been I'm very proud of having this in my portfolio. If you don't have a project as awesome as this I would advise you make one.
 
       - layout: top-middle
@@ -78,34 +83,38 @@ content:
 #        link: https://arxiv.org/abs/2306.02728
 #        link_text: Project Website
         additional_links:
-          - title: sproogen/modern-resume-theme
-            icon: fa-regular fa-file-lines
+          - title: paper url
+            icon: far fa-file-alt
             url: https://arxiv.org/abs/2306.02728
-        additional_links:
-          - title: sproogen/modern-resume-theme
-            icon: fab fa-github
-            url:
+#        additional_links:
+#          - title: sproogen/modern-resume-theme
+#            icon: fab fa-github
+#            url:
           # - title:  Github page for project (eg. sproogen/modern-resume-theme)
           #   icon: fab fa-github
           #   url: Link to project (eg. sproogen.github.io/modern-resume-theme)
         quote: >
-          Empirical Methods in Natural Language Processing (EMNLP), 2022
+          Minjoon Jung, Seongho Choi, Joochan Kim, Jin-Hwa Kim, Byoung-Tak Zhang [EMNLP, 2022]
       #        description: | # this will include new lines to allow paragraphs
       #          I started this project as a way if learning <mark>React</mark> and it has since grown into a fully fledged app. I have learned many skills through this and been I'm very proud of having this in my portfolio. If you don't have a project as awesome as this I would advise you make one.
 
       - layout: top-middle
         title: Stagemix video generation using face and body keypoints detection
-        link: https://link.springer.com/article/10.1007/s11042-022-13103-8
+#        link: https://link.springer.com/article/10.1007/s11042-022-13103-8
         # link_text: Project Website
         additional_links:
-          - title: sproogen/modern-resume-theme
-            icon: fab fa-github
-            url:
+          - title: paper url
+            icon: far fa-file-alt
+            url: https://link.springer.com/article/10.1007/s11042-022-13103-8
+#        additional_links:
+#          - title: sproogen/modern-resume-theme
+#            icon: fab fa-github
+#            url:
             # - title:  Github page for project (eg. sproogen/modern-resume-theme)
             #   icon: fab fa-github
             #   url: Link to project (eg. sproogen.github.io/modern-resume-theme)
         quote: >
-          Multimedia Tools and Applications, 2022
+          Minjoon Jung, Seunghyun Lee, Eun Seon Sim, Min Ho Jo, Yu Jin Lee, Hye Bin Choi, Junseok Kwon [MTAP, 2022]
       # description: | # this will include new lines to allow paragraphs
       #          I started this project as a way if learning <mark>React</mark> and it has since grown into a fully fledged app. I have learned many skills through this and been I'm very proud of having this in my portfolio. If you don't have a project as awesome as this I would advise you make one.
 
@@ -123,13 +132,13 @@ content:
   #        description: | # this will include new lines to allow paragraphs
   #            Every company needs its networks properly administered and The Boring Compay is no exception. Digging holes is hard and I play my part making sure the whole company stays connected. I lead a team of 5 people and enjoy driving the company to try new technologies.
 
-  - title: Education # Title for the section
-    layout: text # Type of content section (list/text)
+  - title: Experience # Title for the section
+    layout: list # Type of content section (list/text)
     content:
-      - layout: center
+      - layout: top-middle
         title: Chung-ang University
         caption: 2015 - 2021
-        sub_title: BSc Computer Science
+        sub_title: BS. Computer Science
         #        quote: >
         #          Established in 1636, Harvard is the oldest higher education institution in the United States, and is widely regarded in terms of its influence, reputation, and academic pedigree as a leading university in not just the US but also the world.
         description: | # this will include new lines to allow paragraphs
@@ -137,10 +146,10 @@ content:
       #
       #          I spent a lot of my free time as a committee member of the *Harvard Mountaineering Club* taking on roles such as *Trip Secretary* and *Vice-President*.
 
-      - layout: middle
+      - layout: top-middle
         title: Seoul National University
         caption: 2021 - present
-        sub_title: Ph.d Interdisciplinary Program in Artificial Intelligence
+        sub_title: Ph.D. Interdisciplinary Program in Artificial Intelligence
         #        quote: >
         #          Established in 1636, Harvard is the oldest higher education institution in the United States, and is widely regarded in terms of its influence, reputation, and academic pedigree as a leading university in not just the US but also the world.
         description: | # this will include new lines to allow paragraphs
