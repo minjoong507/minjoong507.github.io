@@ -7,7 +7,7 @@ version: 2
 
 # Personal info
 name: Minjoon Jung
-title: Ph.d student
+#title: Ph.d student
 email: mjjung@bi.snu.ac.kr
 website: https://minjoong507.github.io/
 
@@ -75,8 +75,12 @@ content:
 
       - layout: top-middle
         title: Modal-specific Pseudo Query Generation for Video Corpus Moment Retrieval
-        link: https://arxiv.org/abs/2306.02728
-        # link_text: Project Website
+#        link: https://arxiv.org/abs/2306.02728
+#        link_text: Project Website
+        additional_links:
+          - title: sproogen/modern-resume-theme
+            icon: fa-regular fa-file-lines
+            url: https://arxiv.org/abs/2306.02728
         additional_links:
           - title: sproogen/modern-resume-theme
             icon: fab fa-github
@@ -120,9 +124,9 @@ content:
   #            Every company needs its networks properly administered and The Boring Compay is no exception. Digging holes is hard and I play my part making sure the whole company stays connected. I lead a team of 5 people and enjoy driving the company to try new technologies.
 
   - title: Education # Title for the section
-    layout: list # Type of content section (list/text)
+    layout: text # Type of content section (list/text)
     content:
-      - layout: middle
+      - layout: center
         title: Chung-ang University
         caption: 2015 - 2021
         sub_title: BSc Computer Science
