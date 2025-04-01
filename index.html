@@ -11,7 +11,7 @@
 </head>
 
 <body>
-<table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+<table style="width:100%;max-width:900px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 <tr style="padding:0px">
     <td style="padding:0px">
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
@@ -99,10 +99,44 @@
         </head>
         <body>
 
+        <style>
+            .scrollable-container {
+                height: 150px; /* adjust height as needed */
+                width: 90%;   /* or set a fixed width like 400px */
+                overflow-y: auto;
+                border: 1px solid #ccc;
+                padding: 10px;
+            }
+            .new-badge {
+                background-color: red;
+                color: white;
+                font-size: 0.7em;
+                padding: 2px 6px;
+                border-radius: 5px;
+                margin-left: 8px;
+                animation: blink 2s ease-in infinite;
+            }
+
+            @keyframes blink {
+              from, to { opacity: 1 }
+              50% { opacity: 0 }
+            }
+
+            .scrollable-container ul {
+                list-style-type: none;
+                padding: 0;
+            }
+
+            .scrollable-container li {
+                margin-bottom: 10px;
+            }
+        </style>
+
         <div class="scrollable-container">
             <ul>
+                <li>[2025.04] One paper has been accepted by ICLR 2025 Workshop!<span class="new-badge">New</span></li>
                 <li>[2025.02] One paper has been accepted by CVPR 2025!</li>
-                <li>[2024.11] One paper has been accepted by NeurIPS 2024 Workshop on Video-Language Models! We also released the extended version on arXiv.</li>
+                <li>[2024.11] One paper has been accepted by NeurIPS 2024 Workshop! We also released the extended version on arXiv.</li>
                 <li>[2024.08] One paper has been early accepted by WACV 2025 Round 1!</li>
                 <li>[2024.02] One paper has been accepted by IROS 2024!</li>
                 <li>[2024.02] I'll be joining at National University of Singapore as a research intern.</li>
@@ -125,7 +159,7 @@
         <div style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
             <!-- Image Container -->
             <div class="image-container" style="flex: 0 0 250px; display: flex; justify-content: center;">
-                <img src="images/can.png" width="280" height="150" alt="Image">
+                <img src="images/consistency.gif" width="320" height="180" alt="Animated GIF">
             </div>
 
             <!-- Text Content Container -->
@@ -145,6 +179,7 @@
                       *Earlier version has been accepted by
                       <a href="https://neurips.cc/virtual/2024/103565" style="font-size: inherit;">NeurIPS 2024 Workshop on Video-Language Models</a>.
                     </span>
+                    <br>
                     <a href="https://arxiv.org/abs/2411.12951">paper</a> /
                     <a href="https://github.com/minjoong507/Consistency-of-Video-LLM">code</a>
                 </p>
@@ -154,7 +189,7 @@
         <div style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
             <!-- Image Container -->
             <div class="image-container" style="flex: 0 0 250px; display: flex; justify-content: center;">
-                <img src="images/BM-DETR.png" width="280" height="150" alt="Image">
+                <img src="images/BM-DETR.png" width="320" height="180" alt="Image">
             </div>
 
             <!-- Text Content Container -->
@@ -182,7 +217,7 @@
         <div style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
             <!-- Image Container -->
             <div class="image-container" style="flex: 0 0 250px; display: flex; justify-content: center;">
-                <img src="images/PGA.png" width="280" height="150" alt="Image">
+                <img src="images/PGA.png" width="320" height="180" alt="Image">
             </div>
 
             <!-- Text Content Container -->
@@ -208,7 +243,7 @@
         <div style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
             <!-- Image Container -->
             <div class="image-container" style="flex: 0 0 250px; display: flex; justify-content: center;">
-                <img src="images/MPGN.jpg" width="280" height="150" alt="Image">
+                <img src="images/MPGN.png" width="320" height="180" alt="Image">
             </div>
 
             <!-- Text Content Container -->
@@ -234,7 +269,7 @@
         <div style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
             <!-- Image Container -->
             <div class="image-container" style="flex: 0 0 250px; display: flex; justify-content: center;">
-                <img src="images/crosscutting.gif" width="280" height="150" alt="Animated GIF">
+                <img src="images/crosscutting.gif" width="320" height="180" alt="Animated GIF">
             </div>
 
             <!-- Text Content Container -->
@@ -259,33 +294,33 @@
             </div>
         </div>
 
-        <div style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
-            <!-- Image Container -->
-            <div class="image-container" style="flex: 0 0 250px; display: flex; justify-content: center;">
-                <img src="images/vtt.png" width="280" height="150" alt="Image">
-            </div>
+<!--        <div style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">-->
+<!--            &lt;!&ndash; Image Container &ndash;&gt;-->
+<!--            <div class="image-container" style="flex: 0 0 250px; display: flex; justify-content: center;">-->
+<!--                <img src="images/vtt.png" width="280" height="150" alt="Image">-->
+<!--            </div>-->
 
-            <!-- Text Content Container -->
-            <div class="text-container" style="flex: 1; max-width: 600px;">
-                <p class="papertitle" style="font-weight: bold; font-size: 1.0em;">
-                    Toward a Human-Level Video Understanding Intelligence
-                </p>
-                <p>
-                    <a href="https://yujungheo.github.io/">Yu-Jung Heo,</a>
-                    Minsu Lee,
-                    Seongho Choi,
-                    Woo Suk Choi,
-                    Minjung Shin,
-                    <strong>Minjoon Jung</strong>,
-                    Jeh-Kwang Ryu,
-                    <a href="https://bi.snu.ac.kr/~btzhang/">Byoung-Tak Zhang*</a>
-                </p>
-                <p style="font-style: italic;">
-                    AAAI 2021 Fall Symposium Series on Artificial Intelligence for Human-Robot Interaction <br>
-                    <a href="https://arxiv.org/abs/2110.04203">paper</a>
-                </p>
-            </div>
-        </div>
+<!--            &lt;!&ndash; Text Content Container &ndash;&gt;-->
+<!--            <div class="text-container" style="flex: 1; max-width: 600px;">-->
+<!--                <p class="papertitle" style="font-weight: bold; font-size: 1.0em;">-->
+<!--                    Toward a Human-Level Video Understanding Intelligence-->
+<!--                </p>-->
+<!--                <p>-->
+<!--                    <a href="https://yujungheo.github.io/">Yu-Jung Heo,</a>-->
+<!--                    Minsu Lee,-->
+<!--                    Seongho Choi,-->
+<!--                    Woo Suk Choi,-->
+<!--                    Minjung Shin,-->
+<!--                    <strong>Minjoon Jung</strong>,-->
+<!--                    Jeh-Kwang Ryu,-->
+<!--                    <a href="https://bi.snu.ac.kr/~btzhang/">Byoung-Tak Zhang*</a>-->
+<!--                </p>-->
+<!--                <p style="font-style: italic;">-->
+<!--                    AAAI 2021 Fall Symposium Series on Artificial Intelligence for Human-Robot Interaction <br>-->
+<!--                    <a href="https://arxiv.org/abs/2110.04203">paper</a>-->
+<!--                </p>-->
+<!--            </div>-->
+<!--        </div>-->
 
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
         <!--        <tr>-->
