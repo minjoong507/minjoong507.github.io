@@ -1,13 +1,116 @@
 <!DOCTYPE HTML>
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <title>Minjoon Jung</title>
 
-    <meta name="author" content="Jon Barron">
+    <meta name="author" content="Minjoon Jung">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Style the container */
+        .scrollable-container {
+            width: 100%;
+            height: 100px;
+            overflow: scroll;
+            background-color: white;
+            padding: 1px;
+            border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;
+        }
+
+        /* Custom scrollbar styles */
+        .scrollable-container::-webkit-scrollbar {
+            width: 5px; /* Width of the scrollbar */
+        }
+
+        .scrollable-container::-webkit-scrollbar-track {
+            background: white; /* Light gray track */
+        }
+
+        .scrollable-container::-webkit-scrollbar-thumb {
+            background: #888; /* Darker gray thumb */
+            border-radius: 6px;
+        }
+
+        .scrollable-container::-webkit-scrollbar-thumb:hover {
+            background: #555; /* Darker thumb when hovered */
+        }
+        .scrollable-container {
+            height: 150px; /* adjust height as needed */
+            width: 90%;   /* or set a fixed width like 400px */
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        .new-badge {
+            background-color: red;
+            color: white;
+            font-size: 0.7em;
+            padding: 2px 6px;
+            border-radius: 5px;
+            margin-left: 8px;
+            animation: blink 2s ease-in infinite;
+        }
+
+        @keyframes blink {
+            from, to { opacity: 1 }
+            50% { opacity: 0 }
+        }
+
+        .scrollable-container ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .scrollable-container li {
+            margin-bottom: 10px;
+        }
+        .button {
+            padding: 5px 10px;
+            margin: 5px;
+            cursor: pointer;
+            border: 0.5px solid #ccc;
+            background-color: #f0f0f0;
+            display: inline-block;
+        }
+
+        .button.active {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+    <script>
+        function showTab(tabId) {
+            // Hide all tab contents
+            var allTabs = document.querySelectorAll('.tab-content');
+            allTabs.forEach(function(tab) {
+                tab.classList.remove('active');
+            });
+
+            // Remove active class from all buttons
+            var buttons = document.querySelectorAll('.button');
+            buttons.forEach(function(button) {
+                button.classList.remove('active');
+            });
+
+            // Show the selected tab content and add active class to the corresponding button
+            document.querySelector(tabId).classList.add('active');
+            var activeButton = document.querySelector(`.button[data-ref="${tabId}"]`);
+            activeButton.classList.add('active');
+        }
+    </script>
 </head>
 
 <body>
@@ -64,74 +167,7 @@
         </tbody></table>
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <style>
-                /* Style the container */
-                .scrollable-container {
-                    width: 100%;
-                    height: 100px;
-                    overflow: scroll;
-                    background-color: white;
-                    padding: 1px;
-                    border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;
-                }
-
-                /* Custom scrollbar styles */
-                .scrollable-container::-webkit-scrollbar {
-                    width: 5px; /* Width of the scrollbar */
-                }
-
-                .scrollable-container::-webkit-scrollbar-track {
-                    background: white; /* Light gray track */
-                }
-
-                .scrollable-container::-webkit-scrollbar-thumb {
-                    background: #888; /* Darker gray thumb */
-                    border-radius: 6px;
-                }
-
-                .scrollable-container::-webkit-scrollbar-thumb:hover {
-                    background: #555; /* Darker thumb when hovered */
-                }
-            </style>
-        </head>
         <body>
-
-        <style>
-            .scrollable-container {
-                height: 150px; /* adjust height as needed */
-                width: 90%;   /* or set a fixed width like 400px */
-                overflow-y: auto;
-                border: 1px solid #ccc;
-                padding: 10px;
-            }
-            .new-badge {
-                background-color: red;
-                color: white;
-                font-size: 0.7em;
-                padding: 2px 6px;
-                border-radius: 5px;
-                margin-left: 8px;
-                animation: blink 2s ease-in infinite;
-            }
-
-            @keyframes blink {
-              from, to { opacity: 1 }
-              50% { opacity: 0 }
-            }
-
-            .scrollable-container ul {
-                list-style-type: none;
-                padding: 0;
-            }
-
-            .scrollable-container li {
-                margin-bottom: 10px;
-            }
-        </style>
-
         <div class="scrollable-container">
             <ul>
                 <li>[2025.04] One paper has been accepted by ICLR 2025 Workshop!<span class="new-badge">New</span></li>
@@ -146,212 +182,367 @@
 
         </body>
 
+
+
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
         <tr>
             <td style="padding:20px;width:100%;vertical-align:middle">
-                <heading>Featured Publications</heading>
+                <!--                <heading>Publications</heading>-->
+                <heading>Publications&nbsp;&nbsp;</heading>
+                <!--            </td>-->
+                <div class="button active" data-ref="#papers-selected" onclick="showTab('#papers-selected')">Selected</div>
+                <div class="button" data-ref="#papers-all" onclick="showTab('#papers-all')">All</div>
             </td>
         </tr>
-        </tbody></table>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+        </tbody>
+        </table>
 
+        <!-- Selected Papers -->
+        <div id="papers-selected" class="tab-content active">
+            <div style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
+                <!-- Image Container -->
+                <div class="image-container" style="flex: 0 0 250px; display: flex; justify-content: center;">
+                    <img src="images/consistency.gif" width="320" height="180" alt="Animated GIF">
+                </div>
 
-        <div style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
-            <!-- Image Container -->
-            <div class="image-container" style="flex: 0 0 250px; display: flex; justify-content: center;">
-                <img src="images/consistency.gif" width="320" height="180" alt="Animated GIF">
-            </div>
-
-            <!-- Text Content Container -->
-            <div class="text-container" style="flex: 1; max-width: 600px;">
-                <p class="papertitle" style="font-weight: bold; font-size: 1.0em;">
-                    On the Consistency of Video Large Language Models in Temporal Comprehension
-                </p>
-                <p>
-                    <strong>Minjoon Jung</strong>,
-                    <a href="https://doc-doc.github.io/cv/">Junbin Xiao*</a>,
-                    <a href="https://bi.snu.ac.kr/~btzhang/">Byoung-Tak Zhang</a>
-                    <a href="https://www.comp.nus.edu.sg/~ayao/">Angela Yao</a>
-                </p>
-                <p style="font-style: italic;">
-                    Conference on Computer Vision and Pattern Recognition (CVPR), 2025 <br>
-                    <span style="font-size: smaller;">
+                <!-- Text Content Container -->
+                <div class="text-container" style="flex: 1; max-width: 600px;">
+                    <p class="papertitle" style="font-weight: bold; font-size: 1.0em;">
+                        On the Consistency of Video Large Language Models in Temporal Comprehension
+                    </p>
+                    <p>
+                        <u>Minjoon Jung</u>,
+                        <a href="https://doc-doc.github.io/cv/">Junbin Xiao*</a>,
+                        <a href="https://bi.snu.ac.kr/~btzhang/">Byoung-Tak Zhang</a>
+                        <a href="https://www.comp.nus.edu.sg/~ayao/">Angela Yao</a>
+                    </p>
+                    <p style="font-style: italic;">
+                        Conference on Computer Vision and Pattern Recognition (CVPR), 2025 <br>
+                        <span style="font-size: smaller;">
                       *Earlier version has been accepted by
                       <a href="https://neurips.cc/virtual/2024/103565" style="font-size: inherit;">NeurIPS 2024 Workshop on Video-Language Models</a>.
                     </span>
-                    <br>
-                    <a href="https://arxiv.org/abs/2411.12951">paper</a> /
-                    <a href="https://github.com/minjoong507/Consistency-of-Video-LLM">code</a>
-                </p>
-                <p style="font-size: 12px">
-                    We reveal that Video Large Language Models (Video-LLMs) struggle to maintain consistency in grounding and verification. We systematically analyze this issue and introduce VTune, an effective instruction tuning method, leading to substantial improvements in both grounding and consistency.
-                </p>
+                        <br>
+                        <a href="https://arxiv.org/abs/2411.12951">paper</a> /
+                        <a href="https://github.com/minjoong507/Consistency-of-Video-LLM">code</a>
+                    </p>
+                    <p style="font-size: 12px">
+                        We reveal that Video Large Language Models (Video-LLMs) struggle to maintain consistency in grounding and verification. We systematically analyze this issue and introduce VTune, an effective instruction tuning method, leading to substantial improvements in both grounding and consistency.
+                    </p>
+                </div>
+            </div>
+
+            <div style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
+                <!-- Image Container -->
+                <div class="image-container" style="flex: 0 0 250px; display: flex; justify-content: center;">
+                    <img src="images/bm-detr.png" width="320" height="160" alt="Image">
+                </div>
+
+                <!-- Text Content Container -->
+                <div class="text-container" style="flex: 1; max-width: 600px;">
+                    <p class="papertitle" style="font-weight: bold; font-size: 1.0em;">
+                        Background-aware Moment Detection for Video Moment Retrieval
+                    </p>
+                    <p>
+                        <u>Minjoon Jung</u>,
+                        Youwon Jang,
+                        Seongho Choi,
+                        Joochan Kim,
+                        <a href="http://wityworks.com/">Jin-Hwa Kim*</a>,
+                        <a href="https://bi.snu.ac.kr/~btzhang/">Byoung-Tak Zhang*</a>
+                    </p>
+                    <p style="font-style: italic;">
+                        Winter Conference on Applications of Computer Vision (WACV), 2025 <br>
+                        <span style="font-size: smaller;">*Early accepted in Round 1.</span> <br>
+                        <a href="https://arxiv.org/abs/2306.02728">paper</a> /
+                        <a href="https://github.com/minjoong507/BM-DETR">code</a>
+                    </p>
+                    <p style="font-size: 12px">
+                        We propose Background-aware Moment Detection TRansformer (BM-DETR), which carefully adopts a contrastive approach for robust prediction. BM-DETR achieves state-of-the-art performance on various benchmarks while being highly efficient.
+                    </p>
+                </div>
+            </div>
+
+            <div style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
+                <!-- Image Container -->
+                <div class="image-container" style="flex: 0 0 250px; display: flex; justify-content: center;">
+                    <img src="images/MPGN.png" width="320" height="180" alt="Image">
+                </div>
+
+                <!-- Text Content Container -->
+                <div class="text-container" style="flex: 1; max-width: 600px;">
+                    <p class="papertitle" style="font-weight: bold; font-size: 1.0em;">
+                        Modal-specific Pseudo Query Generation for Video Corpus Moment Retrieval
+                    </p>
+                    <p>
+                        <u>Minjoon Jung</u>,
+                        Seongho Choi,
+                        Joochan Kim,
+                        <a href="http://wityworks.com/">Jin-Hwa Kim*</a>,
+                        <a href="https://bi.snu.ac.kr/~btzhang/">Byoung-Tak Zhang*</a>
+                    </p>
+                    <p style="font-style: italic;">
+                        Empirical Methods in Natural Language Processing (EMNLP), 2022 <br>
+                        <a href="https://aclanthology.org/2022.emnlp-main.530/">paper</a> /
+                        <a href="https://github.com/minjoong507/MPGN">code</a>
+                    </p>
+                    <p style="font-size: 12px">
+                        We propose Modal-specific Pseudo Query Generation Network (MPGN), a self-supervised framework for Video Corpus Moment Retrieval (VCMR). MPGN captures orthogonal axis of information in videos and generates pseudo-queries that provide a considerable performance boost, even without human annotations.
+
+                    </p>
+                </div>
+            </div>
+
+            <div style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
+                <!-- Image Container -->
+                <div class="image-container" style="flex: 0 0 250px; display: flex; justify-content: center;">
+                    <img src="images/crosscutting.gif" width="320" height="180" alt="Animated GIF">
+                </div>
+
+                <!-- Text Content Container -->
+                <div class="text-container" style="flex: 1; max-width: 600px;">
+                    <p class="papertitle" style="font-weight: bold; font-size: 1.0em;">
+                        Stagemix Video Generation using Face and Body Keypoints Detection
+                    </p>
+                    <p>
+                        <u>Minjoon Jung</u>,
+                        <a href="https://lsh3163.github.io/seunghyunlee/">Seung-Hyun Lee</a>,
+                        Eunseon Sim,
+                        Minho Jo,
+                        Yujin Lee,
+                        Hyebin Choi,
+                        <a href="https://sites.google.com/view/cau-cvml/cvmlcau/junseokkwon?authuser=0">Junseok Kwon*</a>
+                    </p>
+                    <p style="font-style: italic;">
+                        Multimedia Tools and Applications (MTAP), 2022 <br>
+                        <a href="https://link.springer.com/article/10.1007/s11042-022-13103-8">paper</a> /
+                        <a href="https://github.com/datamarket-tobigs/Cross-Cutting">code</a>
+                    </p>
+                    <p style="font-size: 12px">
+                        We design a method for automatically creating Stagemix videos, which seamlessly combine multiple stage performances of a singer into a single cohesive video. We effectively produces natural-looking Stagemix videos while significantly reducing the effort involved compared to manual editing.
+                    </p>
+                </div>
             </div>
         </div>
 
-        <div style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
-            <!-- Image Container -->
-            <div class="image-container" style="flex: 0 0 250px; display: flex; justify-content: center;">
-                <img src="images/bm-detr.png" width="320" height="180" alt="Image">
+
+        <!-- All Papers -->
+        <div id="papers-all" class="tab-content">
+            <div style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
+                <!-- Image Container -->
+                <div class="image-container" style="flex: 0 0 250px; display: flex; justify-content: center;">
+                    <img src="images/consistency.gif" width="320" height="180" alt="Animated GIF">
+                </div>
+
+                <!-- Text Content Container -->
+                <div class="text-container" style="flex: 1; max-width: 600px;">
+                    <p class="papertitle" style="font-weight: bold; font-size: 1.0em;">
+                        On the Consistency of Video Large Language Models in Temporal Comprehension
+                    </p>
+                    <p>
+                        <u>Minjoon Jung</u>,
+                        <a href="https://doc-doc.github.io/cv/">Junbin Xiao*</a>,
+                        <a href="https://bi.snu.ac.kr/~btzhang/">Byoung-Tak Zhang</a>
+                        <a href="https://www.comp.nus.edu.sg/~ayao/">Angela Yao</a>
+                    </p>
+                    <p style="font-style: italic;">
+                        Conference on Computer Vision and Pattern Recognition (CVPR), 2025 <br>
+                        <span style="font-size: smaller;">
+                      *Earlier version has been accepted by
+                      <a href="https://neurips.cc/virtual/2024/103565" style="font-size: inherit;">NeurIPS 2024 Workshop on Video-Language Models</a>.
+                    </span>
+                        <br>
+                        <a href="https://arxiv.org/abs/2411.12951">paper</a> /
+                        <a href="https://github.com/minjoong507/Consistency-of-Video-LLM">code</a>
+                    </p>
+                    <p style="font-size: 12px">
+                        We reveal that Video Large Language Models (Video-LLMs) struggle to maintain consistency in grounding and verification. We systematically analyze this issue and introduce VTune, an effective instruction tuning method, leading to substantial improvements in both grounding and consistency.
+                    </p>
+                </div>
             </div>
 
-            <!-- Text Content Container -->
-            <div class="text-container" style="flex: 1; max-width: 600px;">
-                <p class="papertitle" style="font-weight: bold; font-size: 1.0em;">
-                    Background-aware Moment Detection for Video Moment Retrieval
-                </p>
-                <p>
-                    <strong>Minjoon Jung</strong>,
-                    Youwon Jang,
-                    Seongho Choi,
-                    Joochan Kim,
-                    <a href="http://wityworks.com/">Jin-Hwa Kim*</a>,
-                    <a href="https://bi.snu.ac.kr/~btzhang/">Byoung-Tak Zhang*</a>
-                </p>
-                <p style="font-style: italic;">
-                    Winter Conference on Applications of Computer Vision (WACV), 2025 <br>
-                    <span style="font-size: smaller;">*Early accepted in Round 1.</span> <br>
-                    <a href="https://arxiv.org/abs/2306.02728">paper</a> /
-                    <a href="https://github.com/minjoong507/BM-DETR">code</a>
-                </p>
-                <p style="font-size: 12px">
-                    We propose Background-aware Moment Detection TRansformer (BM-DETR), which carefully adopts a contrastive approach for robust prediction. BM-DETR achieves state-of-the-art performance on various benchmarks while being highly efficient.
-                </p>
+            <div style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
+                <!-- Image Container -->
+                <div class="image-container" style="flex: 0 0 250px; display: flex; justify-content: center;">
+                    <img src="images/ordinal.jpg" width="320" height="160">
+                </div>
+
+                <!-- Text Content Container -->
+                <div class="text-container" style="flex: 1; max-width: 600px;">
+                    <p class="papertitle" style="font-weight: bold; font-size: 1.0em;">
+                        Exploring Ordinal Bias in Action Recognition for Instructional Videos
+                    </p>
+                    <p>
+                        <a href="https://doc-doc.github.io/cv/">Joochan Kim</a>,
+                        <u>Minjoon Jung</u>,
+                        <a href="https://bi.snu.ac.kr/~btzhang/">Byoung-Tak Zhang*</a>
+                    </p>
+                    <p style="font-style: italic;">
+                        ICLR Workshop on Spurious Correlation and Shortcut Learning: Foundations and Solutions, 2025 <br>
+                        <span style="font-size: smaller;">
+                    </span>
+                        <br>
+                        <a href="https://openreview.net/forum?id=JIon6Xuvm1&referrer=%5Bthe%20profile%20of%20Joochan%20Kim%5D(%2Fprofile%3Fid%3D~Joochan_Kim1)">paper</a> /
+<!--                        <a href="https://github.com/minjoong507/Consistency-of-Video-LLM">code</a>-->
+                        <a>code</a>
+                    </p>
+                    <p style="font-size: 12px">
+                        We study that ordinal bias leads action recognition models to over-rely on dominant action pairs, inflating performance and lacking true video comprehension.
+                    </p>
+                </div>
+            </div>
+
+            <div style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
+                <!-- Image Container -->
+                <div class="image-container" style="flex: 0 0 250px; display: flex; justify-content: center;">
+                    <img src="images/bm-detr.png" width="320" height="180" alt="Image">
+                </div>
+
+                <!-- Text Content Container -->
+                <div class="text-container" style="flex: 1; max-width: 600px;">
+                    <p class="papertitle" style="font-weight: bold; font-size: 1.0em;">
+                        Background-aware Moment Detection for Video Moment Retrieval
+                    </p>
+                    <p>
+                        <u>Minjoon Jung</u>,
+                        Youwon Jang,
+                        Seongho Choi,
+                        Joochan Kim,
+                        <a href="http://wityworks.com/">Jin-Hwa Kim*</a>,
+                        <a href="https://bi.snu.ac.kr/~btzhang/">Byoung-Tak Zhang*</a>
+                    </p>
+                    <p style="font-style: italic;">
+                        Winter Conference on Applications of Computer Vision (WACV), 2025 <br>
+                        <span style="font-size: smaller;">*Early accepted in Round 1.</span> <br>
+                        <a href="https://arxiv.org/abs/2306.02728">paper</a> /
+                        <a href="https://github.com/minjoong507/BM-DETR">code</a>
+                    </p>
+                    <p style="font-size: 12px">
+                        We propose Background-aware Moment Detection TRansformer (BM-DETR), which carefully adopts a contrastive approach for robust prediction. BM-DETR achieves state-of-the-art performance on various benchmarks while being highly efficient.
+                    </p>
+                </div>
+            </div>
+
+            <div style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
+                <!-- Image Container -->
+                <div class="image-container" style="flex: 0 0 250px; display: flex; justify-content: center;">
+                    <img src="images/PGA.png" width="320" height="180" alt="Image">
+                </div>
+
+                <!-- Text Content Container -->
+                <div class="text-container" style="flex: 1; max-width: 600px;">
+                    <p class="papertitle" style="font-weight: bold; font-size: 1.0em;">
+                        PGA: Personalizing Grasping Agents with Single Human-Robot Interaction
+                    </p>
+                    <p>
+                        <a href="https://jhkim-snu.github.io/">Junghyun Kim</a>,
+                        <a href="https://gicheonkang.com/">Gi-Cheon Kang</a>,
+                        Jaein Kim, Seoyun Yang,
+                        <u>Minjoon Jung</u>,
+                        <a href="https://bi.snu.ac.kr/~btzhang/">Byoung-Tak Zhang*</a>
+                    </p>
+                    <p style="font-style: italic;">
+                        International Conference on Intelligent Robots and Systems (IROS), 2024 <span style="color: red; font-weight: bold;">(Oral)</span> <br>
+                        <a href="https://arxiv.org/abs/2310.12547">paper</a> /
+                        <a href="https://github.com/JHKim-snu/PGA">code</a>
+                    </p>
+                    <p style="font-size: 12px">
+                        We propose Personalized Grasping Agent (PGA), which enables robots to grasp user-specific objects from just a single interaction. PGA captures multi-view object data and uses label propagation to adapt its grasping model without requiring extensive annotations, achieving performance close to fully supervised methods.
+                    </p>
+                </div>
+            </div>
+
+            <div style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
+                <!-- Image Container -->
+                <div class="image-container" style="flex: 0 0 250px; display: flex; justify-content: center;">
+                    <img src="images/MPGN.png" width="320" height="180" alt="Image">
+                </div>
+
+                <!-- Text Content Container -->
+                <div class="text-container" style="flex: 1; max-width: 600px;">
+                    <p class="papertitle" style="font-weight: bold; font-size: 1.0em;">
+                        Modal-specific Pseudo Query Generation for Video Corpus Moment Retrieval
+                    </p>
+                    <p>
+                        <u>Minjoon Jung</u>,
+                        Seongho Choi,
+                        Joochan Kim,
+                        <a href="http://wityworks.com/">Jin-Hwa Kim*</a>,
+                        <a href="https://bi.snu.ac.kr/~btzhang/">Byoung-Tak Zhang*</a>
+                    </p>
+                    <p style="font-style: italic;">
+                        Empirical Methods in Natural Language Processing (EMNLP), 2022 <br>
+                        <a href="https://aclanthology.org/2022.emnlp-main.530/">paper</a> /
+                        <a href="https://github.com/minjoong507/MPGN">code</a>
+                    </p>
+                    <p style="font-size: 12px">
+                        We propose Modal-specific Pseudo Query Generation Network (MPGN), a self-supervised framework for Video Corpus Moment Retrieval (VCMR). MPGN captures orthogonal axis of information in videos and generates pseudo-queries that provide a considerable performance boost, even without human annotations.
+
+                    </p>
+                </div>
+            </div>
+
+            <div style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
+                <!-- Image Container -->
+                <div class="image-container" style="flex: 0 0 250px; display: flex; justify-content: center;">
+                    <img src="images/crosscutting.gif" width="320" height="180" alt="Animated GIF">
+                </div>
+
+                <!-- Text Content Container -->
+                <div class="text-container" style="flex: 1; max-width: 600px;">
+                    <p class="papertitle" style="font-weight: bold; font-size: 1.0em;">
+                        Stagemix Video Generation using Face and Body Keypoints Detection
+                    </p>
+                    <p>
+                        <u>Minjoon Jung</u>,
+                        <a href="https://lsh3163.github.io/seunghyunlee/">Seung-Hyun Lee</a>,
+                        Eunseon Sim,
+                        Minho Jo,
+                        Yujin Lee,
+                        Hyebin Choi,
+                        <a href="https://sites.google.com/view/cau-cvml/cvmlcau/junseokkwon?authuser=0">Junseok Kwon*</a>
+                    </p>
+                    <p style="font-style: italic;">
+                        Multimedia Tools and Applications (MTAP), 2022 <br>
+                        <a href="https://link.springer.com/article/10.1007/s11042-022-13103-8">paper</a> /
+                        <a href="https://github.com/datamarket-tobigs/Cross-Cutting">code</a>
+                    </p>
+                    <p style="font-size: 12px">
+                        We design a method for automatically creating Stagemix videos, which seamlessly combine multiple stage performances of a singer into a single cohesive video. We effectively produces natural-looking Stagemix videos while significantly reducing the effort involved compared to manual editing.
+                    </p>
+                </div>
+            </div>
+            <div style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
+                <!-- Image Container -->
+                <div class="image-container" style="flex: 0 0 250px; display: flex; justify-content: center;">
+                    <img src="images/vtt.png" width="320" height="180" alt="Image">
+                </div>
+
+                <!-- Text Content Container -->
+                <div class="text-container" style="flex: 1; max-width: 600px;">
+                    <p class="papertitle" style="font-weight: bold; font-size: 1.0em;">
+                        Toward a Human-Level Video Understanding Intelligence
+                    </p>
+                    <p>
+                        <a href="https://yujungheo.github.io/">Yu-Jung Heo,</a>
+                        Minsu Lee,
+                        Seongho Choi,
+                        Woo Suk Choi,
+                        Minjung Shin,
+                        <u>Minjoon Jung</u>,
+                        Jeh-Kwang Ryu,
+                        <a href="https://bi.snu.ac.kr/~btzhang/">Byoung-Tak Zhang*</a>
+                    </p>
+                    <p style="font-style: italic;">
+                        AAAI 2021 Fall Symposium Series on Artificial Intelligence for Human-Robot Interaction <br>
+                        <a href="https://arxiv.org/abs/2110.04203">paper</a>
+                    </p>
+                    <p style="font-size: 12px">
+                        We aim to develop an AI agent that can watch video clips and have a conversation with human about the video story.
+                    </p>
+                </div>
             </div>
         </div>
-
-        <div style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
-            <!-- Image Container -->
-            <div class="image-container" style="flex: 0 0 250px; display: flex; justify-content: center;">
-                <img src="images/PGA.png" width="320" height="180" alt="Image">
-            </div>
-
-            <!-- Text Content Container -->
-            <div class="text-container" style="flex: 1; max-width: 600px;">
-                <p class="papertitle" style="font-weight: bold; font-size: 1.0em;">
-                    PGA: Personalizing Grasping Agents with Single Human-Robot Interaction
-                </p>
-                <p>
-                    <a href="https://jhkim-snu.github.io/">Junghyun Kim</a>,
-                    <a href="https://gicheonkang.com/">Gi-Cheon Kang</a>,
-                    Jaein Kim, Seoyun Yang,
-                    <strong>Minjoon Jung</strong>,
-                    <a href="https://bi.snu.ac.kr/~btzhang/">Byoung-Tak Zhang*</a>
-                </p>
-                <p style="font-style: italic;">
-                    International Conference on Intelligent Robots and Systems (IROS), 2024 <span style="color: red; font-weight: bold;">(Oral)</span> <br>
-                    <a href="https://arxiv.org/abs/2310.12547">paper</a> /
-                    <a href="https://github.com/JHKim-snu/PGA">code</a>
-                </p>
-                <p style="font-size: 12px">
-                    We propose Personalized Grasping Agent (PGA), which enables robots to grasp user-specific objects from just a single interaction. PGA captures multi-view object data and uses label propagation to adapt its grasping model without requiring extensive annotations, achieving performance close to fully supervised methods.
-                </p>
-            </div>
-        </div>
-
-        <div style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
-            <!-- Image Container -->
-            <div class="image-container" style="flex: 0 0 250px; display: flex; justify-content: center;">
-                <img src="images/MPGN.png" width="320" height="180" alt="Image">
-            </div>
-
-            <!-- Text Content Container -->
-            <div class="text-container" style="flex: 1; max-width: 600px;">
-                <p class="papertitle" style="font-weight: bold; font-size: 1.0em;">
-                    Modal-specific Pseudo Query Generation for Video Corpus Moment Retrieval
-                </p>
-                <p>
-                    <strong>Minjoon Jung</strong>,
-                    Seongho Choi,
-                    Joochan Kim,
-                    <a href="http://wityworks.com/">Jin-Hwa Kim*</a>,
-                    <a href="https://bi.snu.ac.kr/~btzhang/">Byoung-Tak Zhang*</a>
-                </p>
-                <p style="font-style: italic;">
-                    Empirical Methods in Natural Language Processing (EMNLP), 2022 <br>
-                    <a href="https://aclanthology.org/2022.emnlp-main.530/">paper</a> /
-                    <a href="https://github.com/minjoong507/MPGN">code</a>
-                </p>
-                <p style="font-size: 12px">
-                    We propose Modal-specific Pseudo Query Generation Network (MPGN), a self-supervised framework for Video Corpus Moment Retrieval (VCMR). MPGN captures orthogonal axis of information in videos and generates pseudo-queries that provide a considerable performance boost, even without human annotations.
-
-                </p>
-            </div>
-        </div>
-
-        <div style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
-            <!-- Image Container -->
-            <div class="image-container" style="flex: 0 0 250px; display: flex; justify-content: center;">
-                <img src="images/crosscutting.gif" width="320" height="180" alt="Animated GIF">
-            </div>
-
-            <!-- Text Content Container -->
-            <div class="text-container" style="flex: 1; max-width: 600px;">
-                <p class="papertitle" style="font-weight: bold; font-size: 1.0em;">
-                    Stagemix Video Generation using Face and Body Keypoints Detection
-                </p>
-                <p>
-                    <strong>Minjoon Jung</strong>,
-                    <a href="https://lsh3163.github.io/seunghyunlee/">Seung-Hyun Lee</a>,
-                    Eunseon Sim,
-                    Minho Jo,
-                    Yujin Lee,
-                    Hyebin Choi,
-                    <a href="https://sites.google.com/view/cau-cvml/cvmlcau/junseokkwon?authuser=0">Junseok Kwon*</a>
-                </p>
-                <p style="font-style: italic;">
-                    Multimedia Tools and Applications (MTAP), 2022 <br>
-                    <a href="https://link.springer.com/article/10.1007/s11042-022-13103-8">paper</a> /
-                    <a href="https://github.com/datamarket-tobigs/Cross-Cutting">code</a>
-                </p>
-                <p style="font-size: 12px">
-                    We design a method for automatically creating Stagemix videos, which seamlessly combine multiple stage performances of a singer into a single cohesive video. We effectively produces natural-looking Stagemix videos while significantly reducing the effort involved compared to manual editing.
-                </p>
-            </div>
-        </div>
-
-<!--        <div style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">-->
-<!--            &lt;!&ndash; Image Container &ndash;&gt;-->
-<!--            <div class="image-container" style="flex: 0 0 250px; display: flex; justify-content: center;">-->
-<!--                <img src="images/vtt.png" width="280" height="150" alt="Image">-->
-<!--            </div>-->
-
-<!--            &lt;!&ndash; Text Content Container &ndash;&gt;-->
-<!--            <div class="text-container" style="flex: 1; max-width: 600px;">-->
-<!--                <p class="papertitle" style="font-weight: bold; font-size: 1.0em;">-->
-<!--                    Toward a Human-Level Video Understanding Intelligence-->
-<!--                </p>-->
-<!--                <p>-->
-<!--                    <a href="https://yujungheo.github.io/">Yu-Jung Heo,</a>-->
-<!--                    Minsu Lee,-->
-<!--                    Seongho Choi,-->
-<!--                    Woo Suk Choi,-->
-<!--                    Minjung Shin,-->
-<!--                    <strong>Minjoon Jung</strong>,-->
-<!--                    Jeh-Kwang Ryu,-->
-<!--                    <a href="https://bi.snu.ac.kr/~btzhang/">Byoung-Tak Zhang*</a>-->
-<!--                </p>-->
-<!--                <p style="font-style: italic;">-->
-<!--                    AAAI 2021 Fall Symposium Series on Artificial Intelligence for Human-Robot Interaction <br>-->
-<!--                    <a href="https://arxiv.org/abs/2110.04203">paper</a>-->
-<!--                </p>-->
-<!--            </div>-->
-<!--        </div>-->
-
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-        <!--        <tr>-->
-        <!--            <td style="padding:20px;width:100%;vertical-align:middle">-->
-        <!--                <heading>Service</heading>-->
-        <!--                <ul>-->
-        <!--                    <li>Conference Reviewer: EMNLP 2022-2023, ACL 2023-2024</li>-->
-        <!--                </ul>-->
-        <!--                <p>-->
-        <!--            </td>-->
-        <!--        </tr>-->
-        </tbody></table>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-
-
 
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
         <p align="center">
