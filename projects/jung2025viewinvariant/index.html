@@ -24,7 +24,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-  <title>Towards Video Large Language Models for View-Invariant Video Understanding</title>
+  <title>EgoExo-Con: Exploring View-Invariant Video Temporal Understanding</title>
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
   rel="stylesheet">
 
@@ -51,7 +51,7 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">Towards Video Large Language Models for View-Invariant Video Understanding</h1>
+            <h1 class="title is-1 publication-title">EgoExo-Con: Exploring View-Invariant Video Temporal Understanding</h1>
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
@@ -62,9 +62,6 @@
                 </span>
                   <span class="author-block">
                     <a href="https://jhkim-snu.github.io/" target="_blank">Junghyun Kim</a>,
-                  </span>
-              <span class="author-block">
-                    <a>Il-Jae Kwon</a>,
                   </span>
               <span class="author-block">
                     <a href="https://bi.snu.ac.kr/members/byoung-tak-zhang.html" target="_blank">Byoung-Tak Zhang</a>,
@@ -140,7 +137,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-          Most video large language models (Video-LLMs) are focused on exocentric (third-person) videos, leaving their generalization to egocentric (first-person) views underexplored. This raises a question: Can Video-LLMs achieve consistent temporal comprehension across videos showing the same content from different viewpoints? To answer this question, we introduce EgoExo-Con (consistency), a benchmark of synchronized exo-ego video pairs with human-refined queries. It covers two temporal understanding tasks, temporal verification and grounding, and checks for correct and consistent answers across different viewpoints. Our benchmarking results show that Video-LLMs struggle to provide consistent answers across viewpoints, though specific performance varies across domains, lengths, and tasks. Furthermore, even trained with paired videos of both viewpoints, they often fail to yield consistent temporal comprehension or even underperform models trained on a single view. For improvements, we propose a scalable and efficient method that iteratively mines samples where the model shows consistent comprehension across viewpoints and encodes them in parallel to generate responses conditioned on both viewpoints. This allows the model to progressively learn consistent temporal comprehension, yielding performance comparable to state-of-the-art models.          </p>
+        Can Video-LLMs achieve <I>consistent</I> temporal understanding when videos capture the same event from different viewpoints? To study this, we introduce EgoExo-Con (Consistency), a benchmark of comprehensively synchronized egocentric and exocentric video pairs with human-refined queries in natural language. EgoExo-Con emphasizes two temporal understanding tasks: Temporal Verification and Temporal Grounding. It evaluates not only correctness but consistency across viewpoints. Our analysis reveals two critical limitations of existing Video-LLMs: (1) models often fail to maintain consistency, with results far worse than their single-view performances. (2) When naively finetuned with synchronized videos of both viewpoints, the models show improved consistency but often underperform those trained on a single view. For improvements, we propose View-GRPO, a novel reinforcement learning framework that effectively strengthens view-specific temporal reasoning while encouraging consistent comprehension across viewpoints. Our method demonstrates its superiority over naive SFT and GRPO, especially for improving cross-view consistency. All resources will be made publicly.
         </div>
       </div>
     </div>
@@ -154,14 +151,14 @@
   <div class="columns is-centered">
     <div class="column is-full">
       <div class="content">
-        <h2 class="title is-3">Overview</h2>
+        <h2 class="title is-3">EgoExo-Con</h2>
         <center>
-        <img src="../../images/egoexo.png" alt="Comparison of VTG Approaches." class="center-image blend-img-background"/ width="600" height="220">
+        <img src="assets/vis1.png" alt="Comparison of VTG Approaches." class="center-image blend-img-background" width="1000" height="220">
         </center>
         <div class="level-set has-text-justified">
+          <p></p>
           <p>
-            Consider a model that correctly answers ``yes'' to the question ``Is the person holding a sandwich?'' when presented with an exocentric video. This demonstrates the model can recognize the action ``holding a sandwich.'' However, if shown the corresponding egocentric video of the same scene, does the model still answer ``yes''? <I>i.e.,</I> <strong>is the learned knowledge for identifying actions and objects in specific video moments preserved well enough to yield consistent responses across viewpoints?</strong> To study this, we focus on the temporal aspects in videos through two different tasks: temporal verification, and temporal grounding. Specifically, we query a model with the same question across synchronized video pairs and check for consistent responses. The above example measures binary consistency, evaluating whether the model provides ``Yes.'' for both videos.          </p>
-        </div>
+      We introduce <B>EgoExo-Con</B>, a benchmark comprising 491 synchronized ego-exo video pairs and 3,178 temporal-bounded event queries, to evaluate whether models can provide consistent predictions across viewpoints - a key indicator of view-invariant video-language understanding. The benchmark focuses on two temporal understanding tasks: <I>temporal verification</I> and <I>temporal grounding</I>. Temporal verification is a binary QA task that asks whether a given event occurs within a specific video moment, while temporal grounding requires identifying the relevant video moment (start and end timestamps) corresponding to an event query. In both tasks, we ask the same event but with synchronized videos of different viewpoints, and check if the tested models can output correct and consistent responses.         </div>
       </div>
     </div>
   </div>
@@ -175,16 +172,39 @@
   <div class="columns is-centered">
     <div class="column is-full">
       <div class="content">
-        <h2 class="title is-3">Dataset</h2>
+        <h2 class="title is-3">Result</h2>
         <center>
-        <img src="assets/dataset.png" alt="Comparison of VTG Approaches." class="center-image blend-img-background"/">
+        <img src="assets/table1.png" alt="Comparison of VTG Approaches." class="center-image blend-img-background" width="800">
         </center>
         <div class="level-set has-text-justified">
           <p>
-          We collect and filter synchronized video pairs along with their queries. Then, we use
-          GPT-4o to refine the queries by addressing elements that cannot be reliably inferred from both
-          viewpoints. Human evaluation and refinement follow to validate queries.
+            <p></p>
+            We evaluate both the advanced closed-source models and open-source Video-LLMs comprising general-purpose and time-aware variants. Our benchmark results reveal that all models, especially the open-source ones, struggle with cross-view consistency. They generally exhibit a modest performance gap between individual ego and exo videos, <B>but achieve consistency scores barely over half their single-view performance in both tasks.</B> This indicates that the relatively stable performances across viewpoints may be sourced from view-specific biases rather than robust cross-view temporal understanding.
         </div>
+        </center>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+      <section class="section hero is-small">
+  <div class="container is-max-desktop">
+  <div class="columns is-centered">
+    <div class="column is-full">
+      <div class="content">
+        <h2 class="title is-3">View-GRPO</h2>
+        <center>
+        <img src="assets/method1.png" alt="Comparison of VTG Approaches." class="center-image blend-img-background" width="800">
+        <img src="assets/method2.png" alt="Comparison of VTG Approaches." class="center-image blend-img-background" width="800">
+
+        </center>
+        <div class="level-set has-text-justified">
+          <p>
+            <p></p>
+Although synchronized videos depict the same content, the reasoning process often differs across viewpoints because of distinct focuses and perspectives. To address this, we propose a reinforcement learning (RL) framework that guides models toward developing viewpoint-specific reasoning while encouraging shared consistency. Rather than simply enforcing identical outputs, our approach explicitly promotes robust reasoning across viewpoints. We build on Group Relative Policy Optimization (GRPO), which is particularly well-suited as it leverages relative rewards instead of absolute scores. The model provides step-by-step temporal reasoning with accurate grounding prediction, achieving high reasoning reward scores from LLM-judges. We name the overall approach View-GRPO. </div>
+
+
         </center>
       </div>
     </div>
