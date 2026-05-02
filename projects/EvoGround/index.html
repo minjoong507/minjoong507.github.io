@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="EvoGround: Self-Evolving Video Agents for Video Temporal Grounding. A framework of two coupled self-evolving agents that learn temporal grounding from raw videos without any human-labeled data.">
+  <meta property="og:title" content="EvoGround: Self-Evolving Video Agents for Video Temporal Grounding"/>
+  <meta property="og:description" content="EvoGround introduces two coupled self-evolving agents — a proposer and a solver — that learn temporal grounding from raw videos through mutual interaction alone, without any human annotations."/>
+  <meta property="og:url" content="URL OF THE WEBSITE"/>
+  <meta property="og:image" content="assets/overview.png" />
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+
+  <meta name="twitter:title" content="EvoGround: Self-Evolving Video Agents for Video Temporal Grounding">
+  <meta name="twitter:description" content="EvoGround introduces two coupled self-evolving agents — a proposer and a solver — that learn temporal grounding from raw videos through mutual interaction alone, without any human annotations.">
+  <meta name="twitter:image" content="assets/overview.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="keywords" content="Video Temporal Grounding, Self-Evolving Agents, Reinforcement Learning, Video LLM, Zero-shot, Annotation-free">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>EvoGround: Self-Evolving Video Agents for Video Temporal Grounding</title>
+  <link rel="icon" type="image/x-icon" href="../../images/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+<body>
+
+  <!-- Hero / Title -->
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">EvoGround: Self-Evolving Video Agents for Video Temporal Grounding</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://minjoong507.github.io/" target="_blank">Minjoon Jung</a><sup>1,2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://bi.snu.ac.kr/members/byoung-tak-zhang.html" target="_blank">Byoung-Tak Zhang</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://www.khoury.northeastern.edu/people/lorenzo-torresani/" target="_blank">Lorenzo Torresani</a><sup>2</sup>
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Seoul National University, &nbsp;<sup>2</sup>Northeastern University</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF link (update when arXiv ID is available) -->
+                <span class="link-block">
+                  <a href="../../data/EvoGround.pdf" target="_blank"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+
+                <!-- GitHub link (update when code is released) -->
+                <!--
+                <span class="link-block">
+                  <a href="https://github.com/minjoong507/EvoGround" target="_blank"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fab fa-github"></i></span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                -->
+
+                <!-- arXiv link (update when arXiv ID is available) -->
+                <!--
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/ARXIV_ID" target="_blank"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="ai ai-arxiv"></i></span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Abstract -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Video temporal grounding (VTG) takes an untrimmed video and a natural language query as input and localizes the temporal moment that best matches the query. While remarkable progress has been made, existing methods still rely on large-scale, task-specific datasets that require costly and labor-intensive manual annotation. In this paper, we introduce <b>EvoGround</b>, a framework of two coupled self-evolving agents, a <i>proposer</i> and a <i>solver</i>, that learn temporal information from raw videos <b>without any human-labeled data</b>. The proposer generates query–moment pairs from raw videos, while the solver learns to ground them and provides feedback that improves the proposer in return. Through this self-reinforcing loop, driven entirely by reinforcement learning, the two agents mutually improve each other across iterations. Despite never seeing any training data, EvoGround matches or outperforms most fully supervised models across multiple VTG benchmarks, while also demonstrating strong fine-grained video captioning capability.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Overview -->
+  <section class="section hero is-small">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full">
+          <div class="content">
+            <h2 class="title is-3">Overview</h2>
+            <center>
+              <img src="assets/teaser.png" alt="The Self-evolution Loop of EvoGround." class="center-image blend-img-background" width="900">
+            </center>
+            <div class="level-set has-text-justified">
+              <p></p>
+              <p>
+                <b>The Self-evolution Loop of EvoGround.</b> The proposer generates query (<i>q</i>)–moment (<i>m</i>) pairs from a given video, and the solver learns from these pairs and provides feedback signals through its moment predictions (<i>m&#770;</i>). As the process is repeated, the two agents mutually improve each other.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Method -->
+  <section class="section hero is-small is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full">
+          <div class="content">
+            <h2 class="title is-3">Method</h2>
+            <center>
+              <img src="assets/method.png" alt="Overview of EvoGround." class="center-image blend-img-background" width="900">
+            </center>
+            <div class="level-set has-text-justified">
+              <p></p>
+              <p>
+                EvoGround consists of two agents: a <b>proposer</b> and a <b>solver</b>. The proposer identifies candidate temporal events from raw videos and generates corresponding query–moment pairs, while the solver learns to ground temporal moments using the generated data. Both agents are initialized from the same backbone and evolve solely through a self-reinforcing loop without any labeled data.
+              </p>
+              <p>
+                The proposer is guided by three reward criteria: <b>validity</b> (format reward), <b>consistency</b> (consistency reward), and <b>solvability</b> (feedback reward). The consistency reward measures intra-consistency — how coherently a query aligns with frames within its moment — and inter-consistency — how discriminatively the query matches its own moment relative to others. The feedback reward uses the solver's accuracy (measured by timestamp-aware IoU) as a signal of whether generated pairs are learnable.
+              </p>
+              <p>
+                The solver is trained on proposer-generated query–moment pairs using a format reward and an accuracy reward (tIoU). EvoGround adopts <b>GDPO</b> as its RL optimizer and a curriculum design that progressively increases the solvability threshold across iterations, shifting focus from coarse matches toward more precise temporal alignments.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results -->
+  <section class="section hero is-small">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full">
+          <div class="content">
+            <h2 class="title is-3">Results</h2>
+            <div class="level-set has-text-justified">
+              <p>
+                Despite never seeing any manual annotations during training, EvoGround demonstrates strong performance across all benchmarks. It surpasses all SFT-based models and achieves first- or second-best performance among RL-based models — which rely on manually labeled data.
+              </p>
+            </div>
+
+            <p><b>Charades-STA &amp; ActivityNet-Captions</b></p>
+            <div class="table-container">
+              <table class="table is-bordered is-striped is-narrow is-fullwidth is-size-7">
+                <thead>
+                  <tr>
+                    <th rowspan="2">Method</th>
+                    <th colspan="4" class="has-text-centered">Charades-STA</th>
+                    <th colspan="4" class="has-text-centered">ActivityNet-Captions</th>
+                  </tr>
+                  <tr>
+                    <th>R1@0.3</th><th>R1@0.5</th><th>R1@0.7</th><th>mIoU</th>
+                    <th>R1@0.3</th><th>R1@0.5</th><th>R1@0.7</th><th>mIoU</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td colspan="9" class="has-text-grey is-italic">SFT-based Models</td></tr>
+                  <tr><td>TimeChat</td><td>-</td><td>32.2</td><td>13.4</td><td>32.2</td><td>36.2</td><td>20.2</td><td>9.5</td><td>21.8</td></tr>
+                  <tr><td>VTimeLLM</td><td>51.0</td><td>27.5</td><td>11.4</td><td>31.2</td><td>44.0</td><td>27.8</td><td>14.3</td><td>30.4</td></tr>
+                  <tr><td>Qwen2.5-VL</td><td>68.5</td><td>48.8</td><td>22.5</td><td>45.0</td><td>38.7</td><td>25.6</td><td>14.9</td><td>28.6</td></tr>
+                  <tr><td>TimeSuite</td><td>69.9</td><td>48.7</td><td>24.0</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                  <tr><td>VideoChat-Flash</td><td>74.5</td><td>53.1</td><td>27.6</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                  <tr><td colspan="9" class="has-text-grey is-italic">RL-based Models</td></tr>
+                  <tr><td>Time-R1</td><td>78.1</td><td>60.8</td><td>35.3</td><td>58.1</td><td>58.6</td><td>39.0</td><td>21.4</td><td>40.5</td></tr>
+                  <tr class="has-background-warning-light"><td><b>EvoGround (Ours)</b></td><td><b>76.4</b></td><td><b>58.6</b></td><td><b>33.6</b></td><td><b>52.5</b></td><td><b>61.6</b></td><td><b>42.5</b></td><td><b>25.0</b></td><td><b>42.8</b></td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p><b>TVGBench, ReXTime &amp; E.T.Bench</b></p>
+            <div class="table-container">
+              <table class="table is-bordered is-striped is-narrow is-fullwidth is-size-7">
+                <thead>
+                  <tr>
+                    <th rowspan="2">Method</th>
+                    <th colspan="4" class="has-text-centered">TVGBench</th>
+                    <th colspan="3" class="has-text-centered">ReXTime</th>
+                    <th class="has-text-centered">E.T.Bench</th>
+                  </tr>
+                  <tr>
+                    <th>R1@0.3</th><th>R1@0.5</th><th>R1@0.7</th><th>mIoU</th>
+                    <th>R1@0.3</th><th>R1@0.5</th><th>mIoU</th>
+                    <th>TVG F1</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td colspan="9" class="has-text-grey is-italic">SFT-based Models</td></tr>
+                  <tr><td>TimeChat</td><td>22.4</td><td>11.9</td><td>5.3</td><td>-</td><td>14.4</td><td>7.6</td><td>11.6</td><td>26.2</td></tr>
+                  <tr><td>Qwen2.5-VL</td><td>28.1</td><td>19.5</td><td>10.5</td><td>20.4</td><td>16.3</td><td>11.2</td><td>13.3</td><td>46.6</td></tr>
+                  <tr><td>TRACE</td><td>37.0</td><td>25.5</td><td>14.6</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                  <tr><td colspan="9" class="has-text-grey is-italic">RL-based Models</td></tr>
+                  <tr><td>VideoChat-R1.5</td><td>31.5</td><td>20.8</td><td>11.3</td><td>22.0</td><td>28.3</td><td>18.0</td><td>20.5</td><td>50.3</td></tr>
+                  <tr><td>Time-R1</td><td>39.3</td><td>28.0</td><td>16.0</td><td>27.8</td><td>32.2</td><td>22.1</td><td>24.1</td><td>69.4</td></tr>
+                  <tr class="has-background-warning-light"><td><b>EvoGround (Ours)</b></td><td><b>42.1</b></td><td><b>28.5</b></td><td><b>15.3</b></td><td><b>29.4</b></td><td><b>33.5</b></td><td><b>22.4</b></td><td><b>25.5</b></td><td><b>69.8</b></td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="level-set has-text-justified">
+              <p>
+                On <b>TemporalBench</b> (fine-grained video captioning), EvoGround outperforms all prior models across every metric — including CIDEr and BLEU — despite never being explicitly trained for captioning. This suggests that the self-evolution loop fosters a broader and more grounded understanding of video content.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Analysis -->
+  <section class="section hero is-small is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full">
+          <div class="content">
+            <h2 class="title is-3">Analysis</h2>
+
+            <p><b>Reward dynamics across iterations.</b> As the proposer evolves over iterations, the solver correspondingly demonstrates progressively higher accuracy.</p>
+            <center>
+              <img src="assets/reward_dynamics.png" alt="Reward dynamics across iterations." class="center-image blend-img-background" width="900">
+            </center>
+            <p></p>
+
+            <p><b>Improvements across iterations.</b> GDPO consistently outperforms GRPO. Increasing the solvability threshold δ improves performance on longer videos and moments.</p>
+            <center>
+              <img src="assets/analysis.png" alt="Performance improvements across iterations." class="center-image blend-img-background" width="900">
+            </center>
+            <p></p>
+
+            <p><b>Data distributions across reward configurations.</b> Each reward shapes the generated data differently — the consistency reward produces tighter moments, while the feedback reward enriches query descriptiveness.</p>
+            <center>
+              <img src="assets/data_distribution.png" alt="Data distributions under different reward configurations." class="center-image blend-img-background" width="900">
+            </center>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Qualitative -->
+  <section class="section hero is-small">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full">
+          <div class="content">
+            <h2 class="title is-3">Qualitative Results</h2>
+            <center>
+              <img src="assets/qualitative.png" alt="Qualitative captioning example." class="center-image blend-img-background" width="800">
+            </center>
+            <div class="level-set has-text-justified">
+              <p></p>
+              <p>
+                EvoGround generates detailed, temporally-grounded descriptions of video content. The proposer produces event-level captions that accurately capture the sequence of actions and participants, closely matching the ground-truth despite receiving no caption supervision.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BibTeX -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@article{jung2025evoground,
+  title     = {EvoGround: Self-Evolving Video Agents for Video Temporal Grounding},
+  author    = {Jung, Minjoon and Zhang, Byoung-Tak and Torresani, Lorenzo},
+  journal   = {arXiv preprint},
+  year      = {2025}
+}</code></pre>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+              You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br>
+              This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
