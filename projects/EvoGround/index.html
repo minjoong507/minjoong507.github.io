@@ -211,13 +211,20 @@
                 <tbody>
                   <tr><td colspan="9" class="has-text-grey is-italic">SFT-based Models</td></tr>
                   <tr><td>TimeChat</td><td>-</td><td>32.2</td><td>13.4</td><td>32.2</td><td>36.2</td><td>20.2</td><td>9.5</td><td>21.8</td></tr>
+                  <tr><td>Momentor</td><td>42.6</td><td>26.6</td><td>11.6</td><td>28.5</td><td>42.9</td><td>23.0</td><td>12.4</td><td>29.3</td></tr>
+                  <tr><td>HawkEye</td><td>50.6</td><td>31.4</td><td>14.5</td><td>-</td><td>49.1</td><td>29.3</td><td>10.7</td><td>-</td></tr>
                   <tr><td>VTimeLLM</td><td>51.0</td><td>27.5</td><td>11.4</td><td>31.2</td><td>44.0</td><td>27.8</td><td>14.3</td><td>30.4</td></tr>
+                  <tr><td>Grounded-VideoLLM</td><td>51.8</td><td>34.3</td><td>18.3</td><td>34.7</td><td>43.9</td><td>29.1</td><td>18.3</td><td>34.5</td></tr>
+                  <tr><td>TRACE</td><td>58.6</td><td>40.3</td><td>19.4</td><td>38.7</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                  <tr><td>ED-VTG</td><td>59.5</td><td>39.3</td><td>19.8</td><td>40.2</td><td>52.1</td><td>33.1</td><td>16.0</td><td>35.2</td></tr>
                   <tr><td>Qwen2.5-VL</td><td>68.5</td><td>48.8</td><td>22.5</td><td>45.0</td><td>38.7</td><td>25.6</td><td>14.9</td><td>28.6</td></tr>
                   <tr><td>TimeSuite</td><td>69.9</td><td>48.7</td><td>24.0</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
                   <tr><td>VideoChat-Flash</td><td>74.5</td><td>53.1</td><td>27.6</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
                   <tr><td colspan="9" class="has-text-grey is-italic">RL-based Models</td></tr>
-                  <tr><td>Time-R1</td><td>78.1</td><td>60.8</td><td>35.3</td><td>58.1</td><td>58.6</td><td>39.0</td><td>21.4</td><td>40.5</td></tr>
-                  <tr class="has-background-warning-light"><td><b>EvoGround (Ours)</b></td><td><b>76.4</b></td><td><b>58.6</b></td><td><b>33.6</b></td><td><b>52.5</b></td><td><b>61.6</b></td><td><b>42.5</b></td><td><b>25.0</b></td><td><b>42.8</b></td></tr>
+                  <tr><td>VideoChat-R1</td><td>-</td><td>-</td><td>-</td><td>-</td><td>50.4</td><td>32.2</td><td>16.2</td><td>34.3</td></tr>
+                  <tr><td>VideoChat-R1.5</td><td>-</td><td>-</td><td>-</td><td>-</td><td>52.4</td><td>32.3</td><td>16.8</td><td>35.5</td></tr>
+                  <tr><td>Time-R1</td><td><b>78.1</b></td><td><b>60.8</b></td><td><u>35.3</u></td><td><b>58.1</b></td><td><u>58.6</u></td><td><u>39.0</u></td><td><u>21.4</u></td><td><u>40.5</u></td></tr>
+                  <tr class="has-background-warning-light"><td><b>EvoGround (Ours)</b></td><td><u>77.2</u></td><td><u>60.5</u></td><td><b>35.5</b></td><td><u>53.1</u></td><td><b>62.9</b></td><td><b>43.6</b></td><td><b>25.0</b></td><td><b>43.9</b></td></tr>
                 </tbody>
               </table>
             </div>
@@ -241,12 +248,46 @@
                 <tbody>
                   <tr><td colspan="9" class="has-text-grey is-italic">SFT-based Models</td></tr>
                   <tr><td>TimeChat</td><td>22.4</td><td>11.9</td><td>5.3</td><td>-</td><td>14.4</td><td>7.6</td><td>11.6</td><td>26.2</td></tr>
+                  <tr><td>VTimeLLM</td><td>-</td><td>-</td><td>-</td><td>-</td><td>28.8</td><td>17.4</td><td>20.1</td><td>7.6</td></tr>
                   <tr><td>Qwen2.5-VL</td><td>28.1</td><td>19.5</td><td>10.5</td><td>20.4</td><td>16.3</td><td>11.2</td><td>13.3</td><td>46.6</td></tr>
+                  <tr><td>LITA-13B</td><td>-</td><td>-</td><td>-</td><td>-</td><td>29.4</td><td>16.2</td><td>21.4</td><td>22.2</td></tr>
+                  <tr><td>TimeSuite</td><td>31.1</td><td>18.0</td><td>8.9</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                  <tr><td>VideoChat-Flash</td><td>32.8</td><td>19.8</td><td>10.4</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
                   <tr><td>TRACE</td><td>37.0</td><td>25.5</td><td>14.6</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
                   <tr><td colspan="9" class="has-text-grey is-italic">RL-based Models</td></tr>
                   <tr><td>VideoChat-R1.5</td><td>31.5</td><td>20.8</td><td>11.3</td><td>22.0</td><td>28.3</td><td>18.0</td><td>20.5</td><td>50.3</td></tr>
-                  <tr><td>Time-R1</td><td>39.3</td><td>28.0</td><td>16.0</td><td>27.8</td><td>32.2</td><td>22.1</td><td>24.1</td><td>69.4</td></tr>
-                  <tr class="has-background-warning-light"><td><b>EvoGround (Ours)</b></td><td><b>42.1</b></td><td><b>28.5</b></td><td><b>15.3</b></td><td><b>29.4</b></td><td><b>33.5</b></td><td><b>22.4</b></td><td><b>25.5</b></td><td><b>69.8</b></td></tr>
+                  <tr><td>Time-R1</td><td><u>39.3</u></td><td><u>28.0</u></td><td><b>16.0</b></td><td><u>27.8</u></td><td><u>32.2</u></td><td><u>22.1</u></td><td><u>24.1</u></td><td><b>69.4</b></td></tr>
+                  <tr class="has-background-warning-light"><td><b>EvoGround (Ours)</b></td><td><b>42.1</b></td><td><b>28.5</b></td><td><u>15.3</u></td><td><b>29.4</b></td><td><b>33.5</b></td><td><b>22.4</b></td><td><b>25.5</b></td><td><u>69.0</u></td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p><b>TemporalBench (Fine-grained Video Captioning)</b></p>
+            <div class="table-container">
+              <table class="table is-bordered is-striped is-narrow is-fullwidth is-size-7">
+                <thead>
+                  <tr>
+                    <th>Method</th>
+                    <th>Similarity</th>
+                    <th>CIDEr</th>
+                    <th>ROUGE</th>
+                    <th>BLEU@1</th>
+                    <th>BLEU@2</th>
+                    <th>BLEU@3</th>
+                    <th>BLEU@4</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>MA-LMM</td><td>38.7</td><td>3.1</td><td>15.0</td><td>10.1</td><td>4.8</td><td>2.2</td><td>1.1</td></tr>
+                  <tr><td>Phi-3.5-Vision</td><td>42.9</td><td>3.7</td><td>16.5</td><td><u>20.4</u></td><td><u>8.4</u></td><td><u>3.4</u></td><td><u>1.6</u></td></tr>
+                  <tr><td>VideoLLaVA</td><td>46.0</td><td>4.5</td><td>16.9</td><td>12.6</td><td>5.4</td><td>2.3</td><td>1.0</td></tr>
+                  <tr><td>MiniCPM-V2.6</td><td>47.2</td><td>1.5</td><td>14.2</td><td>15.5</td><td>5.4</td><td>1.9</td><td>0.8</td></tr>
+                  <tr><td>M³</td><td>47.8</td><td>3.0</td><td>16.4</td><td>16.7</td><td>6.9</td><td>2.8</td><td>1.2</td></tr>
+                  <tr><td>LLaVA-OneVision</td><td>50.1</td><td>0.3</td><td>14.5</td><td>11.1</td><td>5.1</td><td>2.2</td><td>1.1</td></tr>
+                  <tr><td>LLaVA-NeXT-Video</td><td>50.1</td><td>2.3</td><td>15.8</td><td>18.1</td><td>7.0</td><td>2.6</td><td>1.1</td></tr>
+                  <tr><td>Qwen2-VL</td><td>51.9</td><td><u>6.9</u></td><td><u>18.0</u></td><td>12.5</td><td>6.1</td><td>3.0</td><td><u>1.6</u></td></tr>
+                  <tr><td>InternLM-XC2.5</td><td><u>52.4</u></td><td>2.3</td><td>15.9</td><td>17.8</td><td>7.1</td><td>2.8</td><td>1.2</td></tr>
+                  <tr class="has-background-warning-light"><td><b>EvoGround (Ours)</b></td><td><b>53.8</b></td><td><b>11.4</b></td><td><b>20.5</b></td><td><b>26.9</b></td><td><b>12.5</b></td><td><b>5.6</b></td><td><b>2.6</b></td></tr>
                 </tbody>
               </table>
             </div>
