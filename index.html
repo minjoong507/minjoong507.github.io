@@ -17,6 +17,55 @@
         /* ── Page wrapper ── */
         body {
             background-color: #f9f9f9;
+            scroll-behavior: smooth;
+            scroll-padding-top: 56px;
+        }
+
+        /* ── Top navigation bar ── */
+        .top-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .top-nav-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2.5%;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .top-nav-name {
+            font-weight: 700;
+            font-size: 1em;
+            color: #111827;
+            letter-spacing: -0.01em;
+        }
+
+        .top-nav-links {
+            display: flex;
+            gap: 6px;
+        }
+
+        .top-nav-links a {
+            padding: 5px 14px;
+            border-radius: 99px;
+            font-size: 0.875em;
+            font-weight: 500;
+            color: #6b7280;
+            text-decoration: none;
+            transition: background-color 0.15s ease, color 0.15s ease;
+        }
+
+        .top-nav-links a:hover,
+        .top-nav-links a.active {
+            background-color: #f1f5f9;
+            color: #111827;
         }
 
         /* ── News container ── */
@@ -115,14 +164,25 @@
             margin-top: 0;
         }
 
+        /* ── Author list ── */
+        .text-container p:nth-child(2) {
+            font-size: 1em;
+            color: #6b7280;
+            font-style: italic;
+        }
+
         /* ── Publication card hover ── */
         .pub-card {
             border-radius: 10px;
-            transition: background-color 0.15s ease, box-shadow 0.15s ease;
+            background-color: #ffffff;
+            border: 1px solid #e5e7eb;
+            margin-bottom: 0;
+            transition: background-color 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
         }
 
         .pub-card:hover {
             background-color: #f1f5f9;
+            border-color: #cbd5e1;
             box-shadow: 0 2px 12px rgba(0,0,0,0.06);
         }
 
@@ -145,6 +205,92 @@
             color: #ffffff;
             border-color: #2563eb;
         }
+
+        /* ── Description box (shown on pub-card hover) ── */
+        .desc-box {
+            border: 1px solid transparent;
+            border-radius: 8px;
+            background-color: #f8fafc;
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+            padding: 0 20px;
+            margin-top: 0;
+            margin-bottom: 14px;
+            transition: max-height 0.3s ease, opacity 0.25s ease,
+                        padding 0.25s ease, margin-top 0.2s ease,
+                        border-color 0.2s ease;
+        }
+
+        .pub-card:hover + .desc-box,
+        .desc-box:hover {
+            max-height: 300px;
+            opacity: 1;
+            padding: 12px 20px;
+            margin-top: 4px;
+            border-color: #e5e7eb;
+        }
+
+        /* ── Desc box title ── */
+        .desc-box-title {
+            margin: 0 0 6px 0;
+            font-size: 0.95em;
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        /* ── Desc box label ── */
+        .desc-box-label {
+            margin: 0 0 5px 0;
+            font-size: 0.68em;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #9ca3af;
+        }
+
+        /* ── Paper description text ── */
+        .paper-desc {
+            margin: 0;
+        }
+
+        /* ── Paper resource links (pill badges) ── */
+        .paper-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 8px;
+        }
+
+        .paper-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 3px 11px;
+            border: 1px solid #d1d5db;
+            border-radius: 99px;
+            font-size: 12px;
+            font-weight: 500;
+            font-style: normal;
+            color: #374151;
+            background-color: #f8fafc;
+            text-decoration: none;
+            transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+        }
+
+        .paper-links a:hover {
+            background-color: #2563eb;
+            color: #ffffff;
+            border-color: #2563eb;
+        }
+
+        .paper-links a.unavailable {
+            color: #9ca3af;
+            border-color: #e5e7eb;
+            background-color: #f9fafb;
+            cursor: default;
+            pointer-events: none;
+        }
     </style>
     <script>
         function showTab(tabId) {
@@ -165,53 +311,133 @@
             var activeButton = document.querySelector(`.button[data-ref="${tabId}"]`);
             activeButton.classList.add('active');
         }
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var iconMap = {
+                'paper':        'fa-solid fa-file',
+                'code':         'fa-solid fa-code',
+                'project page': 'fa-solid fa-globe',
+                'video':        'fa-solid fa-video',
+                'demo':         'fa-solid fa-play',
+                'slides':       'fa-solid fa-chalkboard',
+                'poster':       'fa-solid fa-image'
+            };
+
+            document.querySelectorAll('.text-container').forEach(function (container) {
+                // ── Upgrade resource links to pill badges ──
+                var italic = container.querySelector('p[style*="italic"]');
+                if (italic) {
+                    var anchors = Array.from(italic.childNodes).filter(function (n) {
+                        return n.nodeType === 1 && n.tagName === 'A';
+                    });
+                    if (anchors.length > 0) {
+                        // Remove the <a> nodes and " / " text separators from the paragraph
+                        var toRemove = new Set(anchors);
+                        italic.childNodes.forEach(function (n) {
+                            if (n.nodeType === 3 && n.textContent.includes('/')) toRemove.add(n);
+                        });
+                        toRemove.forEach(function (n) { italic.removeChild(n); });
+
+                        // Build pill container
+                        var linksDiv = document.createElement('div');
+                        linksDiv.className = 'paper-links';
+                        anchors.forEach(function (a) {
+                            var label = a.textContent.trim();
+                            var iconClass = iconMap[label.toLowerCase()] || 'fa-solid fa-link';
+                            var hasHref = a.getAttribute('href') && a.getAttribute('href').length > 0;
+                            a.innerHTML = '<i class="' + iconClass + '"></i> ' + label;
+                            if (!hasHref) a.classList.add('unavailable');
+                            linksDiv.appendChild(a);
+                        });
+                        italic.parentNode.insertBefore(linksDiv, italic.nextSibling);
+                    }
+                }
+
+                // ── Move desc out of pub-card into its own hover box ──
+                var desc = container.querySelector('.paper-desc');
+                if (!desc) return;
+                var card = container.closest('.pub-card');
+                var box  = document.createElement('div');
+                box.className = 'desc-box';
+
+                // "Abstract" section label
+                var label = document.createElement('p');
+                label.className = 'desc-box-label';
+                label.textContent = 'Abstract';
+                box.appendChild(label);
+
+                desc.parentNode.removeChild(desc);
+                box.appendChild(desc);
+                card.parentNode.insertBefore(box, card.nextSibling);
+            });
+        });
     </script>
 </head>
 
 <body>
-<table style="width:100%;max-width:900px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+<nav class="top-nav">
+    <div class="top-nav-inner">
+        <span class="top-nav-name"> </span>
+        <div class="top-nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="bio.html">Bio</a>
+            <a href="personal.html">Personal</a>
+        </div>
+    </div>
+</nav>
+<table style="width:100%;max-width:1000px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 <tr style="padding:0px">
     <td style="padding:0px">
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-        <tr style="padding:0px">
-            <td colspan="2" style="padding:2.5% 2.5% 10px 2.5%;text-align:center">
-                <name>Minjoon Jung</name>
-            </td>
-        </tr>
-        <tr style="padding:0px">
-            <td style="padding:0 2.5% 2.5% 2.5%;width:63%;vertical-align:top">
-                <div style="background-color:#f0f4f8;border-radius:8px;padding:12px 16px;margin-bottom:10px;">
-                    <p style="margin:0 0 6px 0;font-weight:bold;font-size:1.0em;">About</p>
-                    <p style="margin:0;">
-                        I am a Ph.D. student at <a href="https://en.snu.ac.kr/">Seoul National University</a>, currently visiting <a href="https://www.northeastern.edu/">Northeastern University</a> and working with <a href="https://www.khoury.northeastern.edu/people/lorenzo-torresani/">Prof. Lorenzo Torresani</a>.
-                        Previously, I interned at <a href="https://cvml.comp.nus.edu.sg/">National University of Singapore (NUS) @ CVML</a>, collaborating with <a href="https://doc-doc.github.io/cv/">Dr. Junbin Xiao</a> and <a href="https://www.comp.nus.edu.sg/cs/people/ayao/">Prof. Angela Yao</a>.
-                        I am always happy to chat about research — feel free to reach out!
-                    </p>
-                </div>
-                <div style="background-color:#f0f7f0;border-radius:8px;padding:12px 16px;margin-bottom:0;">
-                    <p style="margin:0 0 6px 0;font-weight:bold;font-size:1.0em;">Research Interests</p>
-                    <p style="margin:0;">
-                        My research focuses on <span class="highlight" style="font-weight: bold;">multimodal AI — bridging language with vision, video, and robotics</span>.
-                        I am particularly interested in building AI agents that can <em>reason precisely</em> about the temporal and spatial structure of the real world.
-                        My long-term goal is to develop fine-grained, trustworthy multimodal agents that see, understand, and act reliably.
-                    </p>
-                </div>
-            </td>
-            <td style="padding:0 2.5% 2.5% 0;width:20%;max-width:20%;vertical-align:top">
-                <a href="images/profile2.jpg" style="display:block;height:100%;">
-                    <img style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;" alt="profile photo" src="images/profile2.JPG" class="hoverZoomLink">
-                </a>
-            </td>
-        </tr>
-        </tbody></table>
-                <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
         <tr>
-            <td style="padding:4px 0;text-align:center" class="social-links">
-                    <a href="mailto:minjoon507@gmail.com" title="Email"><i class="fa fa-envelope" style="color:#EA4335;"></i> Email</a>
-                    <a href="data/CV.pdf" title="CV"><i class="fa fa-file-pdf" style="color:#E74C3C;"></i> CV</a>
-                    <a href="https://scholar.google.co.kr/citations?user=YORj6_YAAAAJ&hl" title="Google Scholar"><i class="fa fa-graduation-cap" style="color:#4285F4;"></i> Google Scholar</a>
-                    <a href="https://github.com/minjoong507/" title="Github"><i class="fab fa-github" style="color:#24292e;"></i> Github</a>
-                    <a href="https://www.linkedin.com/in/minjoonjung/" title="LinkedIn"><i class="fab fa-linkedin" style="color:#0A66C2;"></i> LinkedIn</a>
+            <td style="padding:2.5%;">
+                <!-- ── Profile header: photo left · info right ── -->
+                <div style="display:flex;align-items:stretch;gap:28px;">
+                    <!-- Photo -->
+                    <div style="flex:0 0 160px;">
+                        <a href="images/profile2.jpg">
+                            <img src="images/profile2.JPG" alt="profile photo"
+                                 style="width:160px;height:200px;object-fit:cover;object-position:center top;border-radius:10px;display:block;">
+                        </a>
+                    </div>
+                    <!-- Name · institutions · links -->
+                    <div style="flex:1;display:flex;flex-direction:column;justify-content:space-between;">
+                        <div>
+                            <p style="margin:0 0 6px 0;font-size:2.5em;font-weight:700;line-height:1.2;">Minjoon Jung</p>
+                            <p style="margin:0 0 2px 0;color:#374151;">Ph.D. Student, <a href="https://en.snu.ac.kr/">Seoul National University</a></p>
+                            <p style="margin:0 0 4px 0;color:#374151;">Visiting Researcher, <a href="https://www.northeastern.edu/">Northeastern University</a></p>
+                            <p style="margin:0;color:#6b7280;font-size:0.92em;"><a href="mailto:minjoon507@gmail.com" style="color:#6b7280;">minjoon507@gmail.com</a></p>
+                        </div>
+                        <div class="social-links">
+                            <a href="https://x.com/minjoon507" title="X (Twitter)"><i class="fab fa-x-twitter" style="color:#000000;"></i> X</a>
+                            <a href="data/CV.pdf" title="CV"><i class="fa fa-file-pdf" style="color:#E74C3C;"></i> CV</a>
+                            <a href="https://scholar.google.co.kr/citations?user=YORj6_YAAAAJ&hl" title="Google Scholar"><i class="fa fa-graduation-cap" style="color:#4285F4;"></i> Scholar</a>
+                            <a href="https://github.com/minjoong507/" title="Github"><i class="fab fa-github" style="color:#24292e;"></i> GitHub</a>
+                            <a href="https://www.linkedin.com/in/minjoonjung/" title="LinkedIn"><i class="fab fa-linkedin" style="color:#0A66C2;"></i> LinkedIn</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── About + Research Interests ── -->
+                <div style="margin-top:20px;">
+                    <div style="background-color:#f0f4f8;border-radius:8px;padding:12px 16px;margin-bottom:10px;">
+                        <p style="margin:0 0 6px 0;font-weight:bold;font-size:1.0em;">About</p>
+                        <p style="margin:0;">
+                            I am a Ph.D. student at <a href="https://en.snu.ac.kr/">Seoul National University</a>, currently visiting <a href="https://www.northeastern.edu/">Northeastern University</a> and working with <a href="https://www.khoury.northeastern.edu/people/lorenzo-torresani/">Prof. Lorenzo Torresani</a>.
+                            Previously, I worked at <a href="https://cvml.comp.nus.edu.sg/">National University of Singapore (NUS) @ CVML</a>, collaborating with <a href="https://doc-doc.github.io/cv/">Dr. Junbin Xiao</a> and <a href="https://www.comp.nus.edu.sg/cs/people/ayao/">Prof. Angela Yao</a>.
+                            I am always happy to chat about research — feel free to reach out!
+                        </p>
+                    </div>
+                    <div style="background-color:#f0f7f0;border-radius:8px;padding:12px 16px;">
+                        <p style="margin:0 0 6px 0;font-weight:bold;font-size:1.0em;">Research Interests</p>
+                        <p style="margin:0;">
+                            My research focuses on <span style="font-weight:bold;">multimodal AI — bridging language with vision, video, and robotics</span>.
+                            I am particularly interested in building AI agents that can <em>reason precisely</em> about the temporal and spatial structure of the real world.
+                            My long-term goal is to develop fine-grained, trustworthy multimodal agents that see, understand, and act reliably.
+                        </p>
+                    </div>
+                </div>
             </td>
         </tr>
         </tbody></table>
@@ -231,7 +457,7 @@
 <!--        <span class="new-badge">New</span></li>-->
         <div class="scrollable-container">
             <ul>
-                <li>[2026.05] I'll be joining Northeastern University as a visiting phd student! <span class="new-badge">New</span> </li>
+                <li>[2026.05] I'll be joining Northeastern University as a visiting Ph.D. student! <span class="new-badge">New</span> </li>
                 <li>[2025.09] One paper has been accepted by NeurIPS 2025 Workshop! </li>
                 <li>[2025.08] One paper has been accepted by EMNLP 2025! </li>
                 <li>[2025.04] One paper has been accepted by ICLR 2025 Workshop!</li>
@@ -264,8 +490,8 @@
                 </div>
 
                 <!-- Text Content Container -->
-                <div class="text-container" style="flex: 1; max-width: 600px;">
-                    <p class="papertitle" style="font-weight: bold; font-size: 1.0em;">
+                <div class="text-container" style="flex: 1;">
+                    <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
                         EvoGround: Self-Evolving Video Agents for Video Temporal Grounding
                     </p>
                     <p>
@@ -279,8 +505,8 @@
                         <a href="https://github.com/minjoong507/EvoGround">code</a> /
                         <a href="projects/EvoGround/">project page</a>
                     </p>
-                    <p style="font-size: 12px">
-                        We introduce <b>EvoGround</b>, a framework of two coupled self-evolving agents — a <i>proposer</i> and a <i>solver</i> — that learn video temporal grounding from raw videos without any human-labeled data. Through a self-reinforcing loop driven entirely by reinforcement learning, EvoGround matches or outperforms most fully supervised models across multiple VTG benchmarks.
+                    <p class="paper-desc" style="font-size: 12px">
+                        We introduce <b>EvoGround</b>, a framework of two coupled self-evolving agents — a <i>proposer</i> and a <i>solver</i> — that learn video temporal grounding from raw videos without any manual labels. Through a self-reinforcing loop driven entirely by reinforcement learning, EvoGround matches or outperforms most fully supervised models across multiple benchmarks.
                     </p>
                 </div>
             </div>
@@ -289,13 +515,13 @@
                 <!-- Image Container -->
                 <div class="image-container" style="flex: 0 0 250px; display: flex; justify-content: center;">
                     <video width="340" height="180" autoplay loop muted playsinline style="display:block;border-radius:4px;">
-                        <source src="images/egoexo.mp4" type="video/mp4">
+                        <source src="images/egoexo-con.mp4" type="video/mp4">
                     </video>
                 </div>
 
                 <!-- Text Content Container -->
-                <div class="text-container" style="flex: 1; max-width: 600px;">
-                    <p class="papertitle" style="font-weight: bold; font-size: 1.0em;">
+                <div class="text-container" style="flex: 1;">
+                    <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
                         EgoExo-Con: Exploring View-Invariant Video Temporal Understanding
                     </p>
                     <p>
@@ -317,7 +543,7 @@
                         <a href="https://github.com/minjoong507/EgoExo-Con">code</a> /
                         <a href="https://minjoong507.github.io/projects/EgoExo-Con/">project page</a>
                     </p>
-                    <p style="font-size: 12px">
+                    <p class="paper-desc" style="font-size: 12px">
                         We introduce <b>EgoExo-Con</b>, a new benchmark comprising synchronized ego-exo video that evaluates a model whether it can maintain consistent temporal understanding across viewpoints.
                         Existing models struggle with this challenge, and we propose <b>View-GRPO</b> for improvement.
                     </p>
@@ -331,8 +557,8 @@
                 </div>
 
                 <!-- Text Content Container -->
-                <div class="text-container" style="flex: 1; max-width: 600px;">
-                    <p class="papertitle" style="font-weight: bold; font-size: 1.0em;">
+                <div class="text-container" style="flex: 1;">
+                    <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
                         On the Consistency of Video Large Language Models in Temporal Comprehension
                     </p>
                     <p>
@@ -351,8 +577,8 @@
                         <a href="https://arxiv.org/abs/2411.12951">paper</a> /
                         <a href="https://github.com/minjoong507/Consistency-of-Video-LLM">code</a>
                     </p>
-                    <p style="font-size: 12px">
-                        We reveal that video large language models struggle to maintain consistency in grounding and verification. We systematically analyze this issue and introduce <b>Event Temporal Verification Tuning (VTune)</b>, an effective instruction tuning method, leading to substantial improvements in both grounding and consistency.
+                    <p class="paper-desc" style="font-size: 12px">
+                        We reveal that video large language models struggle to maintain consistency in grounding and verification. We systematically analyze this issue and introduce an effective training method, Event Temporal Verification Tuning (VTune), leading to substantial improvements in both grounding and consistency.
                     </p>
                 </div>
             </div>
@@ -364,14 +590,14 @@
                 </div>
 
                 <!-- Text Content Container -->
-                <div class="text-container" style="flex: 1; max-width: 600px;">
-                    <p class="papertitle" style="font-weight: bold; font-size: 1.0em;">
+                <div class="text-container" style="flex: 1;">
+                    <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
                         Background-aware Moment Detection for Video Moment Retrieval
                     </p>
                     <p>
                         <u>Minjoon Jung</u>,
                         Youwon Jang,
-                        Seongho Choi,
+                        <a href="https://scholar.google.com/citations?user=DmwlIIPaSlMC&hl=ko">Seongho Choi</a>,
                         <a href="https://tikatoka.github.io/">Joochan Kim</a>,
                         <a href="http://wityworks.com/">Jin-Hwa Kim*</a>,
                         <a href="https://bi.snu.ac.kr/~btzhang/">Byoung-Tak Zhang*</a>
@@ -382,7 +608,7 @@
                         <a href="https://arxiv.org/abs/2306.02728">paper</a> /
                         <a href="https://github.com/minjoong507/BM-DETR">code</a>
                     </p>
-                    <p style="font-size: 12px">
+                    <p class="paper-desc" style="font-size: 12px">
                         We propose <b>Background-aware Moment Detection TRansformer (BM-DETR)</b>, which carefully adopts a contrastive approach for robust prediction. BM-DETR achieves state-of-the-art performance on various benchmarks while being highly efficient.
                     </p>
                 </div>
@@ -395,13 +621,13 @@
                 </div>
 
                 <!-- Text Content Container -->
-                <div class="text-container" style="flex: 1; max-width: 600px;">
-                    <p class="papertitle" style="font-weight: bold; font-size: 1.0em;">
+                <div class="text-container" style="flex: 1;">
+                    <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
                         Modal-specific Pseudo Query Generation for Video Corpus Moment Retrieval
                     </p>
                     <p>
                         <u>Minjoon Jung</u>,
-                        Seongho Choi,
+                        <a href="https://scholar.google.com/citations?user=DmwlIIPaSlMC&hl=ko">Seongho Choi</a>,
                         <a href="https://tikatoka.github.io/">Joochan Kim</a>,
                         <a href="http://wityworks.com/">Jin-Hwa Kim*</a>,
                         <a href="https://bi.snu.ac.kr/~btzhang/">Byoung-Tak Zhang*</a>
@@ -411,7 +637,7 @@
                         <a href="https://aclanthology.org/2022.emnlp-main.530/">paper</a> /
                         <a href="https://github.com/minjoong507/MPGN">code</a>
                     </p>
-                    <p style="font-size: 12px">
+                    <p class="paper-desc" style="font-size: 12px">
                         We propose <b>Modal-specific Pseudo Query Generation Network (MPGN)</b>, a self-supervised framework for Video Corpus Moment Retrieval (VCMR). MPGN captures orthogonal axis of information in videos and generates pseudo-queries that provide a considerable performance boost, even without human annotations.
 
                     </p>
@@ -425,8 +651,8 @@
                 </div>
 
                 <!-- Text Content Container -->
-                <div class="text-container" style="flex: 1; max-width: 600px;">
-                    <p class="papertitle" style="font-weight: bold; font-size: 1.0em;">
+                <div class="text-container" style="flex: 1;">
+                    <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
                         Stagemix Video Generation using Face and Body Keypoints Detection
                     </p>
                     <p>
@@ -443,7 +669,7 @@
                         <a href="https://link.springer.com/article/10.1007/s11042-022-13103-8">paper</a> /
                         <a href="https://github.com/datamarket-tobigs/Cross-Cutting">code</a>
                     </p>
-                    <p style="font-size: 12px">
+                    <p class="paper-desc" style="font-size: 12px">
                         We design a method for automatically creating Stagemix videos, which seamlessly combine multiple stage performances of a singer into a single cohesive video. We effectively produces natural-looking Stagemix videos while significantly reducing the effort involved compared to manual editing.
                     </p>
                 </div>
@@ -460,8 +686,8 @@
                 </div>
 
                 <!-- Text Content Container -->
-                <div class="text-container" style="flex: 1; max-width: 600px;">
-                    <p class="papertitle" style="font-weight: bold; font-size: 1.0em;">
+                <div class="text-container" style="flex: 1;">
+                    <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
                         EvoGround: Self-Evolving Video Agents for Video Temporal Grounding
                     </p>
                     <p>
@@ -475,8 +701,8 @@
                         <a href="https://github.com/minjoong507/EvoGround">code</a> /
                         <a href="projects/EvoGround/">project page</a>
                     </p>
-                    <p style="font-size: 12px">
-                        We introduce <b>EvoGround</b>, a framework of two coupled self-evolving agents — a <i>proposer</i> and a <i>solver</i> — that learn video temporal grounding from raw videos without any human-labeled data. Through a self-reinforcing loop driven entirely by reinforcement learning, EvoGround matches or outperforms most fully supervised models across multiple VTG benchmarks.
+                    <p class="paper-desc" style="font-size: 12px">
+                        We introduce <b>EvoGround</b>, a framework of two coupled self-evolving agents — a <i>proposer</i> and a <i>solver</i> — that learn video temporal grounding from raw videos without any manual labels. Through a self-reinforcing loop driven entirely by reinforcement learning, EvoGround matches or outperforms most fully supervised models across multiple benchmarks.
                     </p>
                 </div>
             </div>
@@ -485,13 +711,13 @@
                 <!-- Image Container -->
                 <div class="image-container" style="flex: 0 0 250px; display: flex; justify-content: center;">
                     <video width="340" height="180" autoplay loop muted playsinline style="display:block;border-radius:4px;">
-                        <source src="images/egoexo.mp4" type="video/mp4">
+                        <source src="images/egoexo-con.mp4" type="video/mp4">
                     </video>
                 </div>
 
                 <!-- Text Content Container -->
-                <div class="text-container" style="flex: 1; max-width: 600px;">
-                    <p class="papertitle" style="font-weight: bold; font-size: 1.0em;">
+                <div class="text-container" style="flex: 1;">
+                    <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
                         EgoExo-Con: Exploring View-Invariant Video Temporal Understanding
                     </p>
                     <p>
@@ -513,7 +739,7 @@
                         <a href="https://github.com/minjoong507/EgoExo-Con">code</a> /
                         <a href="https://minjoong507.github.io/projects/EgoExo-Con/">project page</a>
                     </p>
-                    <p style="font-size: 12px">
+                    <p class="paper-desc" style="font-size: 12px">
                         We introduce <b>EgoExo-Con</b>, a new benchmark comprising synchronized ego-exo video that evaluates a model whether it can maintain consistent temporal understanding across viewpoints.
                         Existing models struggle with this challenge, and we propose <b>View-GRPO</b> for improvement.
                     </p>
@@ -527,8 +753,8 @@
                     <img src="images/C2R.png" width="340" height="180">
                 </div>
                 <!-- Text Content Container -->
-                <div class="text-container" style="flex: 1; max-width: 600px;">
-                    <p class="papertitle" style="font-weight: bold; font-size: 1.0em;">
+                <div class="text-container" style="flex: 1;">
+                    <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
                         Confidence-guided Refinement Reasoning for Zero-shot Question Answering
                     </p>
                     <p>
@@ -544,10 +770,9 @@
                         </span>
                         <br>
                         <a href="https://arxiv.org/abs/2509.20750">paper</a> /
-                        code
-                        <!--                        <a href="https://github.com/minjoong507/Consistency-of-Video-LLM">code</a>-->
+                        <a>code</a>
                     </p>
-                    <p style="font-size: 12px">
+                    <p class="paper-desc" style="font-size: 12px">
                         We introduce <b>Confidence-guided Refinement Reasoning (C2R)</b>, a training-free framework that improves QA across text, image, and video domains by generating and refining sub-questions and answers, and then selecting the most reliable final answer based on confidence scores. The approach is flexible, model-agnostic, and shows consistent improvements across benchmarks.
                     </p>
                 </div>
@@ -561,8 +786,8 @@
                 </div>
 
                 <!-- Text Content Container -->
-                <div class="text-container" style="flex: 1; max-width: 600px;">
-                    <p class="papertitle" style="font-weight: bold; font-size: 1.0em;">
+                <div class="text-container" style="flex: 1;">
+                    <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
                         On the Consistency of Video Large Language Models in Temporal Comprehension
                     </p>
                     <p>
@@ -581,8 +806,8 @@
                         <a href="https://arxiv.org/abs/2411.12951">paper</a> /
                         <a href="https://github.com/minjoong507/Consistency-of-Video-LLM">code</a>
                     </p>
-                    <p style="font-size: 12px">
-                        We reveal that video large language models struggle to maintain consistency in grounding and verification. We systematically analyze this issue and introduce <b>Event Temporal Verification Tuning (VTune)</b>, an effective instruction tuning method, leading to substantial improvements in both grounding and consistency.
+                    <p class="paper-desc" style="font-size: 12px">
+                        We reveal that video large language models struggle to maintain consistency in grounding and verification. We systematically analyze this issue and introduce an effective training method, Event Temporal Verification Tuning (VTune), leading to substantial improvements in both grounding and consistency.
                     </p>
                 </div>
             </div>
@@ -594,8 +819,8 @@
                 </div>
 
                 <!-- Text Content Container -->
-                <div class="text-container" style="flex: 1; max-width: 600px;">
-                    <p class="papertitle" style="font-weight: bold; font-size: 1.0em;">
+                <div class="text-container" style="flex: 1;">
+                    <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
                         Exploring Ordinal Bias in Action Recognition for Instructional Videos
                     </p>
                     <p>
@@ -611,7 +836,7 @@
                         <a href="https://openreview.net/forum?id=JIon6Xuvm1&referrer=%5Bthe%20profile%20of%20Joochan%20Kim%5D(%2Fprofile%3Fid%3D~Joochan_Kim1)">paper</a> /
                         <a>code</a>
                     </p>
-                    <p style="font-size: 12px">
+                    <p class="paper-desc" style="font-size: 12px">
                         We study the <b>ordinal bias</b> problem that leads action recognition models to over-rely on dominant action pairs, inflating performance and lacking true video comprehension. We provide an in-depth analysis of this issue and discuss directions for mitigating its effects.
                     </p>
                 </div>
@@ -624,14 +849,14 @@
                 </div>
 
                 <!-- Text Content Container -->
-                <div class="text-container" style="flex: 1; max-width: 600px;">
-                    <p class="papertitle" style="font-weight: bold; font-size: 1.0em;">
+                <div class="text-container" style="flex: 1;">
+                    <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
                         Background-aware Moment Detection for Video Moment Retrieval
                     </p>
                     <p>
                         <u>Minjoon Jung</u>,
                         Youwon Jang,
-                        Seongho Choi,
+                        <a href="https://scholar.google.com/citations?user=DmwlIIPaSlMC&hl=ko">Seongho Choi</a>,
                         <a href="https://tikatoka.github.io/">Joochan Kim</a>,
                         <a href="http://wityworks.com/">Jin-Hwa Kim*</a>,
                         <a href="https://bi.snu.ac.kr/~btzhang/">Byoung-Tak Zhang*</a>
@@ -642,7 +867,7 @@
                         <a href="https://arxiv.org/abs/2306.02728">paper</a> /
                         <a href="https://github.com/minjoong507/BM-DETR">code</a>
                     </p>
-                    <p style="font-size: 12px">
+                    <p class="paper-desc" style="font-size: 12px">
                         We propose <b>Background-aware Moment Detection TRansformer (BM-DETR)</b>, which carefully adopts a contrastive approach for robust prediction. BM-DETR achieves state-of-the-art performance on various benchmarks while being highly efficient.
                     </p>
                 </div>
@@ -654,8 +879,8 @@
                 </div>
 
                 <!-- Text Content Container -->
-                <div class="text-container" style="flex: 1; max-width: 600px;">
-                    <p class="papertitle" style="font-weight: bold; font-size: 1.0em;">
+                <div class="text-container" style="flex: 1;">
+                    <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
                         PGA: Personalizing Grasping Agents with Single Human-Robot Interaction
                     </p>
                     <p>
@@ -666,11 +891,11 @@
                         <a href="https://bi.snu.ac.kr/~btzhang/">Byoung-Tak Zhang*</a>
                     </p>
                     <p style="font-style: italic;">
-                        International Conference on Intelligent Robots and Systems (IROS), 2024 <span style="color: red; font-weight: bold;">(Oral)</span> <br>
+                        International Conference on Intelligent Robots and Systems (IROS), 2024<br>
                         <a href="https://arxiv.org/abs/2310.12547">paper</a> /
                         <a href="https://github.com/JHKim-snu/PGA">code</a>
                     </p>
-                    <p style="font-size: 12px">
+                    <p class="paper-desc" style="font-size: 12px">
                         We propose <b>Personalized Grasping Agent (PGA)</b>, which enables robots to grasp user-specific objects from just a single interaction.
                         PGA captures multi-view object data and uses label propagation to adapt its grasping model without requiring extensive annotations, achieving performance close to fully supervised methods.
                     </p>
@@ -684,13 +909,13 @@
                 </div>
 
                 <!-- Text Content Container -->
-                <div class="text-container" style="flex: 1; max-width: 600px;">
-                    <p class="papertitle" style="font-weight: bold; font-size: 1.0em;">
+                <div class="text-container" style="flex: 1;">
+                    <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
                         Modal-specific Pseudo Query Generation for Video Corpus Moment Retrieval
                     </p>
                     <p>
                         <u>Minjoon Jung</u>,
-                        Seongho Choi,
+                        <a href="https://scholar.google.com/citations?user=DmwlIIPaSlMC&hl=ko">Seongho Choi</a>,
                         <a href="https://tikatoka.github.io/">Joochan Kim</a>,
                         <a href="http://wityworks.com/">Jin-Hwa Kim*</a>,
                         <a href="https://bi.snu.ac.kr/~btzhang/">Byoung-Tak Zhang*</a>
@@ -700,7 +925,7 @@
                         <a href="https://aclanthology.org/2022.emnlp-main.530/">paper</a> /
                         <a href="https://github.com/minjoong507/MPGN">code</a>
                     </p>
-                    <p style="font-size: 12px">
+                    <p class="paper-desc" style="font-size: 12px">
                         We propose <b>Modal-specific Pseudo Query Generation Network (MPGN)</b>, a self-supervised framework for Video Corpus Moment Retrieval (VCMR). MPGN captures orthogonal axis of information in videos and generates pseudo-queries that provide a considerable performance boost, even without human annotations.
 
                     </p>
@@ -714,8 +939,8 @@
                 </div>
 
                 <!-- Text Content Container -->
-                <div class="text-container" style="flex: 1; max-width: 600px;">
-                    <p class="papertitle" style="font-weight: bold; font-size: 1.0em;">
+                <div class="text-container" style="flex: 1;">
+                    <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
                         Stagemix Video Generation using Face and Body Keypoints Detection
                     </p>
                     <p>
@@ -732,7 +957,7 @@
                         <a href="https://link.springer.com/article/10.1007/s11042-022-13103-8">paper</a> /
                         <a href="https://github.com/datamarket-tobigs/Cross-Cutting">code</a>
                     </p>
-                    <p style="font-size: 12px">
+                    <p class="paper-desc" style="font-size: 12px">
                         We design a method for automatically creating Stagemix videos, which seamlessly combine multiple stage performances of a singer into a single cohesive video. We effectively produces natural-looking Stagemix videos while significantly reducing the effort involved compared to manual editing.
                     </p>
                 </div>
@@ -744,14 +969,14 @@
                 </div>
 
                 <!-- Text Content Container -->
-                <div class="text-container" style="flex: 1; max-width: 600px;">
-                    <p class="papertitle" style="font-weight: bold; font-size: 1.0em;">
+                <div class="text-container" style="flex: 1;">
+                    <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
                         Toward a Human-Level Video Understanding Intelligence
                     </p>
                     <p>
                         <a href="https://yujungheo.github.io/">Yu-Jung Heo,</a>
                         Minsu Lee,
-                        Seongho Choi,
+                        <a href="https://scholar.google.com/citations?user=DmwlIIPaSlMC&hl=ko">Seongho Choi</a>,
                         Woo Suk Choi,
                         Minjung Shin,
                         <u>Minjoon Jung</u>,
@@ -762,7 +987,7 @@
                         AAAI Fall Symposium Series on Artificial Intelligence for Human-Robot Interaction, 2021<br>
                         <a href="https://arxiv.org/abs/2110.04203">paper</a>
                     </p>
-                    <p style="font-size: 12px">
+                    <p class="paper-desc" style="font-size: 12px">
                         We aim to develop an AI agent that can watch video clips and have a conversation with human about the video story.
                     </p>
                 </div>
@@ -770,15 +995,15 @@
         </div>
 
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-        <p align="center">
-            <a href="https://clustrmaps.com/site/1bxs5"  title="Visit tracker">
-                <img src="//www.clustrmaps.com/map_v2.png?d=FtUdLRtU5_IUma_g6SQ6pfZabTo-l09PRKkLe52CeyU&cl=ffffff"></a>
-        </p>
+<!--        <p align="center">-->
+<!--            <a href="https://clustrmaps.com/site/1bxs5"  title="Visit tracker">-->
+<!--                <img src="//www.clustrmaps.com/map_v2.png?d=FtUdLRtU5_IUma_g6SQ6pfZabTo-l09PRKkLe52CeyU&cl=ffffff"></a>-->
+<!--        </p>-->
         <tr>
             <td style="padding:0px">
                 <br>
                 <p style="text-align:center;font-size:small;">
-                    <a href="https://minjoong507.github.io/">Minjoon Jung</a>. <a href="https://bi.snu.ac.kr/">BI LAB</a>, <a href="https://en.snu.ac.kr/">Seoul National University</a>
+                    <a href="https://minjoong507.github.io/">Minjoon Jung</a>. <a href="https://en.snu.ac.kr/">Seoul National University</a>
                 </p>
             </td>
         </tr>

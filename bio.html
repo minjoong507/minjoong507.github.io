@@ -1,0 +1,242 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Bio — Minjoon Jung</title>
+
+    <meta name="author" content="Minjoon Jung">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>">
+
+    <meta charset="UTF-8">
+    <style>
+        body {
+            background-color: #f9f9f9;
+            font-family: 'Inter', 'Lato', Verdana, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* ── Top navigation bar ── */
+        .top-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .top-nav-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2.5%;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .top-nav-name {
+            font-weight: 700;
+            font-size: 1em;
+            color: #111827;
+            letter-spacing: -0.01em;
+            text-decoration: none;
+        }
+
+        .top-nav-links {
+            display: flex;
+            gap: 6px;
+        }
+
+        .top-nav-links a {
+            padding: 5px 14px;
+            border-radius: 99px;
+            font-size: 0.875em;
+            font-weight: 500;
+            color: #6b7280;
+            text-decoration: none;
+            transition: background-color 0.15s ease, color 0.15s ease;
+        }
+
+        .top-nav-links a:hover,
+        .top-nav-links a.active {
+            background-color: #f1f5f9;
+            color: #111827;
+        }
+
+        /* ── Page content ── */
+        .page-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 48px 2.5% 80px;
+        }
+
+        .page-title {
+            font-size: 1.75em;
+            font-weight: 700;
+            color: #111827;
+            margin: 0 0 32px 0;
+            letter-spacing: -0.02em;
+        }
+
+        /* ── Bio card ── */
+        .bio-card {
+            background-color: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 32px 36px;
+            margin-bottom: 24px;
+        }
+
+        .bio-card p {
+            margin: 0;
+            font-size: 1em;
+            line-height: 1.75;
+            color: #374151;
+        }
+
+        /* ── Profile strip inside bio ── */
+        .bio-profile {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 28px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .bio-profile img {
+            width: 90px;
+            height: 112px;
+            object-fit: cover;
+            object-position: center top;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        .bio-profile-info h1 {
+            margin: 0 0 4px 0;
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #111827;
+        }
+
+        .bio-profile-info p {
+            margin: 0 0 2px 0;
+            font-size: 0.9em;
+            color: #6b7280;
+            line-height: 1.5;
+        }
+
+        /* ── Social links ── */
+        .social-links {
+            margin-top: 10px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            padding: 4px 12px;
+            margin: 3px 3px 0 0;
+            border: 1px solid #d1d5db;
+            border-radius: 99px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #374151;
+            background-color: #ffffff;
+            text-decoration: none;
+            transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+        }
+
+        .social-links a:hover {
+            background-color: #2563eb;
+            color: #ffffff;
+            border-color: #2563eb;
+        }
+
+        /* ── Section label ── */
+        .section-label {
+            font-size: 0.7em;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #9ca3af;
+            margin: 0 0 10px 0;
+        }
+
+        /* ── Research interests tags ── */
+        .interest-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .interest-tag {
+            padding: 5px 14px;
+            border: 1px solid #e5e7eb;
+            border-radius: 99px;
+            font-size: 0.82em;
+            color: #374151;
+            background-color: #f8fafc;
+        }
+    </style>
+</head>
+
+<body>
+<nav class="top-nav">
+    <div class="top-nav-inner">
+        <a class="top-nav-name" href="index.html">Minjoon Jung</a>
+        <div class="top-nav-links">
+            <a href="index.html">Home</a>
+            <a href="bio.html" class="active">Bio</a>
+            <a href="personal.html">Personal</a>
+        </div>
+    </div>
+</nav>
+
+<div class="page-wrapper">
+    <h1 class="page-title">Biography</h1>
+
+    <div class="bio-card">
+        <!-- Profile strip -->
+        <div class="bio-profile">
+            <img src="images/profile2.JPG" alt="Minjoon Jung">
+            <div class="bio-profile-info">
+                <h1>Minjoon Jung</h1>
+                <p>Ph.D. Student · Seoul National University</p>
+                <p>Visiting Researcher · Northeastern University</p>
+                <div class="social-links">
+                    <a href="https://x.com/minjoon507" title="X (Twitter)"><i class="fab fa-x-twitter"></i> X</a>
+                    <a href="data/CV.pdf" title="CV"><i class="fa fa-file-pdf" style="color:#E74C3C;"></i> CV</a>
+                    <a href="https://scholar.google.co.kr/citations?user=YORj6_YAAAAJ&hl" title="Google Scholar"><i class="fa fa-graduation-cap" style="color:#4285F4;"></i> Scholar</a>
+                    <a href="https://github.com/minjoong507/" title="Github"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="https://www.linkedin.com/in/minjoonjung/" title="LinkedIn"><i class="fab fa-linkedin" style="color:#0A66C2;"></i> LinkedIn</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bio text -->
+        <p class="section-label">About</p>
+        <p>
+            Minjoon Jung is a Ph.D. student at Seoul National University, advised by Prof. Byoung-Tak Zhang. He is currently a visiting researcher at Northeastern University, working with Prof. Lorenzo Torresani.
+            His research focuses on video understanding and multimodal AI, with a particular emphasis on on fine-grained visual perception and robust temporal reasoning for real-world AI applications.
+            In the past, he studied at National University of Singapore (NUS), collaborating with Dr. Junbin Xiao and Prof. Angela Yao,
+            and was a student researcher at SNU-NAVER Hyperscale AI Center, hosted by Dr. Jin-Hwa Kim.
+        </p>
+
+<!--        &lt;!&ndash; Research interest tags &ndash;&gt;-->
+<!--        <div class="interest-tags">-->
+<!--            <span class="interest-tag">Video Understanding</span>-->
+<!--            <span class="interest-tag">Multimodal AI</span>-->
+<!--            <span class="interest-tag">Video Temporal Grounding</span>-->
+<!--        </div>-->
+    </div>
+</div>
+
+</body>
+</html>

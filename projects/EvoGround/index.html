@@ -2,16 +2,16 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="EvoGround: Self-Evolving Video Agents for Video Temporal Grounding. A framework of two coupled self-evolving agents that learn temporal grounding from raw videos without any human-labeled data.">
+  <meta name="description" content="EvoGround: Self-Evolving Video Agents for Video Temporal Grounding. A framework of two coupled self-evolving agents that learn temporal grounding from raw videos without any manual labels.">
   <meta property="og:title" content="EvoGround: Self-Evolving Video Agents for Video Temporal Grounding"/>
-  <meta property="og:description" content="EvoGround introduces two coupled self-evolving agents — a proposer and a solver — that learn temporal grounding from raw videos through mutual interaction alone, without any human annotations."/>
+  <meta property="og:description" content="EvoGround introduces two coupled self-evolving agents — a proposer and a solver — that learn temporal grounding from raw videos through mutual interaction alone, without any manual annotations."/>
   <meta property="og:url" content="URL OF THE WEBSITE"/>
   <meta property="og:image" content="assets/overview.png" />
   <meta property="og:image:width" content="1200"/>
   <meta property="og:image:height" content="630"/>
 
   <meta name="twitter:title" content="EvoGround: Self-Evolving Video Agents for Video Temporal Grounding">
-  <meta name="twitter:description" content="EvoGround introduces two coupled self-evolving agents — a proposer and a solver — that learn temporal grounding from raw videos through mutual interaction alone, without any human annotations.">
+  <meta name="twitter:description" content="EvoGround introduces two coupled self-evolving agents — a proposer and a solver — that learn temporal grounding from raw videos through mutual interaction alone, without any manual annotations.">
   <meta name="twitter:image" content="assets/overview.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="keywords" content="Video Temporal Grounding, Self-Evolving Agents, Reinforcement Learning, Video LLM, Zero-shot, Annotation-free">
@@ -123,7 +123,7 @@
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-              Video temporal grounding (VTG) takes an untrimmed video and a natural language query as input and localizes the temporal moment that best matches the query. While remarkable progress has been made, existing methods still rely on large-scale, task-specific datasets that require costly and labor-intensive manual annotation. In this paper, we introduce <b>EvoGround</b>, a framework of two coupled self-evolving agents, a <i>proposer</i> and a <i>solver</i>, that learn temporal information from raw videos <b>without any human-labeled data</b>. The proposer generates query–moment pairs from raw videos, while the solver learns to ground them and provides feedback that improves the proposer in return. Through this self-reinforcing loop, driven entirely by reinforcement learning, the two agents mutually improve each other across iterations. Despite never seeing any training data, EvoGround matches or outperforms most fully supervised models across multiple VTG benchmarks, while also demonstrating strong fine-grained video captioning capability.
+              Video temporal grounding (VTG) takes an untrimmed video and a natural-language query as input and localizes the temporal moment that best matches the query. Existing methods rely on large, task-specific datasets requiring costly manual annotation. We introduce EvoGround, a framework of two coupled self-evolving agents, a proposer and a solver, that learn temporal grounding from raw videos without any human-labeled data. The proposer generates query--moment pairs from raw videos, while the solver learns to ground them and feeds back signals that improve the proposer in return. Through this self-reinforcing reinforcement-learning loop, the two agents are initialized from the same backbone and mutually improve across iterations. Trained on 2.5K unlabeled videos, EvoGround matches or surpasses fully supervised models across multiple VTG benchmarks, while emerging as a state-of-the-art fine-grained video captioner without manual labels.
             </p>
           </div>
         </div>
@@ -139,13 +139,13 @@
           <div class="content">
             <h2 class="title is-3">Overview</h2>
             <center>
-              <img src="assets/teaser.png" alt="The Self-evolution Loop of EvoGround." class="center-image blend-img-background" width="900">
+              <img src="assets/overview.jpg" alt="The Self-evolution Loop of EvoGround." class="center-image blend-img-background" width="900">
             </center>
             <div class="level-set has-text-justified">
               <p></p>
-              <p>
-                <b>The Self-evolution Loop of EvoGround.</b> The proposer generates query (<i>q</i>)–moment (<i>m</i>) pairs from a given video, and the solver learns from these pairs and provides feedback signals through its moment predictions (<i>m&#770;</i>). As the process is repeated, the two agents mutually improve each other.
-              </p>
+<!--              <p>-->
+<!--                <b>The Self-evolution Loop of EvoGround.</b> The proposer generates query (<i>q</i>)–moment (<i>m</i>) pairs from a given video, and the solver learns from these pairs and provides feedback signals through its moment predictions (<i>m&#770;</i>). As the process is repeated, the two agents mutually improve each other.-->
+<!--              </p>-->
             </div>
           </div>
         </div>
@@ -166,7 +166,7 @@
             <div class="level-set has-text-justified">
               <p></p>
               <p>
-                EvoGround consists of two agents: a <b>proposer</b> and a <b>solver</b>. The proposer identifies candidate temporal events from raw videos and generates corresponding query–moment pairs, while the solver learns to ground temporal moments using the generated data. Both agents are initialized from the same backbone and evolve solely through a self-reinforcing loop without any labeled data.
+                EvoGround consists of two agents: a <b>proposer</b> and a <b>solver</b>. The proposer identifies candidate temporal events from raw videos and generates corresponding query–moment pairs, while the solver learns to ground temporal moments using the generated data. Both agents are initialized from the same backbone and evolve through a self-reinforcing loop without any manual labels.
               </p>
               <p>
                 The proposer is guided by three reward criteria: <b>validity</b> (format reward), <b>consistency</b> (consistency reward), and <b>solvability</b> (feedback reward). The consistency reward measures intra-consistency — how coherently a query aligns with frames within its moment — and inter-consistency — how discriminatively the query matches its own moment relative to others. The feedback reward uses the solver's accuracy (measured by timestamp-aware IoU) as a signal of whether generated pairs are learnable.
@@ -187,121 +187,198 @@
       <div class="columns is-centered">
         <div class="column is-full">
           <div class="content">
-            <h2 class="title is-3">Results</h2>
+            <h2 class="title is-3">Experiments</h2>
             <div class="level-set has-text-justified">
               <p>
-                Despite never seeing any manual annotations during training, EvoGround demonstrates strong performance across all benchmarks. It surpasses all SFT-based models and achieves first- or second-best performance among RL-based models — which rely on manually labeled data.
+                Despite never seeing any manual annotations, EvoGround matches or outperforms existing models, which rely on manually labeled data, across multiple benchmarks.
               </p>
             </div>
 
-            <p><b>Charades-STA &amp; ActivityNet-Captions</b></p>
-            <div class="table-container">
-              <table class="table is-bordered is-striped is-narrow is-fullwidth is-size-7">
-                <thead>
-                  <tr>
-                    <th rowspan="2">Method</th>
-                    <th colspan="4" class="has-text-centered">Charades-STA</th>
-                    <th colspan="4" class="has-text-centered">ActivityNet-Captions</th>
-                  </tr>
-                  <tr>
-                    <th>R1@0.3</th><th>R1@0.5</th><th>R1@0.7</th><th>mIoU</th>
-                    <th>R1@0.3</th><th>R1@0.5</th><th>R1@0.7</th><th>mIoU</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr><td colspan="9" class="has-text-grey is-italic">SFT-based Models</td></tr>
-                  <tr><td>TimeChat</td><td>-</td><td>32.2</td><td>13.4</td><td>32.2</td><td>36.2</td><td>20.2</td><td>9.5</td><td>21.8</td></tr>
-                  <tr><td>Momentor</td><td>42.6</td><td>26.6</td><td>11.6</td><td>28.5</td><td>42.9</td><td>23.0</td><td>12.4</td><td>29.3</td></tr>
-                  <tr><td>HawkEye</td><td>50.6</td><td>31.4</td><td>14.5</td><td>-</td><td>49.1</td><td>29.3</td><td>10.7</td><td>-</td></tr>
-                  <tr><td>VTimeLLM</td><td>51.0</td><td>27.5</td><td>11.4</td><td>31.2</td><td>44.0</td><td>27.8</td><td>14.3</td><td>30.4</td></tr>
-                  <tr><td>Grounded-VideoLLM</td><td>51.8</td><td>34.3</td><td>18.3</td><td>34.7</td><td>43.9</td><td>29.1</td><td>18.3</td><td>34.5</td></tr>
-                  <tr><td>TRACE</td><td>58.6</td><td>40.3</td><td>19.4</td><td>38.7</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-                  <tr><td>ED-VTG</td><td>59.5</td><td>39.3</td><td>19.8</td><td>40.2</td><td>52.1</td><td>33.1</td><td>16.0</td><td>35.2</td></tr>
-                  <tr><td>Qwen2.5-VL</td><td>68.5</td><td>48.8</td><td>22.5</td><td>45.0</td><td>38.7</td><td>25.6</td><td>14.9</td><td>28.6</td></tr>
-                  <tr><td>TimeSuite</td><td>69.9</td><td>48.7</td><td>24.0</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-                  <tr><td>VideoChat-Flash</td><td>74.5</td><td>53.1</td><td>27.6</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-                  <tr><td colspan="9" class="has-text-grey is-italic">RL-based Models</td></tr>
-                  <tr><td>VideoChat-R1</td><td>-</td><td>-</td><td>-</td><td>-</td><td>50.4</td><td>32.2</td><td>16.2</td><td>34.3</td></tr>
-                  <tr><td>VideoChat-R1.5</td><td>-</td><td>-</td><td>-</td><td>-</td><td>52.4</td><td>32.3</td><td>16.8</td><td>35.5</td></tr>
-                  <tr><td>Time-R1</td><td><b>78.1</b></td><td><b>60.8</b></td><td><u>35.3</u></td><td><b>58.1</b></td><td><u>58.6</u></td><td><u>39.0</u></td><td><u>21.4</u></td><td><u>40.5</u></td></tr>
-                  <tr class="has-background-warning-light"><td><b>EvoGround (Ours)</b></td><td><u>77.2</u></td><td><u>60.5</u></td><td><b>35.5</b></td><td><u>53.1</u></td><td><b>62.9</b></td><td><b>43.6</b></td><td><b>25.0</b></td><td><b>43.9</b></td></tr>
-                </tbody>
-              </table>
+            <!-- Charades-STA & ActivityNet-Captions -->
+            <p></p>
+            <p><b>Charades-STA &amp; ActivityNet-Captions (Grounding)</b></p>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:16px;margin-bottom:32px;">
+              <div style="position:relative;height:260px;"><canvas id="chart-charades"></canvas></div>
+              <div style="position:relative;height:260px;"><canvas id="chart-anet"></canvas></div>
             </div>
 
-            <p><b>TVGBench, ReXTime &amp; E.T.Bench</b></p>
-            <div class="table-container">
-              <table class="table is-bordered is-striped is-narrow is-fullwidth is-size-7">
-                <thead>
-                  <tr>
-                    <th rowspan="2">Method</th>
-                    <th colspan="4" class="has-text-centered">TVGBench</th>
-                    <th colspan="3" class="has-text-centered">ReXTime</th>
-                    <th class="has-text-centered">E.T.Bench</th>
-                  </tr>
-                  <tr>
-                    <th>R1@0.3</th><th>R1@0.5</th><th>R1@0.7</th><th>mIoU</th>
-                    <th>R1@0.3</th><th>R1@0.5</th><th>mIoU</th>
-                    <th>TVG F1</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr><td colspan="9" class="has-text-grey is-italic">SFT-based Models</td></tr>
-                  <tr><td>TimeChat</td><td>22.4</td><td>11.9</td><td>5.3</td><td>-</td><td>14.4</td><td>7.6</td><td>11.6</td><td>26.2</td></tr>
-                  <tr><td>VTimeLLM</td><td>-</td><td>-</td><td>-</td><td>-</td><td>28.8</td><td>17.4</td><td>20.1</td><td>7.6</td></tr>
-                  <tr><td>Qwen2.5-VL</td><td>28.1</td><td>19.5</td><td>10.5</td><td>20.4</td><td>16.3</td><td>11.2</td><td>13.3</td><td>46.6</td></tr>
-                  <tr><td>LITA-13B</td><td>-</td><td>-</td><td>-</td><td>-</td><td>29.4</td><td>16.2</td><td>21.4</td><td>22.2</td></tr>
-                  <tr><td>TimeSuite</td><td>31.1</td><td>18.0</td><td>8.9</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-                  <tr><td>VideoChat-Flash</td><td>32.8</td><td>19.8</td><td>10.4</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-                  <tr><td>TRACE</td><td>37.0</td><td>25.5</td><td>14.6</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-                  <tr><td colspan="9" class="has-text-grey is-italic">RL-based Models</td></tr>
-                  <tr><td>VideoChat-R1.5</td><td>31.5</td><td>20.8</td><td>11.3</td><td>22.0</td><td>28.3</td><td>18.0</td><td>20.5</td><td>50.3</td></tr>
-                  <tr><td>Time-R1</td><td><u>39.3</u></td><td><u>28.0</u></td><td><b>16.0</b></td><td><u>27.8</u></td><td><u>32.2</u></td><td><u>22.1</u></td><td><u>24.1</u></td><td><b>69.4</b></td></tr>
-                  <tr class="has-background-warning-light"><td><b>EvoGround (Ours)</b></td><td><b>42.1</b></td><td><b>28.5</b></td><td><u>15.3</u></td><td><b>29.4</b></td><td><b>33.5</b></td><td><b>22.4</b></td><td><b>25.5</b></td><td><u>69.0</u></td></tr>
-                </tbody>
-              </table>
+            <!-- TVGBench & ReXTime -->
+            <p><b>TVGBench &amp; ReXTime (Grounding) </b></p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:32px;">
+              <div style="position:relative;height:260px;"><canvas id="chart-tvgbench"></canvas></div>
+              <div style="position:relative;height:260px;"><canvas id="chart-rextime"></canvas></div>
             </div>
 
-            <p><b>TemporalBench (Fine-grained Video Captioning)</b></p>
-            <div class="table-container">
-              <table class="table is-bordered is-striped is-narrow is-fullwidth is-size-7">
-                <thead>
-                  <tr>
-                    <th>Method</th>
-                    <th>Similarity</th>
-                    <th>CIDEr</th>
-                    <th>ROUGE</th>
-                    <th>BLEU@1</th>
-                    <th>BLEU@2</th>
-                    <th>BLEU@3</th>
-                    <th>BLEU@4</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr><td>MA-LMM</td><td>38.7</td><td>3.1</td><td>15.0</td><td>10.1</td><td>4.8</td><td>2.2</td><td>1.1</td></tr>
-                  <tr><td>Phi-3.5-Vision</td><td>42.9</td><td>3.7</td><td>16.5</td><td><u>20.4</u></td><td><u>8.4</u></td><td><u>3.4</u></td><td><u>1.6</u></td></tr>
-                  <tr><td>VideoLLaVA</td><td>46.0</td><td>4.5</td><td>16.9</td><td>12.6</td><td>5.4</td><td>2.3</td><td>1.0</td></tr>
-                  <tr><td>MiniCPM-V2.6</td><td>47.2</td><td>1.5</td><td>14.2</td><td>15.5</td><td>5.4</td><td>1.9</td><td>0.8</td></tr>
-                  <tr><td>M³</td><td>47.8</td><td>3.0</td><td>16.4</td><td>16.7</td><td>6.9</td><td>2.8</td><td>1.2</td></tr>
-                  <tr><td>LLaVA-OneVision</td><td>50.1</td><td>0.3</td><td>14.5</td><td>11.1</td><td>5.1</td><td>2.2</td><td>1.1</td></tr>
-                  <tr><td>LLaVA-NeXT-Video</td><td>50.1</td><td>2.3</td><td>15.8</td><td>18.1</td><td>7.0</td><td>2.6</td><td>1.1</td></tr>
-                  <tr><td>Qwen2-VL</td><td>51.9</td><td><u>6.9</u></td><td><u>18.0</u></td><td>12.5</td><td>6.1</td><td>3.0</td><td><u>1.6</u></td></tr>
-                  <tr><td>InternLM-XC2.5</td><td><u>52.4</u></td><td>2.3</td><td>15.9</td><td>17.8</td><td>7.1</td><td>2.8</td><td>1.2</td></tr>
-                  <tr class="has-background-warning-light"><td><b>EvoGround (Ours)</b></td><td><b>53.8</b></td><td><b>11.4</b></td><td><b>20.5</b></td><td><b>26.9</b></td><td><b>12.5</b></td><td><b>5.6</b></td><td><b>2.6</b></td></tr>
-                </tbody>
-              </table>
-            </div>
+            <!-- E.T.Bench -->
+<!--            <p><b>E.T.Bench (Grounding)</b></p>-->
+<!--            <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:32px;">-->
+<!--              <div style="position:relative;height:260px;"><canvas id="chart-etbench"></canvas></div>-->
+<!--              <div></div>-->
+<!--            </div>-->
 
-            <div class="level-set has-text-justified">
-              <p>
-                On <b>TemporalBench</b> (fine-grained video captioning), EvoGround outperforms all prior models across every metric — including CIDEr and BLEU — despite never being explicitly trained for captioning. This suggests that the self-evolution loop fosters a broader and more grounded understanding of video content.
-              </p>
+            <!-- TemporalBench -->
+            <p><b>TemporalBench (Captioning)</b></p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:16px;margin-bottom:32px;">
+              <div style="position:relative;height:280px;"><canvas id="chart-tb-similarity"></canvas></div>
+              <div style="position:relative;height:280px;"><canvas id="chart-tb-nlg"></canvas></div>
             </div>
+<!--            <div class="level-set has-text-justified">-->
+<!--              <p>-->
+<!--                On <b>TemporalBench</b> (fine-grained video captioning), EvoGround outperforms all prior models across every metric — including CIDEr and BLEU — despite never being explicitly trained for captioning. This suggests that the self-evolution loop fosters a broader and more grounded understanding of video content.-->
+<!--              </p>-->
+<!--            </div>-->
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script>
+    const CLR = {
+      blue:   'rgba(96,165,250,0.85)',
+      green:  'rgba(52,211,153,0.85)',
+      orange: 'rgba(251,146,60,0.85)',
+      red:    'rgba(248,113,113,0.85)',
+      purple: 'rgba(167,139,250,0.85)',
+      ours:   'rgba(251,191,36,0.95)',
+      oursB:  'rgb(180,83,9)'
+    };
+
+    function opts(title, yMin) {
+      return {
+        responsive: true,
+        plugins: {
+          title:  { display: true, text: title, font: { size: 12, weight: '600' }, padding: { bottom: 6 } },
+          legend: { position: 'bottom', labels: { boxWidth: 10, padding: 8, font: { size: 10 } } }
+        },
+        scales: {
+          x: { grid: { display: false }, ticks: { font: { size: 10 } } },
+          y: { min: yMin !== undefined ? yMin : 0,
+               grid: { color: 'rgba(0,0,0,0.05)' },
+               ticks: { font: { size: 9 } } }
+        }
+      };
+    }
+
+    function ds(label, data, color, isOurs) {
+      return {
+        label, data,
+        backgroundColor: color,
+        borderColor:  isOurs ? CLR.oursB : color,
+        borderWidth:  isOurs ? 2 : 0,
+        borderRadius: 3
+      };
+    }
+
+    // ── Charades-STA ──
+    new Chart(document.getElementById('chart-charades'), {
+      type: 'bar',
+      data: {
+        labels: ['R1@0.3', 'R1@0.5', 'R1@0.7', 'mIoU'],
+        datasets: [
+          ds('Qwen2.5-VL',       [68.5, 48.8, 22.5, 45.0], CLR.blue),
+          ds('ED-VTG',           [59.5, 39.3, 19.8, 40.2],  CLR.green),
+          ds('Time-R1',          [78.1, 60.8, 35.3, 58.1],  CLR.red),
+          ds('EvoGround (Ours)', [77.2, 60.5, 35.5, 53.1],  CLR.ours, true)
+        ]
+      },
+      options: opts('Charades-STA')
+    });
+
+    // ── ActivityNet-Captions ──
+    new Chart(document.getElementById('chart-anet'), {
+      type: 'bar',
+      data: {
+        labels: ['R1@0.3', 'R1@0.5', 'R1@0.7', 'mIoU'],
+        datasets: [
+          ds('Qwen2.5-VL',       [38.7, 25.6, 14.9, 28.6], CLR.blue),
+          ds('VideoChat-R1.5',   [52.4, 32.3, 16.8, 35.5], CLR.orange),
+          ds('Time-R1',          [58.6, 39.0, 21.4, 40.5], CLR.red),
+          ds('EvoGround (Ours)', [62.9, 43.6, 25.0, 43.9], CLR.ours, true)
+        ]
+      },
+      options: opts('ActivityNet-Captions')
+    });
+
+    // ── TVGBench ──
+    new Chart(document.getElementById('chart-tvgbench'), {
+      type: 'bar',
+      data: {
+        labels: ['R1@0.3', 'R1@0.5', 'R1@0.7', 'mIoU'],
+        datasets: [
+          ds('Qwen2.5-VL',       [28.1, 19.5, 10.5, 20.4], CLR.blue),
+          ds('VideoChat-R1.5',   [31.5, 20.8, 11.3, 22.0], CLR.orange),
+          ds('Time-R1',          [39.3, 28.0, 16.0, 27.8], CLR.red),
+          ds('EvoGround (Ours)', [42.1, 28.5, 15.3, 29.4], CLR.ours, true)
+        ]
+      },
+      options: opts('TVGBench')
+    });
+
+    // ── ReXTime ──
+    new Chart(document.getElementById('chart-rextime'), {
+      type: 'bar',
+      data: {
+        labels: ['R1@0.3', 'R1@0.5', 'mIoU'],
+        datasets: [
+          ds('VTimeLLM',         [28.8, 17.4, 20.1], CLR.purple),
+          ds('VideoChat-R1.5',   [28.3, 18.0, 20.5], CLR.orange),
+          ds('Time-R1',          [32.2, 22.1, 24.1], CLR.red),
+          ds('EvoGround (Ours)', [33.5, 22.4, 25.5], CLR.ours, true)
+        ]
+      },
+      options: opts('ReXTime')
+    });
+
+    // ── E.T.Bench  (metric on x-axis, models as grouped bars) ──
+    new Chart(document.getElementById('chart-etbench'), {
+      type: 'bar',
+      data: {
+        labels: ['TVG F1'],
+        datasets: [
+          ds('Qwen2.5-VL',       [46.6], CLR.blue),
+          ds('VideoChat-R1.5',   [50.3], CLR.orange),
+          ds('Time-R1',          [69.4], CLR.red),
+          ds('EvoGround (Ours)', [69.0], CLR.ours, true)
+        ]
+      },
+      options: opts('E.T.Bench')
+    });
+
+    // ── TemporalBench — Similarity (metric on x-axis, zoomed y) ──
+    new Chart(document.getElementById('chart-tb-similarity'), {
+      type: 'bar',
+      data: {
+        labels: ['Similarity'],
+        datasets: [
+          ds('Qwen2-VL',         [51.9], CLR.blue),
+          ds('InternLM-XC2.5',   [52.4], CLR.green),
+          ds('LLaVA-OV',         [50.1], CLR.orange),
+          ds('LLaVA-NeXT-Video', [50.1], CLR.red),
+          ds('EvoGround (Ours)', [53.8], CLR.ours, true)
+        ]
+      },
+      options: opts('TemporalBench — Similarity', 48)
+    });
+
+    // ── TemporalBench — CIDEr / ROUGE / BLEU@4 ──
+    new Chart(document.getElementById('chart-tb-nlg'), {
+      type: 'bar',
+      data: {
+        labels: ['CIDEr', 'ROUGE', 'BLEU@4'],
+        datasets: [
+          ds('Qwen2-VL',         [ 6.9, 18.0, 1.6], CLR.blue),
+          ds('InternLM-XC2.5',   [ 2.3, 15.9, 1.2], CLR.green),
+          ds('LLaVA-OV',         [ 0.3, 14.5, 1.1], CLR.orange),
+          ds('LLaVA-NeXT-Video', [ 2.3, 15.8, 1.1], CLR.red),
+          ds('EvoGround (Ours)', [11.4, 20.5, 2.6], CLR.ours, true)
+        ]
+      },
+      options: opts('TemporalBench — CIDEr / ROUGE / BLEU@4')
+    });
+  </script>
 
   <!-- Analysis -->
   <section class="section hero is-small is-light">
@@ -359,14 +436,42 @@
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
-      <pre><code>@article{jung2025evoground,
-  title     = {EvoGround: Self-Evolving Video Agents for Video Temporal Grounding},
-  author    = {Jung, Minjoon and Zhang, Byoung-Tak and Torresani, Lorenzo},
-  journal   = {arXiv preprint},
-  year      = {2025}
+      <div style="position:relative;">
+        <button id="bibtex-copy-btn" onclick="copyBibtex()" title="Copy BibTeX"
+          style="position:absolute;top:10px;right:10px;z-index:10;
+                 display:inline-flex;align-items:center;gap:6px;
+                 padding:5px 12px;border:none;border-radius:6px;
+                 background:#4a5568;color:#fff;font-size:0.8em;font-weight:500;
+                 cursor:pointer;transition:background 0.15s ease;">
+          <i class="fas fa-copy"></i> <span id="bibtex-copy-label">Copy</span>
+        </button>
+        <pre id="bibtex-block"><code>@article{jung2026evoground,
+    title={EvoGround: Self-Evolving Video Agents for Video Temporal Grounding},
+    author={Jung, Minjoon and Zhang, Byoung-Tak and Torresani, Lorenzo},
+    journal={arXiv preprint arXiv:2605.13803},
+    year={2026}
 }</code></pre>
+      </div>
     </div>
   </section>
+
+  <script>
+    function copyBibtex() {
+      var text = document.querySelector('#bibtex-block code').innerText;
+      navigator.clipboard.writeText(text).then(function () {
+        var btn   = document.getElementById('bibtex-copy-btn');
+        var label = document.getElementById('bibtex-copy-label');
+        btn.style.background = '#38a169';
+        label.textContent = 'Copied!';
+        btn.querySelector('i').className = 'fas fa-check';
+        setTimeout(function () {
+          btn.style.background = '#4a5568';
+          label.textContent = 'Copy';
+          btn.querySelector('i').className = 'fas fa-copy';
+        }, 2000);
+      });
+    }
+  </script>
 
   <footer class="footer">
     <div class="container">
