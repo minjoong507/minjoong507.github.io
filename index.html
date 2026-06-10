@@ -68,44 +68,75 @@
             color: #111827;
         }
 
-        /* ── News container ── */
-        .scrollable-container {
-            height: 150px;
-            width: 90%;
-            overflow-y: auto;
+        /* ── Recent Highlights timeline ── */
+        .timeline {
+            padding-left: 20px;
+            margin-bottom: 16px;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 76px 20px 1fr;
+        }
+
+        .tl-date {
+            font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', monospace;
+            font-size: 0.9em;
+            font-weight: 500;
+            color: #6b7280;
+            text-align: right;
+            padding-right: 12px;
+            padding-top: 4px;
+            line-height: 1.4;
+            letter-spacing: 0.01em;
+        }
+
+        .tl-connector {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .tl-dot {
+            width: 9px;
+            height: 9px;
             background-color: #ffffff;
-            border: 1px solid #e5e7eb;
-            border-radius: 8px;
-            padding: 12px 16px;
-            margin-left: 20px;
+            border: 2px solid #cbd5e1;
+            border-radius: 50%;
+            margin-top: 5px;
+            flex-shrink: 0;
         }
 
-        .scrollable-container::-webkit-scrollbar {
-            width: 4px;
+        .timeline-item:first-child .tl-dot {
+            border-color: #2563eb;
+            background-color: #dbeafe;
         }
 
-        .scrollable-container::-webkit-scrollbar-track {
-            background: transparent;
+        .tl-vline {
+            flex: 1;
+            width: 1px;
+            background-color: #e5e7eb;
+            min-height: 14px;
         }
 
-        .scrollable-container::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 4px;
+        .timeline-item:last-child .tl-vline {
+            display: none;
         }
 
-        .scrollable-container::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
-
-        .scrollable-container ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .scrollable-container li {
-            margin-bottom: 8px;
+        .tl-content {
             color: #374151;
+            font-size: 0.93em;
+            line-height: 1.6;
+            padding-bottom: 16px;
+        }
+
+        .tl-content a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .tl-content a:hover {
+            text-decoration: underline;
         }
 
         /* ── New badge ── */
@@ -474,30 +505,36 @@
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
         <tr>
             <td style="padding:20px;width:100%;vertical-align:middle">
-                <heading>News</heading>
+                <heading>Recent Highlights</heading>
             </td>
         </tr>
         </tbody></table>
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
-        <body>
-<!--        <span class="new-badge">New</span></li>-->
-        <div class="scrollable-container">
-            <ul>
-                <li>[2026.05] I'll be joining Northeastern University as a visiting Ph.D. student! <span class="new-badge">New</span> </li>
-                <li>[2025.09] One paper has been accepted by NeurIPS 2025 Workshop! </li>
-                <li>[2025.08] One paper has been accepted by EMNLP 2025! </li>
-                <li>[2025.04] One paper has been accepted by ICLR 2025 Workshop!</li>
-                <li>[2025.02] One paper has been accepted by CVPR 2025!</li>
-                <li>[2024.11] One paper has been accepted by NeurIPS 2024 Workshop! We also released the extended version on arXiv.</li>
-                <li>[2024.08] One paper has been early accepted by WACV 2025 Round 1!</li>
-                <li>[2024.02] One paper has been accepted by IROS 2024!</li>
-                <li>[2024.02] I'll be joining at National University of Singapore as a research intern.</li>
-                <li>[2022.10] One paper has been accepted by EMNLP 2022!</li>
-            </ul>
+<!--                    <span class="new-badge">New</span>-->
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="tl-date">2026.06</div>
+                <div class="tl-connector"><div class="tl-dot"></div><div class="tl-vline"></div></div>
+                <div class="tl-content">
+                    Excited to give a talk <em>"Toward Robust and Scalable Temporal Understanding in Video Large Language Models"</em> at USTC! Slides available <a href="data/USTC_slides.pdf">here</a>.
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="tl-date">2026.05</div>
+                <div class="tl-connector"><div class="tl-dot"></div><div class="tl-vline"></div></div>
+                <div class="tl-content">
+                    We introduce <a href="http://arxiv.org/abs/2605.13803">EvoGround</a>, a self-evolving framework for video temporal grounding — check out the <a href="projects/EvoGround/">project page</a> and <a href="https://github.com/minjoong507/EvoGround">code</a>!
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="tl-date">2026.05</div>
+                <div class="tl-connector"><div class="tl-dot"></div><div class="tl-vline"></div></div>
+                <div class="tl-content">
+                    I have joined <a href="https://farsightlab.github.io/">FarSight Lab</a> at Northeastern University as a visiting Ph.D. student, working with <a href="https://ltorresa.github.io/home.html">Prof. Lorenzo Torresani</a>!
+                </div>
+            </div>
         </div>
-
-        </body>
 
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
         <tr>
@@ -531,7 +568,7 @@
                         <a href="http://arxiv.org/abs/2605.13803">paper</a> /
                         <a href="https://github.com/minjoong507/EvoGround">code</a> /
                         <a href="projects/EvoGround/">project page</a> /
-                        <a href="https://huggingface.co/spaces/mjjung/EvoGround_Demo">demo</a>
+                        <a href="projects/EvoGround/assets/poster.pdf">poster</a>
                     </p>
                     <p class="paper-desc" style="font-size: 12px">
                         We introduce <b>EvoGround</b>, a framework of two coupled self-evolving agents — a <i>proposer</i> and a <i>solver</i> — that learn video temporal grounding from raw videos without any manual labels. Through a self-reinforcing loop driven entirely by reinforcement learning, EvoGround matches or outperforms most fully supervised models across multiple benchmarks.
@@ -728,7 +765,8 @@
                         <a href="http://arxiv.org/abs/2605.13803">paper</a> /
                         <a href="https://github.com/minjoong507/EvoGround">code</a> /
                         <a href="projects/EvoGround/">project page</a> /
-                        <a href="https://huggingface.co/spaces/mjjung/EvoGround_Demo">demo</a>
+                        <a href="projects/EvoGround/assets/poster.pdf">poster</a>
+<!--                        <a href="https://huggingface.co/spaces/mjjung/EvoGround_Demo">demo</a>-->
                     </p>
                     <p class="paper-desc" style="font-size: 12px">
                         We introduce <b>EvoGround</b>, a framework of two coupled self-evolving agents — a <i>proposer</i> and a <i>solver</i> — that learn video temporal grounding from raw videos without any manual labels. Through a self-reinforcing loop driven entirely by reinforcement learning, EvoGround matches or outperforms most fully supervised models across multiple benchmarks.
