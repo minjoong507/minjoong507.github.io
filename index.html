@@ -76,7 +76,7 @@
 
         .timeline-item {
             display: grid;
-            grid-template-columns: 100px 20px 1fr;
+            grid-template-columns: 100px 20px 90px 1fr;
         }
 
         .tl-date {
@@ -114,6 +114,7 @@
         .timeline-item:first-child .tl-dot {
             border-color: #2563eb;
             background-color: #dbeafe;
+            animation: blink 2s ease-in-out infinite;
         }
 
         .tl-vline {
@@ -125,6 +126,11 @@
 
         .timeline-item:last-child .tl-vline {
             display: none;
+        }
+
+        .tl-tag-col {
+            /*padding-top: 4px;*/
+            padding-left: 8px;
         }
 
         .tl-content {
@@ -538,29 +544,26 @@
             <div class="timeline-item">
                 <div class="tl-date">2026.06</div>
                 <div class="tl-connector"><div class="tl-dot"></div><div class="tl-vline"></div></div>
+                <div class="tl-tag-col"><span class="tl-tag tl-tag-acceptance">Acceptance</span></div>
                 <div class="tl-content">
-                    Excited to share that our paper <em>"EgoExo-Con: Exploring View-Invariant Video Temporal Understanding"</em> has been accepted to ECCV 2026!
+                    Our paper <strong>"EgoExo-Con: Exploring View-Invariant Video Temporal Understanding"</strong> has been accepted to <strong>ECCV 2026</strong>!
                 </div>
             </div>
             <div class="timeline-item">
                 <div class="tl-date">2026.06</div>
                 <div class="tl-connector"><div class="tl-dot"></div><div class="tl-vline"></div></div>
+                <div class="tl-tag-col"><span class="tl-tag tl-tag-talk">Talk</span></div>
                 <div class="tl-content">
-                    Excited to give a talk <em>"Toward Robust and Scalable Temporal Understanding in Video Large Language Models"</em> at USTC! Slides available <a href="data/USTC_slides.pdf">here</a>.
+                    Gave a talk <strong>"Toward Robust and Scalable Temporal Understanding in Video Large Language Models"</strong> at <strong>USTC</strong>.
+<!--                    Slides available <a href="data/USTC_slides.pdf">here</a>.-->
                 </div>
             </div>
             <div class="timeline-item">
                 <div class="tl-date">2026.05</div>
                 <div class="tl-connector"><div class="tl-dot"></div><div class="tl-vline"></div></div>
+                <div class="tl-tag-col"><span class="tl-tag tl-tag-news">News</span></div>
                 <div class="tl-content">
-                    We introduce <a href="http://arxiv.org/abs/2605.13803">EvoGround</a>, a self-evolving framework for video temporal grounding — check out the <a href="projects/EvoGround/">project page</a> and <a href="https://github.com/minjoong507/EvoGround">code</a>!
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="tl-date">2026.05</div>
-                <div class="tl-connector"><div class="tl-dot"></div><div class="tl-vline"></div></div>
-                <div class="tl-content">
-                    I have joined <a href="https://farsightlab.github.io/">FarSight Lab</a> at Northeastern University as a visiting Ph.D. student, working with <a href="https://ltorresa.github.io/home.html">Prof. Lorenzo Torresani</a>!
+                    Joined <strong><a href="https://farsightlab.github.io/">FarSight Lab</a></strong> at <strong>Northeastern University</strong> as a visiting Ph.D. student, working with <a href="https://ltorresa.github.io/home.html">Prof. Lorenzo Torresani</a>. And together we released <strong><a href="http://arxiv.org/abs/2605.13803">EvoGround</a></strong>, a self-evolving framework for video temporal grounding. Check out the <a href="projects/EvoGround/">project page</a> and <a href="https://github.com/minjoong507/EvoGround">code</a>!
                 </div>
             </div>
         </div>
