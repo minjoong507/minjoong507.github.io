@@ -76,7 +76,7 @@
 
         .timeline-item {
             display: grid;
-            grid-template-columns: 76px 20px 1fr;
+            grid-template-columns: 100px 20px 1fr;
         }
 
         .tl-date {
@@ -89,6 +89,10 @@
             padding-top: 4px;
             line-height: 1.4;
             letter-spacing: 0.01em;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 5px;
         }
 
         .tl-connector {
@@ -128,6 +132,7 @@
             font-size: 0.93em;
             line-height: 1.6;
             padding-bottom: 16px;
+            padding-left: 5px;
         }
 
         .tl-content a {
@@ -138,6 +143,23 @@
         .tl-content a:hover {
             text-decoration: underline;
         }
+
+        /* ── Timeline category tag ── */
+        .tl-tag {
+            display: inline-block;
+            font-size: 0.68em;
+            font-weight: 600;
+            padding: 2px 6px;
+            border-radius: 4px;
+            letter-spacing: 0.02em;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .tl-tag-acceptance { background-color: #dcfce7; color: #15803d; }
+        .tl-tag-talk       { background-color: #ede9fe; color: #6d28d9; }
+        .tl-tag-preprint   { background-color: #dbeafe; color: #1d4ed8; }
+        .tl-tag-news       { background-color: #fef3c7; color: #b45309; }
 
         /* ── New badge ── */
         .new-badge {
@@ -517,6 +539,13 @@
                 <div class="tl-date">2026.06</div>
                 <div class="tl-connector"><div class="tl-dot"></div><div class="tl-vline"></div></div>
                 <div class="tl-content">
+                    Excited to share that our paper <em>"EgoExo-Con: Exploring View-Invariant Video Temporal Understanding"</em> has been accepted to ECCV 2026!
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="tl-date">2026.06</div>
+                <div class="tl-connector"><div class="tl-dot"></div><div class="tl-vline"></div></div>
+                <div class="tl-content">
                     Excited to give a talk <em>"Toward Robust and Scalable Temporal Understanding in Video Large Language Models"</em> at USTC! Slides available <a href="data/USTC_slides.pdf">here</a>.
                 </div>
             </div>
@@ -597,7 +626,7 @@
                         <a>Angela Yao</a>
                     </p>
                    <p style="font-style: italic;">
-                        Preprint, 2025 <br>
+                        European Conference on Computer Vision (ECCV), 2026 <br>
                         <span style="font-size: smaller;">
                       *Earlier version has been accepted to
                       <a href="https://marworkshop.github.io/neurips25/" style="font-size: inherit;">NeurIPS 2025 Workshop on Multimodal Algorithmic Reasoning</a>.
@@ -796,7 +825,7 @@
                         <a>Angela Yao</a>
                     </p>
                    <p style="font-style: italic;">
-                        Preprint, 2025 <br>
+                        European Conference on Computer Vision (ECCV), 2026 <br>
                         <span style="font-size: smaller;">
                       *Earlier version has been accepted to
                       <a href="https://marworkshop.github.io/neurips25/" style="font-size: inherit;">NeurIPS 2025 Workshop on Multimodal Algorithmic Reasoning</a>.
@@ -850,7 +879,7 @@
             <div class="pub-card" style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
                 <!-- Image Container -->
                 <div class="image-container" style="flex: 0 0 250px; display: flex; justify-content: center;">
-                    <img src="images/consistency.gif" width="460" height="160" alt="Animated GIF">
+                    <img src="images/consistency.gif" width="460" height="240" alt="Animated GIF">
                 </div>
 
                 <!-- Text Content Container -->
@@ -914,7 +943,7 @@
                 <!-- Image Container -->
                 <div class="image-container" style="flex: 0 0 250px; display: flex; justify-content: center;">
 <!--                    <img src="images/bm-detr.png" width="460" height="220" alt="Image">-->
-                    <img src="images/bmdetr2.png" width="460" height="220" alt="Image">
+                    <img src="images/bmdetr2.png" width="460" height="180" alt="Image">
                 </div>
 
                 <!-- Text Content Container -->
@@ -1005,7 +1034,7 @@
             <div class="pub-card" style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
                 <!-- Image Container -->
                 <div class="image-container" style="flex: 0 0 250px; display: flex; justify-content: center;">
-                    <img src="images/crosscutting.gif" width="460" height="160" alt="Animated GIF">
+                    <img src="images/crosscutting.gif" width="460" height="220" alt="Animated GIF">
                 </div>
 
                 <!-- Text Content Container -->
