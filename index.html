@@ -189,422 +189,15 @@
             50% { opacity: 0.2 }
         }
 
-        /* ── Tab headings ── */
-        .button {
-            font-family: 'Inter', 'Lato', Verdana, Helvetica, sans-serif;
-            font-size: 20px;
-            font-weight: 600;
-            color: #b0b7c3;
-            cursor: pointer;
-            display: inline-block;
-            padding-bottom: 4px;
-            border-bottom: 2px solid transparent;
-            margin-right: 28px;
-            transition: color 0.15s ease, border-color 0.15s ease;
-            user-select: none;
+        /* ── Align publication box with the About box (same 2.5% side inset) ── */
+        .pub-box {
+            margin-left: 2.5%;
+            margin-right: 2.5%;
         }
 
-        .button:hover {
-            color: #6b7280;
-        }
-
-        .button.active {
-            color: #111;
-            border-bottom: 2px solid #2563eb;
-        }
-
-        /* ── Tab content ── */
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        /* ── Publication alignment ── */
-        .text-container p:first-child {
-            margin-top: 0;
-        }
-
-        /* ── Author list ── */
-        .text-container p:nth-child(2) {
-            font-size: 1em;
-            color: #6b7280;
-            font-style: italic;
-        }
-
-        /* ── Publication card hover ── */
-        .pub-card {
-            border-radius: 10px;
-            background-color: #ffffff;
-            border: 1px solid #e5e7eb;
-            margin-bottom: 0;
-            transition: background-color 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
-        }
-
-        .pub-card:hover {
-            background-color: #f1f5f9;
-            border-color: #cbd5e1;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-        }
-
-        .pub-card.pub-hidden {
-            display: none !important;
-        }
-
-        /* ── Static/list style for publications (no thumbnails, compact rows) ── */
-        .view-toggle {
-            display: inline-flex;
-            gap: 4px;
-            float: right;
-            margin-top: 4px;
-        }
-
-        .view-toggle button {
-            font-family: inherit;
-            font-size: 0.8em;
-            font-weight: 500;
-            color: #6b7280;
-            background: #ffffff;
-            border: 1px solid #d1d5db;
-            border-radius: 6px;
-            padding: 5px 12px;
-            cursor: pointer;
-            transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
-        }
-
-        .view-toggle button:hover {
-            color: #111827;
-        }
-
-        .view-toggle button.active {
-            background: #111827;
-            color: #ffffff;
-            border-color: #111827;
-        }
-
-        #papers-all.list-view {
-            border-top: 1px solid #e5e7eb;
-        }
-
-        #papers-all.list-view .pub-card.pub-hidden {
-            display: none !important;
-        }
-
-        #papers-all.list-view .pub-card {
-            display: grid !important;
-            grid-template-columns: 110px 1fr;
-            column-gap: 16px;
-            align-items: baseline;
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid #e5e7eb;
-            border-radius: 0;
-            padding: 16px 20px !important;
-        }
-
-        #papers-all.list-view .pub-card:hover {
-            background: #f9fafb;
-            box-shadow: none;
-        }
-
-        #papers-all.list-view .image-container,
-        #papers-all.list-view .paper-desc,
-        #papers-all.list-view .text-container p[style*="italic"] {
-            display: none !important;
-        }
-
-        #papers-all.list-view .text-container {
-            width: 100%;
-            flex: 1 1 auto !important;
-        }
-
-        #papers-all.list-view .papertitle {
-            font-size: 1em !important;
-            margin-bottom: 3px !important;
-        }
-
-        #papers-all.list-view .author-list {
-            margin-top: 0 !important;
-        }
-
-        /* ── Venue badge (left column of list view) ── */
-        .venue-badge {
-            display: none;
-        }
-
-        #papers-all.list-view .venue-badge {
-            display: block;
-            font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', monospace;
-            font-size: 0.8em;
-            font-weight: 600;
-            color: #6b7280;
-            white-space: nowrap;
-            align-self: baseline;
-        }
-
-        /* ── Fixed-size media box so every pub-card lines up, regardless of each image/gif's native aspect ratio ── */
-        .image-container {
-            max-width: 460px;
-            max-height: 380px;
-            border-radius: 8px;
-        }
-
-        .image-container img,
-        .image-container video {
-            width: auto;
-            height: auto;
-            max-width: 100%;
-            max-height: 100%;
-            display: block;
-            border-radius: 8px;
-        }
-
-        /* ── Social links ── */
-        .social-links a {
-            display: inline-block;
-            padding: 4px 12px;
-            margin: 3px;
-            border: 1px solid #d1d5db;
-            border-radius: 99px;
-            font-size: 13px;
-            font-weight: 500;
-            color: #374151;
-            background-color: #ffffff;
-            transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
-        }
-
-        .social-links a:hover {
-            background-color: #2563eb;
-            color: #ffffff;
-            border-color: #2563eb;
-        }
-
-        /* ── Description box (shown on pub-card hover) ── */
-        .desc-box {
-            border: 1px solid transparent;
-            border-radius: 8px;
-            background-color: #f8fafc;
-            overflow: hidden;
-            max-height: 0;
-            opacity: 0;
-            padding: 0 20px;
-            margin-top: 0;
-            margin-bottom: 14px;
-            transition: max-height 0.3s ease, opacity 0.25s ease,
-                        padding 0.25s ease, margin-top 0.2s ease,
-                        border-color 0.2s ease;
-        }
-
-        .pub-card:hover + .desc-box,
-        .desc-box:hover {
-            max-height: 300px;
-            opacity: 1;
-            padding: 12px 20px;
-            margin-top: 4px;
-            border-color: #e5e7eb;
-        }
-
-        /* ── In list view, keep it compact: no abstract popup on hover ── */
-        #papers-all.list-view .desc-box {
-            display: none !important;
-        }
-
-        /* ── Desc box title ── */
-        .desc-box-title {
-            margin: 0 0 6px 0;
-            font-size: 0.95em;
-            font-weight: 600;
-            color: #1f2937;
-        }
-
-        /* ── Desc box label ── */
-        .desc-box-label {
-            margin: 0 0 5px 0;
-            font-size: 0.68em;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: #9ca3af;
-        }
-
-        /* ── Paper description text ── */
-        .paper-desc {
-            margin: 0;
-        }
-
-        /* ── Paper resource links (pill badges) ── */
-        .paper-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-            margin-top: 8px;
-        }
-
-        .paper-links a {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            padding: 3px 11px;
-            border: 1px solid #d1d5db;
-            border-radius: 99px;
-            font-size: 12px;
-            font-weight: 500;
-            font-style: normal;
-            color: #374151;
-            background-color: #f8fafc;
-            text-decoration: none;
-            transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
-        }
-
-        .paper-links a:hover {
-            background-color: #2563eb;
-            color: #ffffff;
-            border-color: #2563eb;
-        }
-
-        .paper-links a.unavailable {
-            color: #9ca3af;
-            border-color: #e5e7eb;
-            background-color: #f9fafb;
-            cursor: default;
-            pointer-events: none;
-        }
     </style>
-    <script>
-        /* ── Author homepage registry ── */
-        const authorLinks = {
-            'Byoung-Tak Zhang':  'https://bi.snu.ac.kr/~btzhang/',
-            'Lorenzo Torresani': 'https://ltorresa.github.io/home.html',
-            'Junbin Xiao':       'https://doc-doc.github.io/cv/',
-            'Junghyun Kim':      'https://jhkim-snu.github.io/',
-            'Angela Yao':        'https://www.comp.nus.edu.sg/~ayao/',
-            'Youwon Jang':       'https://www.linkedin.com/in/you-won-jang-greeksharifa/',
-            'Seongho Choi':      'https://scholar.google.com/citations?user=DmwlIIPaSlMC&hl=ko',
-            'Joochan Kim':       'https://tikatoka.github.io/',
-            'Jin-Hwa Kim':       'http://wityworks.com/',
-            'Seung-Hyun Lee':    'https://lsh3163.github.io/seunghyunlee/',
-            'Junseok Kwon':      'https://sites.google.com/view/cau-cvml/cvmlcau/junseokkwon?authuser=0',
-            'Woo Suk Choi':      'https://cws7777.github.io/',
-            'Minsu Lee':         'https://amilab-sswu.github.io/#people',
-            'Gi-Cheon Kang':     'https://gicheonkang.com/',
-            'Jaein Kim':         'https://scholar.google.com/citations?user=6xSSU-8AAAAJ&hl=ko',
-            'Yu-Jung Heo':       'https://yujungheo.github.io/',
-        };
-
-        function filterPubs(filter) {
-            // Show/hide pub-cards in the single #papers-all list instead of duplicating
-            // the same content in separate "selected" and "all" containers.
-            document.querySelectorAll('#papers-all .pub-card').forEach(function(card) {
-                var show = filter === 'all' || card.dataset.selected === 'true';
-                card.classList.toggle('pub-hidden', !show);
-            });
-
-            document.querySelectorAll('.button[data-filter]').forEach(function(button) {
-                button.classList.toggle('active', button.dataset.filter === filter);
-            });
-        }
-
-        function setPubView(view) {
-            document.getElementById('papers-all').classList.toggle('list-view', view === 'list');
-            document.querySelectorAll('.view-toggle button').forEach(function(button) {
-                button.classList.toggle('active', button.dataset.view === view);
-            });
-        }
-
-
-        document.addEventListener('DOMContentLoaded', function () {
-            filterPubs('selected');
-            setPubView('list');
-
-            // Auto-populate hrefs for author links from the registry above
-            document.querySelectorAll('.author-list a').forEach(function(a) {
-                var name = a.textContent.replace(/[*,]/g, '').trim();
-                if (authorLinks[name]) a.href = authorLinks[name];
-            });
-
-            var iconMap = {
-                'paper':        'fa-solid fa-file',
-                'code':         'fa-solid fa-code',
-                'project page': 'fa-solid fa-globe',
-                'video':        'fa-solid fa-video',
-                'demo':         'fa-solid fa-play',
-                'slides':       'fa-solid fa-chalkboard',
-                'poster':       'fa-solid fa-image',
-                'dataset':       'fa-solid fa-dataset'
-            };
-
-            document.querySelectorAll('.text-container').forEach(function (container) {
-                // ── Upgrade resource links to pill badges ──
-                var italic = container.querySelector('p[style*="italic"]');
-                if (italic) {
-                    // Build a compact "VENUE '26" badge (used by list view) from the venue line,
-                    // i.e. everything in the paragraph before the first <br>.
-                    var venueNodes = [];
-                    for (var n = italic.firstChild; n; n = n.nextSibling) {
-                        if (n.nodeType === 1 && n.tagName === 'BR') break;
-                        venueNodes.push(n);
-                    }
-                    var venueText = venueNodes.map(function (n) { return n.textContent; }).join('').replace(/\s+/g, ' ').trim();
-                    var yearMatch = venueText.match(/(\d{4})/);
-                    var parenMatch = venueText.match(/\(([^)]+)\)/);
-                    var abbr = parenMatch ? parenMatch[1] : venueText.split(/[\s,]+/)[0];
-                    var badge = document.createElement('div');
-                    badge.className = 'venue-badge';
-                    var subtype = /workshop/i.test(venueText) ? 'Workshop'
-                                : /symposium/i.test(venueText) ? 'Symposium'
-                                : /findings/i.test(venueText) ? 'Findings'
-                                : '';
-                    badge.innerHTML = abbr + (yearMatch ? " '" + yearMatch[1].slice(2) : '') + (subtype ? '<br>' + subtype : '');
-                    var card = container.closest('.pub-card');
-                    card.insertBefore(badge, card.firstChild);
-
-                    var anchors = Array.from(italic.childNodes).filter(function (n) {
-                        return n.nodeType === 1 && n.tagName === 'A';
-                    });
-                    if (anchors.length > 0) {
-                        // Remove the <a> nodes and " / " text separators from the paragraph
-                        var toRemove = new Set(anchors);
-                        italic.childNodes.forEach(function (n) {
-                            if (n.nodeType === 3 && n.textContent.includes('/')) toRemove.add(n);
-                        });
-                        toRemove.forEach(function (n) { italic.removeChild(n); });
-
-                        // Build pill container
-                        var linksDiv = document.createElement('div');
-                        linksDiv.className = 'paper-links';
-                        anchors.forEach(function (a) {
-                            var label = a.textContent.trim();
-                            var iconClass = iconMap[label.toLowerCase()] || 'fa-solid fa-link';
-                            var hasHref = a.getAttribute('href') && a.getAttribute('href').length > 0;
-                            a.innerHTML = '<i class="' + iconClass + '"></i> ' + label;
-                            if (!hasHref) a.classList.add('unavailable');
-                            linksDiv.appendChild(a);
-                        });
-                        italic.parentNode.insertBefore(linksDiv, italic.nextSibling);
-                    }
-                }
-
-                // ── Move desc out of pub-card into its own hover box ──
-                var desc = container.querySelector('.paper-desc');
-                if (!desc) return;
-                var card = container.closest('.pub-card');
-                var box  = document.createElement('div');
-                box.className = 'desc-box';
-
-                // "Abstract" section label
-                var label = document.createElement('p');
-                label.className = 'desc-box-label';
-                label.textContent = 'Abstract';
-                box.appendChild(label);
-
-                desc.parentNode.removeChild(desc);
-                box.appendChild(desc);
-                card.parentNode.insertBefore(box, card.nextSibling);
-            });
-        });
-    </script>
+    <link rel="stylesheet" type="text/css" href="publications.css">
+    <script src="publications.js"></script>
 </head>
 
 <body>
@@ -627,10 +220,10 @@
                 <!-- ── Profile header: photo left · info right ── -->
                 <div style="display:flex;align-items:stretch;gap:28px;">
                     <!-- Photo -->
-                    <div style="flex:0 0 160px;">
+                    <div style="flex:0 0 180px;">
                         <a href="images/profile2.jpg">
                             <img src="images/profile2.JPG" alt="profile photo"
-                                 style="width:160px;height:200px;object-fit:cover;object-position:center top;border-radius:10px;display:block;">
+                                 style="width:180px;height:225px;object-fit:cover;object-position:center top;border-radius:10px;display:block;">
                         </a>
                     </div>
                     <!-- Name · institutions · links -->
@@ -732,349 +325,145 @@
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
         <tr>
             <td style="padding:20px;width:100%;vertical-align:middle">
-                <div class="button active" data-filter="selected" onclick="filterPubs('selected')">Selected Publications</div>
-                <div class="button" data-filter="all" onclick="filterPubs('all')">All Publications</div>
-<!--                <div class="view-toggle">-->
-<!--                    <button type="button" class="active" data-view="list" onclick="setPubView('list')">List</button>-->
-<!--                    <button type="button" data-view="cards" onclick="setPubView('cards')">Cards</button>-->
-<!--                </div>-->
+                <heading>Selected Publications</heading>
             </td>
         </tr>
         </tbody>
         </table>
-        <!-- All Papers (filtered by data-selected for the "Selected Publications" view, so content is written once) -->
-        <div id="papers-all" class="tab-content active" style="margin-bottom: 40px;">
-            <div class="pub-card" data-selected="true" style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
-                <!-- Image Container -->
-                <div class="image-container" style="display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
-                    <img src="images/Evoground.gif" alt="Animated GIF">
+        <div class="pub-box">
+            <div id="papers-all" class="list-view">
+                <div class="pub-card" style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
+                    <!-- Image Container -->
+                    <div class="image-container" style="display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
+                        <img src="images/Evoground.gif" alt="Animated GIF">
+                    </div>
+    
+                    <!-- Text Content Container -->
+                    <div class="text-container" style="flex: 1;">
+                        <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
+                            EvoGround: Self-Evolving Video Agents for Video Temporal Grounding
+                        </p>
+                        <p class="author-list">
+                            <u>Minjoon Jung</u>,
+                            <a>Byoung-Tak Zhang</a>,
+                            <a>Lorenzo Torresani</a>
+                        </p>
+                        <p style="font-style: italic;">
+                            Neural Information Processing Systems (NeurIPS), 2026 <br>
+                            <a href="http://arxiv.org/abs/2605.13803">paper</a> /
+                            <a href="https://github.com/minjoong507/EvoGround">code</a> /
+                            <a href="projects/EvoGround/">project page</a> /
+                        </p>
+                        <p class="paper-desc" style="font-size: 12px">
+                            We introduce <b>EvoGround</b>, a framework of two coupled self-evolving agents — a <i>proposer</i> and a <i>solver</i> — that learn video temporal grounding from raw videos without any manual labels. Through a self-reinforcing loop driven entirely by reinforcement learning, EvoGround matches or outperforms most fully supervised models across multiple benchmarks.
+                        </p>
+                    </div>
                 </div>
-
-                <!-- Text Content Container -->
-                <div class="text-container" style="flex: 1;">
-                    <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
-                        EvoGround: Self-Evolving Video Agents for Video Temporal Grounding
-                    </p>
-                    <p class="author-list">
-                        <u>Minjoon Jung</u>,
-                        <a>Byoung-Tak Zhang</a>,
-                        <a>Lorenzo Torresani</a>
-                    </p>
-                    <p style="font-style: italic;">
-                        Neural Information Processing Systems (NeurIPS), 2026 <br>
-                        <a href="http://arxiv.org/abs/2605.13803">paper</a> /
-                        <a href="https://github.com/minjoong507/EvoGround">code</a> /
-                        <a href="projects/EvoGround/">project page</a> /
-                    </p>
-                    <p class="paper-desc" style="font-size: 12px">
-                        We introduce <b>EvoGround</b>, a framework of two coupled self-evolving agents — a <i>proposer</i> and a <i>solver</i> — that learn video temporal grounding from raw videos without any manual labels. Through a self-reinforcing loop driven entirely by reinforcement learning, EvoGround matches or outperforms most fully supervised models across multiple benchmarks.
-                    </p>
-                </div>
-            </div>
-
-            <div class="pub-card" data-selected="false" style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
-
-                <!-- Text Content Container -->
-                <div class="text-container" style="flex: 1;">
-                    <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
-                        CS-CLIP: Compositional Scene Graph-guided CLIP for Robust Compositional Reasoning
-                    </p>
-                    <p class="author-list">
-                        <a>SeongJun Jeong</a>,
-                        <u>Minjoon Jung</u>,
-                        <a>Woo Suk Choi</a>,
-                        <a>Youwon Jang</a>,
-                        <a>Byoung-Tak Zhang</a>
-                    </p>
-                    <p style="font-style: italic;">
-                        Empirical Methods in Natural Language Processing (EMNLP) Findings, 2026 <br>
-                        <a href="https://arxiv.org/abs/2609.08242">paper</a> /
-<!--                        <a href="https://github.com/minjoong507/EvoGround">code</a> /-->
-<!--                        <a href="projects/EvoGround/">project page</a> /-->
-                    </p>
-                    <p class="paper-desc" style="font-size: 12px">
-                        We introduce <b>EvoGround</b>, a framework of two coupled self-evolving agents — a <i>proposer</i> and a <i>solver</i> — that learn video temporal grounding from raw videos without any manual labels. Through a self-reinforcing loop driven entirely by reinforcement learning, EvoGround matches or outperforms most fully supervised models across multiple benchmarks.
-                    </p>
-                </div>
-            </div>
-
-            <div class="pub-card" data-selected="true" style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
-                <!-- Image Container -->
-                <div class="image-container" style="display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
-                    <video autoplay loop muted playsinline>
-                        <source src="images/egoexo-con.mp4" type="video/mp4">
-                    </video>
-                </div>
-
-                <!-- Text Content Container -->
-                <div class="text-container" style="flex: 1;">
-                    <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
-                        EgoExo-Con: Exploring View-Invariant Video Temporal Understanding
-                    </p>
-                    <p class="author-list">
-                        <u>Minjoon Jung</u>,
-                        <a>Junbin Xiao*</a>,
-                        <a>Junghyun Kim</a>,
-                        <a>Byoung-Tak Zhang</a>,
-                        <a>Angela Yao</a>
-                    </p>
-                   <p style="font-style: italic;">
-                        European Conference on Computer Vision (ECCV), 2026 <br>
-                        <span style="font-size: smaller;">
-                      *Earlier version has been accepted to
-                      <a href="https://marworkshop.github.io/neurips25/" style="font-size: inherit;">NeurIPS 2025 Workshop on Multimodal Algorithmic Reasoning</a>.
-                    </span>
-                        <br>
-<!--                       paper / code / project page-->
-                        <a href="https://arxiv.org/abs/2510.26113">paper</a> /
-                        <a href="https://github.com/minjoong507/EgoExo-Con">code</a> /
-                        <a href="https://minjoong507.github.io/projects/EgoExo-Con/">project page</a>
-                    </p>
-                    <p class="paper-desc" style="font-size: 12px">
-                        We introduce <b>EgoExo-Con</b>, a new benchmark comprising synchronized ego-exo video that evaluates a model whether it can maintain consistent temporal understanding across viewpoints.
-                        Existing models struggle with this challenge, and we propose <b>View-GRPO</b> for improvement.
-                    </p>
-                </div>
-            </div>
-
-
-            <div class="pub-card" style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
-                <!-- Image Container -->
-                <div class="image-container" style="display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
-                    <img src="images/C2R.png">
-                </div>
-                <!-- Text Content Container -->
-                <div class="text-container" style="flex: 1;">
-                    <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
-                        Confidence-guided Refinement Reasoning for Zero-shot Question Answering
-                    </p>
-                    <p class="author-list">
-                        <a>Youwon Jang</a>,
-                        <a>Woo Suk Choi</a>,
-                        <u>Minjoon Jung</u>,
-                        <a>Minsu Lee</a>,
-                        <a>Byoung-Tak Zhang</a>
-                    </p>
-                    <p style="font-style: italic;">
-                        Empirical Methods in Natural Language Processing (EMNLP), 2025
-                        <br>
+    
+                <div class="pub-card" style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
+                    <!-- Image Container -->
+                    <div class="image-container" style="display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
+                        <video autoplay loop muted playsinline>
+                            <source src="images/egoexo-con.mp4" type="video/mp4">
+                        </video>
+                    </div>
+    
+                    <!-- Text Content Container -->
+                    <div class="text-container" style="flex: 1;">
+                        <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
+                            EgoExo-Con: Exploring View-Invariant Video Temporal Understanding
+                        </p>
+                        <p class="author-list">
+                            <u>Minjoon Jung</u>,
+                            <a>Junbin Xiao*</a>,
+                            <a>Junghyun Kim</a>,
+                            <a>Byoung-Tak Zhang</a>,
+                            <a>Angela Yao</a>
+                        </p>
+                       <p style="font-style: italic;">
+                            European Conference on Computer Vision (ECCV), 2026 <br>
+                            <span style="font-size: smaller;">
+                          *Earlier version has been accepted to
+                          <a href="https://marworkshop.github.io/neurips25/" style="font-size: inherit;">NeurIPS 2025 Workshop on Multimodal Algorithmic Reasoning</a>.
                         </span>
-                        <br>
-                        <a href="https://arxiv.org/abs/2509.20750">paper</a> /
-<!--                        <a>code</a>-->
-                    </p>
-                    <p class="paper-desc" style="font-size: 12px">
-                        We introduce <b>Confidence-guided Refinement Reasoning (C2R)</b>, a training-free framework that improves QA across text, image, and video domains by generating and refining sub-questions and answers, and then selecting the most reliable final answer based on confidence scores. The approach is flexible, model-agnostic, and shows consistent improvements across benchmarks.
-                    </p>
+                            <br>
+    <!--                       paper / code / project page-->
+                            <a href="https://arxiv.org/abs/2510.26113">paper</a> /
+                            <a href="https://github.com/minjoong507/EgoExo-Con">code</a> /
+                            <a href="https://minjoong507.github.io/projects/EgoExo-Con/">project page</a>
+                        </p>
+                        <p class="paper-desc" style="font-size: 12px">
+                            We introduce <b>EgoExo-Con</b>, a new benchmark comprising synchronized ego-exo video that evaluates a model whether it can maintain consistent temporal understanding across viewpoints.
+                            Existing models struggle with this challenge, and we propose <b>View-GRPO</b> for improvement.
+                        </p>
+                    </div>
+                </div>
+    
+    
+                <div class="pub-card" style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
+                    <!-- Image Container -->
+                    <div class="image-container" style="display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
+                        <img src="images/consistency.gif" alt="Animated GIF">
+                    </div>
+    
+                    <!-- Text Content Container -->
+                    <div class="text-container" style="flex: 1;">
+                        <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
+                            On the Consistency of Video Large Language Models in Temporal Comprehension
+                        </p>
+                        <p class="author-list">
+                            <u>Minjoon Jung</u>,
+                            <a>Junbin Xiao*</a>,
+                            <a>Byoung-Tak Zhang</a>,
+                            <a>Angela Yao</a>
+                        </p>
+                        <p style="font-style: italic;">
+                            Conference on Computer Vision and Pattern Recognition (CVPR), 2025 <br>
+                            <span style="font-size: smaller;">
+                          *Earlier version has been accepted by
+                          <a href="https://neurips.cc/virtual/2024/103565" style="font-size: inherit;">NeurIPS Workshop on Video-Language Models, 2024</a>.
+                        </span>
+                            <br>
+                            <a href="https://arxiv.org/abs/2411.12951">paper</a> /
+                            <a href="https://github.com/minjoong507/Consistency-of-Video-LLM">code</a>
+                        </p>
+                        <p class="paper-desc" style="font-size: 12px">
+                            We reveal that video large language models struggle to maintain consistency in grounding and verification. We systematically analyze this issue and introduce an effective training method, Event Temporal Verification Tuning (VTune), leading to substantial improvements in both grounding and consistency.
+                        </p>
+                    </div>
+                </div>
+                <div class="pub-card" style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
+                    <!-- Image Container -->
+                    <div class="image-container" style="display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
+                        <img src="images/MPGN.png" alt="Image">
+                    </div>
+    
+                    <!-- Text Content Container -->
+                    <div class="text-container" style="flex: 1;">
+                        <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
+                            Modal-specific Pseudo Query Generation for Video Corpus Moment Retrieval
+                        </p>
+                        <p class="author-list">
+                            <u>Minjoon Jung</u>,
+                            <a>Seongho Choi</a>,
+                            <a>Joochan Kim</a>,
+                            <a>Jin-Hwa Kim*</a>,
+                            <a>Byoung-Tak Zhang*</a>
+                        </p>
+                        <p style="font-style: italic;">
+                            Empirical Methods in Natural Language Processing (EMNLP), 2022 <br>
+                            <a href="https://aclanthology.org/2022.emnlp-main.530/">paper</a> /
+                            <a href="https://github.com/minjoong507/MPGN">code</a>
+                        </p>
+                        <p class="paper-desc" style="font-size: 12px">
+                            We propose <b>Modal-specific Pseudo Query Generation Network (MPGN)</b>, a self-supervised framework for Video Corpus Moment Retrieval (VCMR). MPGN captures orthogonal axis of information in videos and generates pseudo-queries that provide a considerable performance boost, even without human annotations.
+    
+                        </p>
+                    </div>
                 </div>
             </div>
-            <div class="pub-card" data-selected="true" style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
-                <!-- Image Container -->
-                <div class="image-container" style="display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
-                    <img src="images/consistency.gif" alt="Animated GIF">
-                </div>
-
-                <!-- Text Content Container -->
-                <div class="text-container" style="flex: 1;">
-                    <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
-                        On the Consistency of Video Large Language Models in Temporal Comprehension
-                    </p>
-                    <p class="author-list">
-                        <u>Minjoon Jung</u>,
-                        <a>Junbin Xiao*</a>,
-                        <a>Byoung-Tak Zhang</a>,
-                        <a>Angela Yao</a>
-                    </p>
-                    <p style="font-style: italic;">
-                        Conference on Computer Vision and Pattern Recognition (CVPR), 2025 <br>
-                        <span style="font-size: smaller;">
-                      *Earlier version has been accepted by
-                      <a href="https://neurips.cc/virtual/2024/103565" style="font-size: inherit;">NeurIPS Workshop on Video-Language Models, 2024</a>.
-                    </span>
-                        <br>
-                        <a href="https://arxiv.org/abs/2411.12951">paper</a> /
-                        <a href="https://github.com/minjoong507/Consistency-of-Video-LLM">code</a>
-                    </p>
-                    <p class="paper-desc" style="font-size: 12px">
-                        We reveal that video large language models struggle to maintain consistency in grounding and verification. We systematically analyze this issue and introduce an effective training method, Event Temporal Verification Tuning (VTune), leading to substantial improvements in both grounding and consistency.
-                    </p>
-                </div>
-            </div>
-            <div class="pub-card" style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
-                <!-- Image Container -->
-                <div class="image-container" style="display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
-                    <img src="images/ordinal.jpg">
-                </div>
-
-                <!-- Text Content Container -->
-                <div class="text-container" style="flex: 1;">
-                    <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
-                        Exploring Ordinal Bias in Action Recognition for Instructional Videos
-                    </p>
-                    <p class="author-list">
-                        <a>Joochan Kim</a>,
-                        <u>Minjoon Jung</u>,
-                        <a>Byoung-Tak Zhang*</a>
-                    </p>
-                    <p style="font-style: italic;">
-                        ICLR Workshop on Spurious Correlation and Shortcut Learning: Foundations and Solutions, 2025 <br>
-                        <span style="font-size: smaller;">
-                    </span>
-                        <br>
-                        <a href="https://openreview.net/forum?id=JIon6Xuvm1&referrer=%5Bthe%20profile%20of%20Joochan%20Kim%5D(%2Fprofile%3Fid%3D~Joochan_Kim1)">paper</a> /
-                        <a>code</a>
-                    </p>
-                    <p class="paper-desc" style="font-size: 12px">
-                        We study the <b>ordinal bias</b> problem that leads action recognition models to over-rely on dominant action pairs, inflating performance and lacking true video comprehension. We provide an in-depth analysis of this issue and discuss directions for mitigating its effects.
-                    </p>
-                </div>
-            </div>
-            <div class="pub-card" data-selected="false" style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
-                <!-- Image Container -->
-                <div class="image-container" style="display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
-<!--                    <img src="images/bm-detr.png" alt="Image">-->
-                    <img src="images/bmdetr2.png" alt="Image">
-                </div>
-
-                <!-- Text Content Container -->
-                <div class="text-container" style="flex: 1;">
-                    <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
-                        Background-aware Moment Detection for Video Moment Retrieval
-                    </p>
-                    <p class="author-list">
-                        <u>Minjoon Jung</u>,
-                        <a>Youwon Jang</a>,
-                        <a>Seongho Choi</a>,
-                        <a>Joochan Kim</a>,
-                        <a>Jin-Hwa Kim*</a>,
-                        <a>Byoung-Tak Zhang*</a>
-                    </p>
-                    <p style="font-style: italic;">
-                        Winter Conference on Applications of Computer Vision (WACV), 2025 <br>
-                        <span style="font-size: smaller;">*Early accepted in Round 1 (167/1381~12.1%).</span> <br>
-                        <a href="https://arxiv.org/abs/2306.02728">paper</a> /
-                        <a href="https://github.com/minjoong507/BM-DETR">code</a>
-                    </p>
-                    <p class="paper-desc" style="font-size: 12px">
-                        We propose <b>Background-aware Moment Detection TRansformer (BM-DETR)</b>, which carefully adopts a contrastive approach for robust prediction. BM-DETR achieves state-of-the-art performance on various benchmarks while being highly efficient.
-                    </p>
-                </div>
-            </div>
-            <div class="pub-card" style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
-                <div class="image-container" style="display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
-                    <img src="images/IROS_demo.gif" alt="Animated GIF">
-                </div>
-
-                <!-- Text Content Container -->
-                <div class="text-container" style="flex: 1;">
-                    <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
-                        PGA: Personalizing Grasping Agents with Single Human-Robot Interaction
-                    </p>
-                    <p class="author-list">
-                        <a>Junghyun Kim</a>,
-                        <a>Gi-Cheon Kang</a>,
-                        <a>Jaein Kim</a>,
-                        Seoyun Yang,
-                        <u>Minjoon Jung</u>,
-                        <a>Byoung-Tak Zhang*</a>
-                    </p>
-                    <p style="font-style: italic;">
-                        International Conference on Intelligent Robots and Systems (IROS), 2024<br>
-                        <a href="https://arxiv.org/abs/2310.12547">paper</a> /
-                        <a href="https://github.com/JHKim-snu/PGA">code</a>
-                    </p>
-                    <p class="paper-desc" style="font-size: 12px">
-                        We propose <b>Personalized Grasping Agent (PGA)</b>, which enables robots to grasp user-specific objects from just a single interaction.
-                        PGA captures multi-view object data and uses label propagation to adapt its grasping model without requiring extensive annotations, achieving performance close to fully supervised methods.
-                    </p>
-                </div>
-            </div>
-            <div class="pub-card" data-selected="true" style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
-                <!-- Image Container -->
-                <div class="image-container" style="display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
-                    <img src="images/MPGN.png" alt="Image">
-                </div>
-
-                <!-- Text Content Container -->
-                <div class="text-container" style="flex: 1;">
-                    <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
-                        Modal-specific Pseudo Query Generation for Video Corpus Moment Retrieval
-                    </p>
-                    <p class="author-list">
-                        <u>Minjoon Jung</u>,
-                        <a>Seongho Choi</a>,
-                        <a>Joochan Kim</a>,
-                        <a>Jin-Hwa Kim*</a>,
-                        <a>Byoung-Tak Zhang*</a>
-                    </p>
-                    <p style="font-style: italic;">
-                        Empirical Methods in Natural Language Processing (EMNLP), 2022 <br>
-                        <a href="https://aclanthology.org/2022.emnlp-main.530/">paper</a> /
-                        <a href="https://github.com/minjoong507/MPGN">code</a>
-                    </p>
-                    <p class="paper-desc" style="font-size: 12px">
-                        We propose <b>Modal-specific Pseudo Query Generation Network (MPGN)</b>, a self-supervised framework for Video Corpus Moment Retrieval (VCMR). MPGN captures orthogonal axis of information in videos and generates pseudo-queries that provide a considerable performance boost, even without human annotations.
-
-                    </p>
-                </div>
-            </div>
-            <div class="pub-card" data-selected="false" style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
-                <!-- Image Container -->
-                <div class="image-container" style="display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
-                    <img src="images/crosscutting.gif" alt="Animated GIF">
-                </div>
-                <!-- Text Content Container -->
-                <div class="text-container" style="flex: 1;">
-                    <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
-                        Stagemix Video Generation using Face and Body Keypoints Detection
-                    </p>
-                    <p class="author-list">
-                        <u>Minjoon Jung</u>,
-                        <a>Seung-Hyun Lee</a>,
-                        Eunseon Sim,
-                        Minho Jo,
-                        Yujin Lee,
-                        Hyebin Choi,
-                        <a>Junseok Kwon*</a>
-                    </p>
-                    <p style="font-style: italic;">
-                        Multimedia Tools and Applications (MTAP), 2022 <br>
-                        <a href="https://link.springer.com/article/10.1007/s11042-022-13103-8">paper</a> /
-                        <a href="https://github.com/datamarket-tobigs/Cross-Cutting">code</a>
-                    </p>
-                    <p class="paper-desc" style="font-size: 12px">
-                        We design a method for automatically creating Stagemix videos, which seamlessly combine multiple stage performances of a singer into a single cohesive video. We effectively produces natural-looking Stagemix videos while significantly reducing the effort involved compared to manual editing.
-                    </p>
-                </div>
-            </div>
-            <div class="pub-card" style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
-                <!-- Image Container -->
-                <div class="image-container" style="display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
-                    <img src="images/vtt.png" alt="Image">
-                </div>
-                <!-- Text Content Container -->
-                <div class="text-container" style="flex: 1;">
-                    <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
-                        Toward a Human-Level Video Understanding Intelligence
-                    </p>
-                    <p class="author-list">
-                        <a>Yu-Jung Heo</a>,
-                        <a>Minsu Lee</a>,
-                        <a>Seongho Choi</a>,
-                        <a>Woo Suk Choi</a>,
-                        Minjung Shin,
-                        <u>Minjoon Jung</u>,
-                        Jeh-Kwang Ryu,
-                        <a>Byoung-Tak Zhang*</a>
-                    </p>
-                    <p style="font-style: italic;">
-                        AAAI Fall Symposium Series on Artificial Intelligence for Human-Robot Interaction, 2021<br>
-                        <a href="https://arxiv.org/abs/2110.04203">paper</a>
-                    </p>
-                    <p class="paper-desc" style="font-size: 12px">
-                        We aim to develop an AI agent that can watch video clips and have a conversation with human about the video story.
-                    </p>
-                </div>
+            <div class="pub-box-footer">
+                <a class="all-pubs-btn" href="publications.html">All Publications <i class="fa-solid fa-arrow-right"></i></a>
             </div>
         </div>
 

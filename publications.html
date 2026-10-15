@@ -1,0 +1,448 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Publications — Minjoon Jung</title>
+
+    <meta name="author" content="Minjoon Jung">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/snu_logo.png" type="image/png">
+    <link rel="stylesheet" type="text/css" href="publications.css">
+    <script src="publications.js"></script>
+
+    <meta charset="UTF-8">
+    <style>
+        body {
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* ── Top navigation bar ── */
+        .top-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .top-nav-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2.5%;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .top-nav-name {
+            font-weight: 700;
+            font-size: 1em;
+            color: #111827;
+            letter-spacing: -0.01em;
+        }
+
+        .top-nav-links {
+            display: flex;
+            gap: 6px;
+        }
+
+        .top-nav-links a {
+            padding: 5px 14px;
+            border-radius: 99px;
+            font-size: 0.875em;
+            font-weight: 500;
+            color: #6b7280;
+            text-decoration: none;
+            transition: background-color 0.15s ease, color 0.15s ease;
+        }
+
+        .top-nav-links a:hover,
+        .top-nav-links a.active {
+            background-color: #f1f5f9;
+            color: #111827;
+        }
+
+        /* ── Page content ── */
+        .page-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 48px 2.5% 80px;
+        }
+
+        .page-title {
+            font-size: 1.75em;
+            font-weight: 700;
+            color: #111827;
+            margin: 0 0 32px 0;
+            letter-spacing: -0.02em;
+        }
+    </style>
+</head>
+
+<body>
+<nav class="top-nav">
+    <div class="top-nav-inner">
+        <span class="top-nav-name">Minjoon Jung</span>
+        <div class="top-nav-links">
+            <a href="index.html">Home</a>
+            <a href="bio.html">Bio</a>
+            <a href="personal.html">Personal</a>
+        </div>
+    </div>
+</nav>
+
+<div class="page-wrapper">
+    <h1 class="page-title">Publications</h1>
+    <div class="pub-box">
+        <div id="papers-all" class="list-view">
+                <div class="pub-card" data-selected="true" style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
+                    <!-- Image Container -->
+                    <div class="image-container" style="display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
+                        <img src="images/Evoground.gif" alt="Animated GIF">
+                    </div>
+
+                    <!-- Text Content Container -->
+                    <div class="text-container" style="flex: 1;">
+                        <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
+                            EvoGround: Self-Evolving Video Agents for Video Temporal Grounding
+                        </p>
+                        <p class="author-list">
+                            <u>Minjoon Jung</u>,
+                            <a>Byoung-Tak Zhang</a>,
+                            <a>Lorenzo Torresani</a>
+                        </p>
+                        <p style="font-style: italic;">
+                            Neural Information Processing Systems (NeurIPS), 2026 <br>
+                            <a href="http://arxiv.org/abs/2605.13803">paper</a> /
+                            <a href="https://github.com/minjoong507/EvoGround">code</a> /
+                            <a href="projects/EvoGround/">project page</a> /
+                        </p>
+                        <p class="paper-desc" style="font-size: 12px">
+                            We introduce <b>EvoGround</b>, a framework of two coupled self-evolving agents — a <i>proposer</i> and a <i>solver</i> — that learn video temporal grounding from raw videos without any manual labels. Through a self-reinforcing loop driven entirely by reinforcement learning, EvoGround matches or outperforms most fully supervised models across multiple benchmarks.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="pub-card" data-selected="false" style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
+
+                    <!-- Text Content Container -->
+                    <div class="text-container" style="flex: 1;">
+                        <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
+                            CS-CLIP: Compositional Scene Graph-guided CLIP for Robust Compositional Reasoning
+                        </p>
+                        <p class="author-list">
+                            <a>SeongJun Jeong</a>,
+                            <u>Minjoon Jung</u>,
+                            <a>Woo Suk Choi</a>,
+                            <a>Youwon Jang</a>,
+                            <a>Byoung-Tak Zhang</a>
+                        </p>
+                        <p style="font-style: italic;">
+                            Empirical Methods in Natural Language Processing (EMNLP) Findings, 2026 <br>
+                            <a href="https://arxiv.org/abs/2609.08242">paper</a> /
+    <!--                        <a href="https://github.com/minjoong507/EvoGround">code</a> /-->
+    <!--                        <a href="projects/EvoGround/">project page</a> /-->
+                        </p>
+                        <p class="paper-desc" style="font-size: 12px">
+                            We introduce <b>EvoGround</b>, a framework of two coupled self-evolving agents — a <i>proposer</i> and a <i>solver</i> — that learn video temporal grounding from raw videos without any manual labels. Through a self-reinforcing loop driven entirely by reinforcement learning, EvoGround matches or outperforms most fully supervised models across multiple benchmarks.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="pub-card" data-selected="true" style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
+                    <!-- Image Container -->
+                    <div class="image-container" style="display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
+                        <video autoplay loop muted playsinline>
+                            <source src="images/egoexo-con.mp4" type="video/mp4">
+                        </video>
+                    </div>
+
+                    <!-- Text Content Container -->
+                    <div class="text-container" style="flex: 1;">
+                        <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
+                            EgoExo-Con: Exploring View-Invariant Video Temporal Understanding
+                        </p>
+                        <p class="author-list">
+                            <u>Minjoon Jung</u>,
+                            <a>Junbin Xiao*</a>,
+                            <a>Junghyun Kim</a>,
+                            <a>Byoung-Tak Zhang</a>,
+                            <a>Angela Yao</a>
+                        </p>
+                       <p style="font-style: italic;">
+                            European Conference on Computer Vision (ECCV), 2026 <br>
+                            <span style="font-size: smaller;">
+                          *Earlier version has been accepted to
+                          <a href="https://marworkshop.github.io/neurips25/" style="font-size: inherit;">NeurIPS 2025 Workshop on Multimodal Algorithmic Reasoning</a>.
+                        </span>
+                            <br>
+    <!--                       paper / code / project page-->
+                            <a href="https://arxiv.org/abs/2510.26113">paper</a> /
+                            <a href="https://github.com/minjoong507/EgoExo-Con">code</a> /
+                            <a href="https://minjoong507.github.io/projects/EgoExo-Con/">project page</a>
+                        </p>
+                        <p class="paper-desc" style="font-size: 12px">
+                            We introduce <b>EgoExo-Con</b>, a new benchmark comprising synchronized ego-exo video that evaluates a model whether it can maintain consistent temporal understanding across viewpoints.
+                            Existing models struggle with this challenge, and we propose <b>View-GRPO</b> for improvement.
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="pub-card" style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
+                    <!-- Image Container -->
+                    <div class="image-container" style="display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
+                        <img src="images/C2R.png">
+                    </div>
+                    <!-- Text Content Container -->
+                    <div class="text-container" style="flex: 1;">
+                        <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
+                            Confidence-guided Refinement Reasoning for Zero-shot Question Answering
+                        </p>
+                        <p class="author-list">
+                            <a>Youwon Jang</a>,
+                            <a>Woo Suk Choi</a>,
+                            <u>Minjoon Jung</u>,
+                            <a>Minsu Lee</a>,
+                            <a>Byoung-Tak Zhang</a>
+                        </p>
+                        <p style="font-style: italic;">
+                            Empirical Methods in Natural Language Processing (EMNLP), 2025
+                            <br>
+                            </span>
+                            <br>
+                            <a href="https://arxiv.org/abs/2509.20750">paper</a> /
+    <!--                        <a>code</a>-->
+                        </p>
+                        <p class="paper-desc" style="font-size: 12px">
+                            We introduce <b>Confidence-guided Refinement Reasoning (C2R)</b>, a training-free framework that improves QA across text, image, and video domains by generating and refining sub-questions and answers, and then selecting the most reliable final answer based on confidence scores. The approach is flexible, model-agnostic, and shows consistent improvements across benchmarks.
+                        </p>
+                    </div>
+                </div>
+                <div class="pub-card" data-selected="true" style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
+                    <!-- Image Container -->
+                    <div class="image-container" style="display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
+                        <img src="images/consistency.gif" alt="Animated GIF">
+                    </div>
+
+                    <!-- Text Content Container -->
+                    <div class="text-container" style="flex: 1;">
+                        <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
+                            On the Consistency of Video Large Language Models in Temporal Comprehension
+                        </p>
+                        <p class="author-list">
+                            <u>Minjoon Jung</u>,
+                            <a>Junbin Xiao*</a>,
+                            <a>Byoung-Tak Zhang</a>,
+                            <a>Angela Yao</a>
+                        </p>
+                        <p style="font-style: italic;">
+                            Conference on Computer Vision and Pattern Recognition (CVPR), 2025 <br>
+                            <span style="font-size: smaller;">
+                          *Earlier version has been accepted by
+                          <a href="https://neurips.cc/virtual/2024/103565" style="font-size: inherit;">NeurIPS Workshop on Video-Language Models, 2024</a>.
+                        </span>
+                            <br>
+                            <a href="https://arxiv.org/abs/2411.12951">paper</a> /
+                            <a href="https://github.com/minjoong507/Consistency-of-Video-LLM">code</a>
+                        </p>
+                        <p class="paper-desc" style="font-size: 12px">
+                            We reveal that video large language models struggle to maintain consistency in grounding and verification. We systematically analyze this issue and introduce an effective training method, Event Temporal Verification Tuning (VTune), leading to substantial improvements in both grounding and consistency.
+                        </p>
+                    </div>
+                </div>
+                <div class="pub-card" style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
+                    <!-- Image Container -->
+                    <div class="image-container" style="display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
+                        <img src="images/ordinal.jpg">
+                    </div>
+
+                    <!-- Text Content Container -->
+                    <div class="text-container" style="flex: 1;">
+                        <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
+                            Exploring Ordinal Bias in Action Recognition for Instructional Videos
+                        </p>
+                        <p class="author-list">
+                            <a>Joochan Kim</a>,
+                            <u>Minjoon Jung</u>,
+                            <a>Byoung-Tak Zhang*</a>
+                        </p>
+                        <p style="font-style: italic;">
+                            ICLR Workshop on Spurious Correlation and Shortcut Learning: Foundations and Solutions, 2025 <br>
+                            <span style="font-size: smaller;">
+                        </span>
+                            <br>
+                            <a href="https://openreview.net/forum?id=JIon6Xuvm1&referrer=%5Bthe%20profile%20of%20Joochan%20Kim%5D(%2Fprofile%3Fid%3D~Joochan_Kim1)">paper</a> /
+                            <a>code</a>
+                        </p>
+                        <p class="paper-desc" style="font-size: 12px">
+                            We study the <b>ordinal bias</b> problem that leads action recognition models to over-rely on dominant action pairs, inflating performance and lacking true video comprehension. We provide an in-depth analysis of this issue and discuss directions for mitigating its effects.
+                        </p>
+                    </div>
+                </div>
+                <div class="pub-card" data-selected="false" style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
+                    <!-- Image Container -->
+                    <div class="image-container" style="display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
+    <!--                    <img src="images/bm-detr.png" alt="Image">-->
+                        <img src="images/bmdetr2.png" alt="Image">
+                    </div>
+
+                    <!-- Text Content Container -->
+                    <div class="text-container" style="flex: 1;">
+                        <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
+                            Background-aware Moment Detection for Video Moment Retrieval
+                        </p>
+                        <p class="author-list">
+                            <u>Minjoon Jung</u>,
+                            <a>Youwon Jang</a>,
+                            <a>Seongho Choi</a>,
+                            <a>Joochan Kim</a>,
+                            <a>Jin-Hwa Kim*</a>,
+                            <a>Byoung-Tak Zhang*</a>
+                        </p>
+                        <p style="font-style: italic;">
+                            Winter Conference on Applications of Computer Vision (WACV), 2025 <br>
+                            <span style="font-size: smaller;">*Early accepted in Round 1 (167/1381~12.1%).</span> <br>
+                            <a href="https://arxiv.org/abs/2306.02728">paper</a> /
+                            <a href="https://github.com/minjoong507/BM-DETR">code</a>
+                        </p>
+                        <p class="paper-desc" style="font-size: 12px">
+                            We propose <b>Background-aware Moment Detection TRansformer (BM-DETR)</b>, which carefully adopts a contrastive approach for robust prediction. BM-DETR achieves state-of-the-art performance on various benchmarks while being highly efficient.
+                        </p>
+                    </div>
+                </div>
+                <div class="pub-card" style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
+                    <div class="image-container" style="display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
+                        <img src="images/IROS_demo.gif" alt="Animated GIF">
+                    </div>
+
+                    <!-- Text Content Container -->
+                    <div class="text-container" style="flex: 1;">
+                        <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
+                            PGA: Personalizing Grasping Agents with Single Human-Robot Interaction
+                        </p>
+                        <p class="author-list">
+                            <a>Junghyun Kim</a>,
+                            <a>Gi-Cheon Kang</a>,
+                            <a>Jaein Kim</a>,
+                            Seoyun Yang,
+                            <u>Minjoon Jung</u>,
+                            <a>Byoung-Tak Zhang*</a>
+                        </p>
+                        <p style="font-style: italic;">
+                            International Conference on Intelligent Robots and Systems (IROS), 2024<br>
+                            <a href="https://arxiv.org/abs/2310.12547">paper</a> /
+                            <a href="https://github.com/JHKim-snu/PGA">code</a>
+                        </p>
+                        <p class="paper-desc" style="font-size: 12px">
+                            We propose <b>Personalized Grasping Agent (PGA)</b>, which enables robots to grasp user-specific objects from just a single interaction.
+                            PGA captures multi-view object data and uses label propagation to adapt its grasping model without requiring extensive annotations, achieving performance close to fully supervised methods.
+                        </p>
+                    </div>
+                </div>
+                <div class="pub-card" data-selected="true" style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
+                    <!-- Image Container -->
+                    <div class="image-container" style="display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
+                        <img src="images/MPGN.png" alt="Image">
+                    </div>
+
+                    <!-- Text Content Container -->
+                    <div class="text-container" style="flex: 1;">
+                        <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
+                            Modal-specific Pseudo Query Generation for Video Corpus Moment Retrieval
+                        </p>
+                        <p class="author-list">
+                            <u>Minjoon Jung</u>,
+                            <a>Seongho Choi</a>,
+                            <a>Joochan Kim</a>,
+                            <a>Jin-Hwa Kim*</a>,
+                            <a>Byoung-Tak Zhang*</a>
+                        </p>
+                        <p style="font-style: italic;">
+                            Empirical Methods in Natural Language Processing (EMNLP), 2022 <br>
+                            <a href="https://aclanthology.org/2022.emnlp-main.530/">paper</a> /
+                            <a href="https://github.com/minjoong507/MPGN">code</a>
+                        </p>
+                        <p class="paper-desc" style="font-size: 12px">
+                            We propose <b>Modal-specific Pseudo Query Generation Network (MPGN)</b>, a self-supervised framework for Video Corpus Moment Retrieval (VCMR). MPGN captures orthogonal axis of information in videos and generates pseudo-queries that provide a considerable performance boost, even without human annotations.
+
+                        </p>
+                    </div>
+                </div>
+                <div class="pub-card" data-selected="false" style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
+                    <!-- Image Container -->
+                    <div class="image-container" style="display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
+                        <img src="images/crosscutting.gif" alt="Animated GIF">
+                    </div>
+                    <!-- Text Content Container -->
+                    <div class="text-container" style="flex: 1;">
+                        <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
+                            Stagemix Video Generation using Face and Body Keypoints Detection
+                        </p>
+                        <p class="author-list">
+                            <u>Minjoon Jung</u>,
+                            <a>Seung-Hyun Lee</a>,
+                            Eunseon Sim,
+                            Minho Jo,
+                            Yujin Lee,
+                            Hyebin Choi,
+                            <a>Junseok Kwon*</a>
+                        </p>
+                        <p style="font-style: italic;">
+                            Multimedia Tools and Applications (MTAP), 2022 <br>
+                            <a href="https://link.springer.com/article/10.1007/s11042-022-13103-8">paper</a> /
+                            <a href="https://github.com/datamarket-tobigs/Cross-Cutting">code</a>
+                        </p>
+                        <p class="paper-desc" style="font-size: 12px">
+                            We design a method for automatically creating Stagemix videos, which seamlessly combine multiple stage performances of a singer into a single cohesive video. We effectively produces natural-looking Stagemix videos while significantly reducing the effort involved compared to manual editing.
+                        </p>
+                    </div>
+                </div>
+                <div class="pub-card" style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
+                    <!-- Image Container -->
+                    <div class="image-container" style="display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
+                        <img src="images/vtt.png" alt="Image">
+                    </div>
+                    <!-- Text Content Container -->
+                    <div class="text-container" style="flex: 1;">
+                        <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
+                            Toward a Human-Level Video Understanding Intelligence
+                        </p>
+                        <p class="author-list">
+                            <a>Yu-Jung Heo</a>,
+                            <a>Minsu Lee</a>,
+                            <a>Seongho Choi</a>,
+                            <a>Woo Suk Choi</a>,
+                            Minjung Shin,
+                            <u>Minjoon Jung</u>,
+                            Jeh-Kwang Ryu,
+                            <a>Byoung-Tak Zhang*</a>
+                        </p>
+                        <p style="font-style: italic;">
+                            AAAI Fall Symposium Series on Artificial Intelligence for Human-Robot Interaction, 2021<br>
+                            <a href="https://arxiv.org/abs/2110.04203">paper</a>
+                        </p>
+                        <p class="paper-desc" style="font-size: 12px">
+                            We aim to develop an AI agent that can watch video clips and have a conversation with human about the video story.
+                        </p>
+                    </div>
+                </div>
+        </div>
+        <div class="pub-box-footer">
+            <a class="all-pubs-btn" href="index.html"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
