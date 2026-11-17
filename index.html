@@ -19,56 +19,8 @@
     <style>
         /* ── Page wrapper ── */
         body {
-            background-color: #f9f9f9;
             scroll-behavior: smooth;
             scroll-padding-top: 56px;
-        }
-
-        /* ── Top navigation bar ── */
-        .top-nav {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background-color: #ffffff;
-            border-bottom: 1px solid #e5e7eb;
-        }
-
-        .top-nav-inner {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 2.5%;
-            height: 52px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .top-nav-name {
-            font-weight: 700;
-            font-size: 1em;
-            color: #111827;
-            letter-spacing: -0.01em;
-        }
-
-        .top-nav-links {
-            display: flex;
-            gap: 6px;
-        }
-
-        .top-nav-links a {
-            padding: 5px 14px;
-            border-radius: 99px;
-            font-size: 0.875em;
-            font-weight: 500;
-            color: #6b7280;
-            text-decoration: none;
-            transition: background-color 0.15s ease, color 0.15s ease;
-        }
-
-        .top-nav-links a:hover,
-        .top-nav-links a.active {
-            background-color: #f1f5f9;
-            color: #111827;
         }
 
         /* ── Recent Highlights timeline ── */
@@ -231,7 +183,7 @@
                         <div>
                             <p style="margin:0 0 6px 0;font-size:2.5em;font-weight:700;line-height:1.2;">Minjoon Jung</p>
                             <p style="margin:0 0 2px 0;color:#374151;">Ph.D. Student, <a href="https://en.snu.ac.kr/">Seoul National University</a></p>
-                            <p style="margin:0 0 4px 0;color:#374151;">Visiting Researcher, <a href="https://www.northeastern.edu/">Northeastern University</a></p>
+<!--                            <p style="margin:0 0 4px 0;color:#374151;">Visiting Researcher, <a href="https://www.northeastern.edu/">Northeastern University</a></p>-->
                             <p style="margin:0;color:#6b7280;font-size:0.92em;"><a href="mailto:minjoon507@gmail.com" style="color:#6b7280;">minjoon507@gmail.com</a></p>
                         </div>
                         <div class="social-links">
@@ -249,10 +201,10 @@
                     <div style="background-color:#f0f4f8;border-radius:8px;padding:12px 16px;margin-bottom:10px;">
                         <p style="margin:0 0 6px 0;font-weight:bold;font-size:1.0em;">About</p>
                         <p style="margin:0;">
-                            I'm a Ph.D. student at <a href="https://en.snu.ac.kr/">Seoul National University</a>, advised by Byoung-Tak Zhang.
-                            I'm currently visiting <a href="https://farsightlab.github.io/">FarSight Lab</a> at <a href="https://www.northeastern.edu/">Northeastern University</a>, working with <a href="https://ltorresa.github.io/home.html">Lorenzo Torresani</a>.
+                            I'm a Ph.D. student at <a href="https://en.snu.ac.kr/">Seoul National University</a>.
                             My research focuses on video understanding and multimodal learning, with an emphasis on fine-grained visual perception and robust temporal reasoning for real-world AI applications.
-                            In the past, I worked with <a href="https://doc-doc.github.io/cv/">Junbin Xiao</a> and <a href="https://www.comp.nus.edu.sg/~ayao/">Angela Yao</a> at <a href="https://www.comp.nus.edu.sg/~ayao/">National University of Singapore</a>.
+                            In the past, I visited <a href="https://farsightlab.github.io/">FarSight Lab</a> at <a href="https://www.northeastern.edu/">Northeastern University</a>, working with <a href="https://ltorresa.github.io/home.html">Lorenzo Torresani</a>.
+                            I also worked with <a href="https://doc-doc.github.io/cv/">Junbin Xiao</a> and <a href="https://www.comp.nus.edu.sg/~ayao/">Angela Yao</a> at <a href="https://www.comp.nus.edu.sg/~ayao/">National University of Singapore</a>.
                         </p>
                     </div>
 <!--                    <div style="background-color:#f0f7f0;border-radius:8px;padding:12px 16px;">-->
@@ -333,11 +285,6 @@
         <div class="pub-box">
             <div id="papers-all" class="list-view">
                 <div class="pub-card" style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
-                    <!-- Image Container -->
-                    <div class="image-container" style="display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
-                        <img src="images/Evoground.gif" alt="Animated GIF">
-                    </div>
-    
                     <!-- Text Content Container -->
                     <div class="text-container" style="flex: 1;">
                         <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
@@ -354,12 +301,9 @@
                             <a href="https://github.com/minjoong507/EvoGround">code</a> /
                             <a href="projects/EvoGround/">project page</a> /
                         </p>
-                        <p class="paper-desc" style="font-size: 12px">
-                            We introduce <b>EvoGround</b>, a framework of two coupled self-evolving agents — a <i>proposer</i> and a <i>solver</i> — that learn video temporal grounding from raw videos without any manual labels. Through a self-reinforcing loop driven entirely by reinforcement learning, EvoGround matches or outperforms most fully supervised models across multiple benchmarks.
-                        </p>
                     </div>
                 </div>
-    
+
                 <div class="pub-card" style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
                     <!-- Image Container -->
                     <div class="image-container" style="display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
@@ -392,10 +336,6 @@
                             <a href="https://github.com/minjoong507/EgoExo-Con">code</a> /
                             <a href="https://minjoong507.github.io/projects/EgoExo-Con/">project page</a>
                         </p>
-                        <p class="paper-desc" style="font-size: 12px">
-                            We introduce <b>EgoExo-Con</b>, a new benchmark comprising synchronized ego-exo video that evaluates a model whether it can maintain consistent temporal understanding across viewpoints.
-                            Existing models struggle with this challenge, and we propose <b>View-GRPO</b> for improvement.
-                        </p>
                     </div>
                 </div>
     
@@ -427,9 +367,6 @@
                             <a href="https://arxiv.org/abs/2411.12951">paper</a> /
                             <a href="https://github.com/minjoong507/Consistency-of-Video-LLM">code</a>
                         </p>
-                        <p class="paper-desc" style="font-size: 12px">
-                            We reveal that video large language models struggle to maintain consistency in grounding and verification. We systematically analyze this issue and introduce an effective training method, Event Temporal Verification Tuning (VTune), leading to substantial improvements in both grounding and consistency.
-                        </p>
                     </div>
                 </div>
                 <div class="pub-card" style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
@@ -437,7 +374,7 @@
                     <div class="image-container" style="display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
                         <img src="images/MPGN.png" alt="Image">
                     </div>
-    
+
                     <!-- Text Content Container -->
                     <div class="text-container" style="flex: 1;">
                         <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
@@ -454,10 +391,6 @@
                             Empirical Methods in Natural Language Processing (EMNLP), 2022 <br>
                             <a href="https://aclanthology.org/2022.emnlp-main.530/">paper</a> /
                             <a href="https://github.com/minjoong507/MPGN">code</a>
-                        </p>
-                        <p class="paper-desc" style="font-size: 12px">
-                            We propose <b>Modal-specific Pseudo Query Generation Network (MPGN)</b>, a self-supervised framework for Video Corpus Moment Retrieval (VCMR). MPGN captures orthogonal axis of information in videos and generates pseudo-queries that provide a considerable performance boost, even without human annotations.
-    
                         </p>
                     </div>
                 </div>

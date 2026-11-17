@@ -17,76 +17,6 @@
     <link rel="stylesheet" type="text/css" href="publications.css">
     <script src="publications.js"></script>
 
-    <meta charset="UTF-8">
-    <style>
-        body {
-            background-color: #f9f9f9;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* ── Top navigation bar ── */
-        .top-nav {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background-color: #ffffff;
-            border-bottom: 1px solid #e5e7eb;
-        }
-
-        .top-nav-inner {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 2.5%;
-            height: 52px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .top-nav-name {
-            font-weight: 700;
-            font-size: 1em;
-            color: #111827;
-            letter-spacing: -0.01em;
-        }
-
-        .top-nav-links {
-            display: flex;
-            gap: 6px;
-        }
-
-        .top-nav-links a {
-            padding: 5px 14px;
-            border-radius: 99px;
-            font-size: 0.875em;
-            font-weight: 500;
-            color: #6b7280;
-            text-decoration: none;
-            transition: background-color 0.15s ease, color 0.15s ease;
-        }
-
-        .top-nav-links a:hover,
-        .top-nav-links a.active {
-            background-color: #f1f5f9;
-            color: #111827;
-        }
-
-        /* ── Page content ── */
-        .page-wrapper {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 48px 2.5% 80px;
-        }
-
-        .page-title {
-            font-size: 1.75em;
-            font-weight: 700;
-            color: #111827;
-            margin: 0 0 32px 0;
-            letter-spacing: -0.02em;
-        }
-    </style>
 </head>
 
 <body>
@@ -106,11 +36,6 @@
     <div class="pub-box">
         <div id="papers-all" class="list-view">
                 <div class="pub-card" data-selected="true" style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
-                    <!-- Image Container -->
-                    <div class="image-container" style="display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
-                        <img src="images/Evoground.gif" alt="Animated GIF">
-                    </div>
-
                     <!-- Text Content Container -->
                     <div class="text-container" style="flex: 1;">
                         <p class="papertitle" style="font-weight: bold; font-size: 1.08em;">
@@ -150,11 +75,8 @@
                         <p style="font-style: italic;">
                             Empirical Methods in Natural Language Processing (EMNLP) Findings, 2026 <br>
                             <a href="https://arxiv.org/abs/2609.08242">paper</a> /
-    <!--                        <a href="https://github.com/minjoong507/EvoGround">code</a> /-->
+                            <a href="https://github.com/minjoong507/EvoGround">code</a> /
     <!--                        <a href="projects/EvoGround/">project page</a> /-->
-                        </p>
-                        <p class="paper-desc" style="font-size: 12px">
-                            We introduce <b>EvoGround</b>, a framework of two coupled self-evolving agents — a <i>proposer</i> and a <i>solver</i> — that learn video temporal grounding from raw videos without any manual labels. Through a self-reinforcing loop driven entirely by reinforcement learning, EvoGround matches or outperforms most fully supervised models across multiple benchmarks.
                         </p>
                     </div>
                 </div>

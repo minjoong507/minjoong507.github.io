@@ -69,6 +69,71 @@
 body {
   background-color: #f9f9f9;
   color: #222;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Top navigation bar ── */
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.top-nav-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 2.5%;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.top-nav-name {
+  font-weight: 700;
+  font-size: 1em;
+  color: #111827;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+}
+
+.top-nav-links {
+  display: flex;
+  gap: 6px;
+}
+
+.top-nav-links a {
+  padding: 5px 14px;
+  border-radius: 99px;
+  font-size: 0.875em;
+  font-weight: 500;
+  color: #6b7280;
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.top-nav-links a:hover,
+.top-nav-links a.active {
+  background-color: #f1f5f9;
+  color: #111827;
+}
+
+/* ── Shared page layout (bio, personal, publications) ── */
+.page-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 48px 2.5% 80px;
+}
+
+.page-title {
+  font-size: 1.75em;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 32px 0;
+  letter-spacing: -0.02em;
 }
 
 a {
