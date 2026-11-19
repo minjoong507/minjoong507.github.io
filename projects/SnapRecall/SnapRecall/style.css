@@ -288,6 +288,10 @@ figcaption {
 }
 
 .abstract {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 23rem);
+  align-items: stretch;
+  gap: clamp(1.25rem, 3vw, 2rem);
   padding-block: clamp(1.25rem, 2.75vw, 2rem);
 }
 
@@ -299,7 +303,13 @@ figcaption {
   text-transform: uppercase;
 }
 
-.abstract p {
+.abstract-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.abstract-copy p {
   font-family: Georgia, "Times New Roman", serif;
   font-size: 1rem;
   line-height: 1.65;
@@ -368,13 +378,6 @@ h3 {
 .variant .figure {
   padding: 0.5rem;
   border: 0;
-}
-
-.results-intro {
-  display: grid;
-  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
-  align-items: center;
-  gap: clamp(1.25rem, 3vw, 2rem);
 }
 
 .benchmark-nav {
@@ -480,6 +483,34 @@ tbody:last-child tr:last-child > * {
   font-weight: 700;
 }
 
+.memory-figure {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.75rem;
+}
+
+#memory-explorer:not([hidden]) {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+#memory-chart {
+  position: relative;
+  flex: 1 0 176px;
+}
+
+#memory-chart svg {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+}
+
+.memory-figure .scrubber {
+  margin: 0.4rem 0;
+}
+
 .memory-figure img {
   max-width: 20rem;
   margin-inline: auto;
@@ -534,12 +565,12 @@ tbody:last-child tr:last-child > * {
 }
 
 @media (max-width: 54rem) {
-  .results-intro {
-    grid-template-columns: 1fr;
+  .abstract {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .memory-figure {
-    max-width: 32rem;
+    width: min(100%, 23rem);
   }
 }
 
@@ -566,4 +597,218 @@ tbody:last-child tr:last-child > * {
   .actions .file-type {
     display: none;
   }
+}
+
+/* Interactive paper figures */
+.chart svg {
+  display: block;
+  width: 100%;
+  height: 208px;
+  overflow: visible;
+  cursor: crosshair;
+}
+.chart text {
+  fill: var(--muted);
+  font: 12px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+.chart .plot-unit { font-weight: 650; }
+.plot-grid { stroke: var(--line); }
+.plot-guide { stroke: #61748a; stroke-dasharray: 3 4; }
+.scrubber {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 0 1rem;
+  margin: 0.8rem 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.scrubber output, .chart-key dd { font-variant-numeric: tabular-nums; }
+.scrubber input {
+  grid-column: 1 / -1;
+  margin: 0;
+  width: 100%;
+  height: 1.75rem;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+.chart-key {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.4rem;
+}
+.chart-key dt, .chart-note {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.chart-key dd { margin: 0; font-weight: 650; }
+.series-label::before {
+  content: "";
+  display: inline-block;
+  width: 0.8em;
+  height: 0.22em;
+  margin-right: 0.42em;
+  vertical-align: middle;
+  border-radius: 1em;
+  background: var(--series-color);
+}
+.layer-charts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+.layer-charts h4 { margin: 1rem 0 0.4rem; }
+.layer-values { margin-bottom: 0.8rem; table-layout: fixed; }
+.layer-values th, .layer-values td { width: 25%; }
+.layer-values th:first-child { width: 50%; }
+.paper-example { margin-top: 0.85rem; }
+.paper-example summary {
+  color: var(--accent);
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.paper-example img { margin-top: 0.75rem; }
+@media (max-width: 42rem) {
+  .layer-charts { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .layer-values th, .layer-values td { padding-inline: 0.35rem; }
+  .layer-values th { overflow-wrap: anywhere; }
+  .chart-key dd { font-size: 0.875rem; overflow-wrap: anywhere; }
+}
+
+.benchmark-chart {
+  margin-bottom: 0.65rem;
+}
+
+.benchmark-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.benchmark-controls label {
+  max-width: 100%;
+}
+
+.benchmark-controls select {
+  padding: 0.35rem 0.5rem;
+  border: 1px solid var(--line);
+  border-radius: 0.4rem;
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+}
+
+.benchmark-controls select {
+  max-width: 100%;
+  margin-inline-start: 0.4rem;
+}
+
+.benchmark-chart-label {
+  margin-top: 0.65rem;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.benchmark-plot {
+  --benchmark-plot-height: clamp(8rem, 20vw, 12rem);
+  display: grid;
+  grid-template-columns: 2.75rem minmax(0, 1fr);
+  align-items: start;
+  gap: 0.4rem;
+  padding-block: 0.35rem;
+}
+
+.benchmark-axis {
+  position: relative;
+  height: var(--benchmark-plot-height);
+  margin-top: calc(1.3em + 0.35rem);
+  color: var(--muted);
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.benchmark-axis span {
+  position: absolute;
+  right: 0;
+  transform: translateY(50%);
+}
+
+.benchmark-bars {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(6.5rem, 1fr);
+  gap: 0.45rem;
+  padding: 0;
+  margin: 0;
+  overflow-x: auto;
+  list-style: none;
+}
+
+.benchmark-bars li {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: 0.35rem;
+  text-align: center;
+  font-size: 0.875rem;
+  line-height: 1.3;
+}
+
+.benchmark-bars li > :first-child {
+  grid-row: 3;
+  overflow-wrap: anywhere;
+}
+
+.benchmark-bars li > :last-child {
+  grid-row: 1;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+}
+
+.benchmark-track {
+  grid-row: 2;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  height: var(--benchmark-plot-height);
+  border-bottom: 1px solid var(--line);
+  background: repeating-linear-gradient(to top, transparent 0 calc(var(--benchmark-tick-spacing) - 1px), var(--line) calc(var(--benchmark-tick-spacing) - 1px) var(--benchmark-tick-spacing));
+}
+
+.benchmark-track span {
+  width: 52%;
+  border-radius: 0.25rem 0.25rem 0 0;
+  background: #748ba1;
+}
+
+.benchmark-snaprecall {
+  color: var(--accent-dark);
+  font-weight: 700;
+}
+
+.benchmark-snaprecall .benchmark-track span {
+  background: var(--accent);
+}
+
+.benchmark-table summary {
+  width: fit-content;
+  margin-bottom: 0.5rem;
+  color: var(--accent);
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.benchmark-input {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.benchmark-snaprecall .benchmark-input {
+  color: inherit;
 }
