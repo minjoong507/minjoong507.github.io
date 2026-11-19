@@ -1,13 +1,8 @@
-// All charts share the same selection as their native range input (mouse, touch and keyboard).
+// The memory plot shares its selection with the duration slider.
 (() => {
   if (typeof snapRecallMeasurements === "undefined") return;
   const byId = id => document.getElementById(id);
-  const colors = { purple: "#73539f", gold: "#9b610e", teal: "#007881", rose: "#b7385b" };
-  const layers = [
-    ["cumulative", "Cumulative (X)", colors.purple],
-    ["key", "Cumulative (K)", colors.gold],
-    ["segment", "Segment-only (X)", colors.teal],
-  ];
+  const colors = { purple: "#73539f", gold: "#9b610e", rose: "#b7385b" };
   const models = [
     ["native_full", "Full attention", colors.gold],
     ["streamttt", "StreamTTT", colors.purple],
@@ -36,7 +31,7 @@
     const cursor = svgElement("g", {});
     svg.append(grid, data, cursor);
     host.append(svg);
-    const left = 39, right = 15, top = 22;
+    const left = 45, right = 15, top = 12;
     const bottom = options.xLabel ? 43 : 27;
     let width, height, selected;
     const xPixel = x => left + (x - options.xMin) / (options.xMax - options.xMin) * (width - left - right);
@@ -69,7 +64,10 @@
       for (const x of options.xTicks) {
         grid.append(svgElement("text", {x: xPixel(x), y: height - bottom + 17, "text-anchor": "middle"}, x));
       }
-      grid.append(svgElement("text", {x: left, y: 12, class: "plot-unit"}, options.unit));
+      grid.append(svgElement("text", {
+        transform: `translate(12,${(top + height - bottom) / 2}) rotate(-90)`,
+        "text-anchor": "middle", class: "plot-unit",
+      }, options.unit));
       if (options.xLabel) {
         grid.append(svgElement("text", {x: (left + width - right) / 2, y: height - 3, "text-anchor": "middle"}, options.xLabel));
       }
@@ -160,44 +158,5 @@
     byId("memory-fallback").hidden = true;
   }
 
-  function layerExplorer() {
-    const records = snapRecallMeasurements.layers;
-    const slider = byId("layer-step");
-    const cells = layers.map(([, name, color]) => {
-      const tr = byId("layer-values").insertRow();
-      const th = document.createElement("th");
-      th.scope = "row";
-      th.append(seriesLabel(name, color));
-      tr.append(th);
-      return [tr.insertCell(), tr.insertCell()];
-    });
-    byId("layer-explorer").hidden = false;
-    const highlights = [
-      {id: "weight-chart", unit: "%", label: "Highest routing weight", column: 0, scale: 100, yMin: 20, yMax: 90, yTicks: [25, 50, 75, 90], formatTick: String},
-      {id: "gate-chart", unit: "Scale", label: "Mean gate scale", column: 3, scale: 1, yMin: .095, yMax: .165, yTicks: [.10, .12, .14, .16], formatTick: y => y.toFixed(2)},
-    ].map(options => {
-      const series = layers.map(([id, name, color]) => ({
-        name, color, rows: records[id].map((row, i) =>
-          [i + 1, ...row.slice(options.column, options.column + 3).map(v => v * options.scale)]),
-      }));
-      return lineChart(byId(options.id), series, {
-        ...options, xMin: 1, xMax: 36, xLabel: "Decoder layer", xTicks: [1, 12, 24, 36],
-      }, x => update(Math.round(x)));
-    });
-    function update(layer) {
-      slider.value = layer;
-      byId("layer-value").textContent = layer + " / 36";
-      highlights.forEach(highlight => highlight(layer));
-      layers.forEach(([id], i) => {
-        const row = records[id][layer - 1];
-        cells[i][0].textContent = (100 * row[0]).toFixed(1) + "%";
-        cells[i][1].textContent = row[3].toFixed(3);
-      });
-    }
-    slider.addEventListener("input", () => update(Number(slider.value)));
-    update(Number(slider.value));
-    document.querySelector(".paper-example").open = false;
-  }
   memoryExplorer();
-  layerExplorer();
 })();

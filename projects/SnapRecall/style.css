@@ -7,6 +7,10 @@
   --line: #d6e2ee;
   --tint: #f3f7fc;
   --paper: #fff;
+  --chart-panel-tint: radial-gradient(ellipse at 65% 35%, #c7dcf47a, transparent 72%);
+  --project-side-width: 23rem;
+  --teaser-width: 29rem;
+  --project-column-gap: clamp(1.25rem, 3vw, 2rem);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
@@ -103,18 +107,15 @@ a:hover {
 }
 
 .hero {
-  padding-block: clamp(2.5rem, 6vw, 5rem) clamp(2.25rem, 5vw, 4rem);
+  padding-block: clamp(1.75rem, 4vw, 3.25rem) clamp(0.65rem, 1.6vw, 1.25rem);
   background: radial-gradient(ellipse at 86% 0%, #e7f1fd, transparent 65%), var(--tint);
   border-bottom: 1px solid var(--line);
 }
 
 .hero-resources {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem 2rem;
-  margin-top: 1rem;
+  display: grid;
+  gap: var(--hero-detail-gap);
+  margin-top: var(--hero-detail-gap);
 }
 
 h1,
@@ -127,24 +128,31 @@ figure {
 
 h1 {
   color: #000;
-  font-size: clamp(1.8rem, 4vw, 3.4rem);
+  font-size: clamp(1.75rem, 3.3vw, 3.05rem);
   font-weight: 700;
   line-height: 1.09;
   letter-spacing: -0.05em;
-  text-wrap: balance;
+  text-wrap: pretty;
 }
 
 .project-name {
   color: var(--accent);
   white-space: nowrap;
-  font-size: clamp(2.75rem, 7vw, 5.75rem);
+  font-size: clamp(2.65rem, 5.6vw, 4.65rem);
   font-weight: 780;
   letter-spacing: -0.07em;
 }
 
 .authors {
-  margin-top: 1.45rem;
+  margin-top: 0.55rem;
+  font-size: clamp(1.0625rem, 1.45vw, 1.125rem);
   font-weight: 650;
+}
+
+.author-note {
+  margin-top: 0.35rem;
+  color: #5f6e7d;
+  font-size: 0.875rem;
 }
 
 .authors a {
@@ -287,18 +295,25 @@ figcaption {
   padding-block: clamp(2.75rem, 6vw, 5rem);
 }
 
+.hero-layout,
 .abstract {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 23rem);
-  align-items: stretch;
-  gap: clamp(1.25rem, 3vw, 2rem);
+  grid-template-columns: minmax(0, 1fr) var(--project-side-width);
+  gap: var(--project-column-gap);
+}
+
+.hero-layout {
+  grid-template-columns: minmax(0, 1fr) var(--teaser-width);
+}
+
+.abstract {
   padding-block: clamp(1.25rem, 2.75vw, 2rem);
 }
 
 .abstract h2 {
   margin-bottom: 0.5rem;
   color: var(--accent-dark);
-  font-size: 0.875rem;
+  font-size: 1.125rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -488,6 +503,8 @@ tbody:last-child tr:last-child > * {
   flex-direction: column;
   justify-content: space-between;
   padding: 0.75rem;
+  border: 0;
+  background: var(--chart-panel-tint);
 }
 
 #memory-explorer:not([hidden]) {
@@ -498,6 +515,7 @@ tbody:last-child tr:last-child > * {
 
 #memory-chart {
   position: relative;
+  margin-top: 0.35rem;
   flex: 1 0 176px;
 }
 
@@ -516,35 +534,69 @@ tbody:last-child tr:last-child > * {
   margin-inline: auto;
 }
 
-.results-note {
-  margin-top: 1.25rem;
+.citation-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
 }
 
-.analysis-evidence {
-  margin-top: 1.5rem;
+.citation-header h2 {
+  margin: 0 auto 0 0;
 }
 
-.analysis-table {
-  width: min(100%, 46rem);
-  table-layout: fixed;
+.citation-status {
+  color: var(--muted);
+  font-size: 0.875rem;
 }
 
-.analysis-table th:first-child {
-  width: 40%;
-  white-space: normal;
+.citation-block {
+  position: relative;
 }
 
-.analysis-table th,
-.analysis-table td {
-  padding-inline: clamp(0.25rem, 1.5vw, 0.75rem);
+.citation-copy {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 2rem;
+  aspect-ratio: 1;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 0.35rem;
+  background: var(--paper);
+  color: var(--muted);
+  cursor: pointer;
 }
 
-.analysis-table thead th {
-  white-space: normal;
+.citation-copy:hover {
+  color: var(--accent-dark);
+  border-color: currentColor;
 }
 
-.analysis-figure {
-  margin-top: 1.75rem;
+.citation-copy::before,
+.citation-copy::after {
+  position: absolute;
+  width: 0.56rem;
+  height: 0.65rem;
+  border: 1px solid currentColor;
+  border-radius: 0.13rem;
+  background: var(--paper);
+  content: "";
+}
+
+.citation-copy::before {
+  top: 0.52rem;
+  left: 0.53rem;
+}
+
+.citation-copy::after {
+  top: 0.72rem;
+  left: 0.73rem;
+}
+
+.citation-copy:not([hidden]) + pre {
+  padding-inline-end: 3rem;
 }
 
 .citation pre {
@@ -554,7 +606,7 @@ tbody:last-child tr:last-child > * {
   overflow-wrap: anywhere;
   border: 1px solid var(--line);
   border-radius: 0.75rem;
-  background: var(--tint);
+  background: var(--paper);
   color: var(--accent-dark);
   font-size: 0.875rem;
 }
@@ -565,12 +617,17 @@ tbody:last-child tr:last-child > * {
 }
 
 @media (max-width: 54rem) {
+  .hero-layout,
   .abstract {
     grid-template-columns: minmax(0, 1fr);
   }
 
+  .teaser-figure {
+    width: min(100%, var(--teaser-width));
+  }
+
   .memory-figure {
-    width: min(100%, 23rem);
+    width: min(100%, var(--project-side-width));
   }
 }
 
@@ -639,7 +696,7 @@ tbody:last-child tr:last-child > * {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.4rem;
 }
-.chart-key dt, .chart-note {
+.chart-key dt {
   font-size: 0.85rem;
   color: var(--muted);
 }
@@ -654,26 +711,7 @@ tbody:last-child tr:last-child > * {
   border-radius: 1em;
   background: var(--series-color);
 }
-.layer-charts {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.5rem;
-}
-.layer-charts h4 { margin: 1rem 0 0.4rem; }
-.layer-values { margin-bottom: 0.8rem; table-layout: fixed; }
-.layer-values th, .layer-values td { width: 25%; }
-.layer-values th:first-child { width: 50%; }
-.paper-example { margin-top: 0.85rem; }
-.paper-example summary {
-  color: var(--accent);
-  font-size: 0.9rem;
-  cursor: pointer;
-}
-.paper-example img { margin-top: 0.75rem; }
 @media (max-width: 42rem) {
-  .layer-charts { grid-template-columns: minmax(0, 1fr); gap: 0; }
-  .layer-values th, .layer-values td { padding-inline: 0.35rem; }
-  .layer-values th { overflow-wrap: anywhere; }
   .chart-key dd { font-size: 0.875rem; overflow-wrap: anywhere; }
 }
 
@@ -811,4 +849,97 @@ tbody:last-child tr:last-child > * {
 
 .benchmark-snaprecall .benchmark-input {
   color: inherit;
+}
+
+.hero-content {
+  --hero-detail-gap: clamp(0.9rem, 1.5vw, 1.25rem);
+  display: flex;
+  flex-direction: column;
+}
+
+.teaser-figure {
+  --teaser-plot-left: 45px;
+  --teaser-plot-right: 14px;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  aspect-ratio: 1;
+  padding: 0.85rem;
+  border: 0;
+  background: var(--chart-panel-tint);
+}
+
+@media (min-width: 54.01rem) {
+  .hero-content {
+    padding-bottom: 0.85rem;
+  }
+
+  .hero-title {
+    margin-block: auto;
+  }
+
+  .teaser-figure {
+    align-self: end;
+  }
+}
+
+#teaser-chart .plot-grid,
+#memory-chart .plot-grid {
+  stroke: #7697b9;
+  opacity: 0.23;
+}
+
+#teaser-explorer:not([hidden]) {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+}
+
+#teaser-chart {
+  display: block;
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+}
+
+#teaser-chart text { font-family: inherit; }
+#teaser-chart .tick, #teaser-chart .axis-title { font-size: 11px; fill: var(--muted); }
+#teaser-chart .axis-title { font-weight: 650; }
+.teaser-point { color: #426a94; cursor: pointer; }
+.teaser-point.ttt { color: #73539f; }
+.teaser-point.ours { color: #b7385b; }
+.teaser-point .symbol { fill: currentColor; stroke: white; stroke-width: 1; }
+.teaser-point .halo { fill: none; stroke: currentColor; opacity: 0; }
+.teaser-point.selected .halo { opacity: 0.6; }
+.teaser-point .point-label {
+  fill: currentColor;
+  stroke: #e2edf9;
+  stroke-width: 3px;
+  paint-order: stroke;
+  font-size: 11px;
+  font-weight: 600;
+}
+#teaser-scores {
+  display: grid;
+  margin-inline: var(--teaser-plot-left) var(--teaser-plot-right);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin-top: 0.65rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.35;
+}
+
+#teaser-scores span {
+  padding: 0.45rem 0.55rem;
+  border-radius: 0.4rem;
+  background: #c8def450;
+}
+
+#teaser-scores strong {
+  display: block;
+  color: var(--accent-dark);
+  font-size: 1.125rem;
+  font-variant-numeric: tabular-nums;
 }

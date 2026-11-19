@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="style.css">
   <script defer src="assets/measurements.js"></script>
   <script defer src="analysis.js"></script>
+  <script defer src="teaser.js"></script>
   <script defer src="benchmarks.js"></script>
 </head>
 <body>
@@ -28,7 +29,6 @@
       <div class="nav-links">
         <a href="#method">Method</a>
         <a href="#results">Results</a>
-        <a href="#analysis">Analysis</a>
         <a href="../../publications.html">Publications</a>
       </div>
     </nav>
@@ -36,10 +36,13 @@
 
   <main id="main">
     <section class="hero" aria-labelledby="title">
-      <div class="shell">
+      <div class="shell hero-layout">
         <div class="hero-content">
-          <h1 id="title"><span class="project-name">SnapRecall:</span> Real-Time Video Understanding with Cumulative Memory Routing</h1>
-          <p class="authors"><a href="../../index.html">Minjoon Jung</a><sup>1</sup>, <a href="https://ghjeong12.github.io/">Geonhwa Jeong</a><sup>2</sup>, <a href="https://ltorresa.github.io/home.html">Lorenzo Torresani</a><sup>1</sup></p>
+          <div class="hero-title">
+            <h1 id="title"><span class="project-name">SnapRecall:</span> Real-Time Video Understanding with Cumulative Memory Routing</h1>
+            <p class="authors"><a href="../../index.html">Minjoon Jung</a><sup>1</sup>, <a href="https://ghjeong12.github.io/">Geonhwa Jeong</a><sup>2</sup>, <a href="https://ltorresa.github.io/home.html">Lorenzo Torresani</a><sup>1<span title="Corresponding author" aria-label=", corresponding author">*</span></sup></p>
+            <p class="author-note">* Corresponding author</p>
+          </div>
           <div class="hero-resources">
             <p class="affiliations">
               <span><sup>1</sup><img class="northeastern-logo" src="https://upload.wikimedia.org/wikipedia/commons/0/02/Northeastern_Wordmark.svg" width="247" height="79" alt="Northeastern University" referrerpolicy="no-referrer"></span>
@@ -52,6 +55,26 @@
             </div>
           </div>
         </div>
+        <figure class="figure teaser-figure" aria-label="OVO-Bench results">
+          <div id="teaser-explorer" hidden>
+            <svg id="teaser-chart" role="group" aria-label="Streaming models by real-time perception and backward tracing accuracy"></svg>
+            <template id="teaser-models">
+              <option data-label="Dispider" data-realtime="54.5" data-backward="36.1">Dispider-7B</option>
+              <option data-label="TimeChat-Online" data-realtime="58.6" data-backward="42.0">TimeChat-Online-7B</option>
+              <option data-label="StreamAgent" data-realtime="61.3" data-backward="41.7">StreamAgent-7B</option>
+              <option data-label="Streamo" data-realtime="67.4" data-backward="49.2">Streamo-7B</option>
+              <option data-label="SimpleStream" data-realtime="77.5" data-backward="54.6">SimpleStream-4B</option>
+              <option data-label="HERMES" data-realtime="72.3" data-backward="55.0">HERMES-4B</option>
+              <option data-label="StreamTTT" data-realtime="78.1" data-backward="59.9">StreamTTT-4B</option>
+              <option data-label="SnapRecall" data-realtime="79.5" data-backward="60.4" data-default>SnapRecall-Full-4B</option>
+            </template>
+            <output id="teaser-scores">
+              <span><strong id="teaser-realtime"></strong>Real-time perception</span>
+              <span><strong id="teaser-backward"></strong>Backward tracing</span>
+            </output>
+          </div>
+          <p id="teaser-fallback">SnapRecall-Full-4B scores 79.5% on real-time perception and 60.4% on backward tracing.</p>
+        </figure>
       </div>
     </section>
 
@@ -63,13 +86,13 @@
       <figure class="figure memory-figure" aria-labelledby="memory-heading">
         <h3 id="memory-heading">Peak GPU memory</h3>
         <div id="memory-explorer" hidden>
+          <dl class="chart-key" id="memory-values"></dl>
           <div class="chart" id="memory-chart"></div>
           <div class="scrubber">
             <label for="duration-step">Video duration</label>
             <output for="duration-step" id="duration-value"></output>
             <input type="range" id="duration-step" min="0" value="0" aria-describedby="memory-note">
           </div>
-          <dl class="chart-key" id="memory-values"></dl>
         </div>
         <div id="memory-fallback">
           <img src="assets/peak-memory.png" width="623" height="498" alt="Recorded peak allocation stays near 14 GiB for SnapRecall and 29 GiB for StreamTTT. Full attention reaches 42 GiB at 864 seconds; its dashed extension is a projection." loading="lazy">
@@ -506,64 +529,20 @@
       </section>
     </section>
 
-    <section class="section section-tinted" aria-labelledby="analysis">
-      <div class="shell">
-        <div class="reading">
-          <h2 id="analysis">What the model recalls</h2>
-          <p>SnapRecall answers more questions correctly once the relevant evidence appears, and the memory branch adds a measurable gain over local attention alone. Routing weights identify which cumulative state the model reads. The contribution of individual frames within that state remains unknown.</p>
+    <section class="section section-tinted" aria-labelledby="citation">
+      <div class="shell citation">
+        <div class="citation-header">
+          <h2 id="citation">BibTeX</h2>
+          <span class="citation-status" id="citation-status" role="status"></span>
         </div>
-        <div class="analysis-evidence">
-          <h3>Answering after visual evidence appears</h3>
-          <p>Across 200 timestamp-annotated NExT-GQA question–answer pairs, accuracy rose from 60.3% before the evidence appeared to 71.4% afterward. With local attention alone, post-evidence accuracy was 65.3%, 6.1 percentage points lower than with the memory branch.</p>
-          <table class="analysis-table">
-            <caption class="visually-hidden">NExT-GQA results before and after evidence onset</caption>
-            <thead><tr><th scope="col">Metric</th><th scope="col">Before</th><th scope="col">After</th><th scope="col">After, local attention only</th></tr></thead>
-            <tbody>
-              <tr><th scope="row">Correct-answer confidence</th><td>55.0%</td><td>63.7%</td><td>60.3%</td></tr>
-              <tr><th scope="row">Accuracy</th><td>60.3%</td><td>71.4%</td><td>65.3%</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <section class="figure analysis-figure layer-figure" aria-labelledby="layer-heading">
-          <h3 id="layer-heading">Routing and gating across decoder layers</h3>
-          <p>At the answer-prefix token, the three Top-4 variants distribute routing weight relatively evenly in early layers. By layer 36, the highest-ranked snapshot receives 71.4% of the weight with cumulative hidden-state descriptors, compared with 46.6% for segment-only descriptors. The mean gate scale also rises from about 0.10 in early layers to 0.14 at layer 36 for the cumulative hidden-state variant.</p>
-          <div id="layer-explorer" hidden>
-            <div class="layer-charts">
-              <div><h4>Highest routing weight</h4><div class="chart" id="weight-chart"></div></div>
-              <div><h4>Mean gate scale</h4><div class="chart" id="gate-chart"></div></div>
-            </div>
-            <div class="scrubber">
-              <label for="layer-step">Decoder layer</label>
-              <output for="layer-step" id="layer-value"></output>
-              <input type="range" id="layer-step" min="1" max="36" value="36" aria-describedby="layer-note">
-            </div>
-            <table class="layer-values">
-              <caption class="visually-hidden">Routing weight and gate scale at the selected decoder layer</caption>
-              <thead><tr><th scope="col">Memory variant</th><th scope="col">Highest weight</th><th scope="col">Gate scale</th></tr></thead>
-              <tbody id="layer-values"></tbody>
-            </table>
-          </div>
-          <p class="chart-note" id="layer-note">Means over 41 matched OVO-Bench questions for three separately trained Top-4 models. Bands show 95% within-cohort bootstrap intervals. X denotes hidden-state descriptors and K denotes key descriptors. Gate scale is averaged across channels.</p>
-          <details class="paper-example" open>
-            <summary>Paper figure and NExT-GQA video example</summary>
-            <a href="assets/routing.png" aria-label="Open the full-resolution routing figure and video example"><img src="assets/routing.png" width="1980" height="504" alt="The paper compares routing and gating across layers. The example at right shows which cumulative snapshots receive the highest weight before and after the clapping sequence." loading="lazy"></a>
-          </details>
-        </section>
-        <div class="reading results-note">
-          <h3>Overlapping snapshots preserve the readout</h3>
-          <p>Keeping only the eight most recent of sixteen snapshots removed the originally top-weighted snapshot in roughly half the evaluated cases. The memory readout still changed by just 1.5% relative mean squared error on average. Newer snapshots retain contributions from earlier segments, which helps explain why the readout changes so little.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section shell" aria-labelledby="citation">
-      <div class="reading citation">
-        <h2 id="citation">BibTeX</h2>
-        <pre><code>@unpublished{jung_snaprecall,
+        <div class="citation-block">
+          <button class="citation-copy" type="button" id="citation-copy" aria-label="Copy BibTeX" title="Copy BibTeX" hidden></button>
+          <pre><code id="citation-text">@unpublished{jung_snaprecall,
   title  = {SnapRecall: Real-Time Video Understanding with Cumulative Memory Routing},
   author = {Jung, Minjoon and Jeong, Geonhwa and Torresani, Lorenzo},
   note   = {Manuscript}
 }</code></pre>
+        </div>
       </div>
     </section>
   </main>
@@ -574,5 +553,24 @@
       <a href="#main">Back to top</a>
     </div>
   </footer>
+  <script>
+    const copyCitation = document.getElementById("citation-copy");
+    const citationText = document.getElementById("citation-text");
+    const citationStatus = document.getElementById("citation-status");
+    copyCitation.hidden = false;
+    copyCitation.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(citationText.textContent);
+        citationStatus.textContent = "Copied";
+      } catch {
+        const range = document.createRange();
+        range.selectNodeContents(citationText);
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        citationStatus.textContent = "Text selected. Copy it with your keyboard.";
+      }
+    });
+  </script>
 </body>
 </html>
