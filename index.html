@@ -23,6 +23,78 @@
             scroll-padding-top: 56px;
         }
 
+        .profile-header {
+            display: grid;
+            grid-template-columns: clamp(130px, 20vw, 180px) minmax(0, 1fr);
+            align-items: start;
+            gap: clamp(1rem, 3vw, 1.75rem);
+        }
+
+        .profile-photo img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .profile-info {
+            min-width: 0;
+        }
+
+        .profile-email {
+            margin: 0.25rem 0 0;
+        }
+
+        .profile-email a {
+            color: #244b75;
+            font-size: 0.9375rem;
+            font-weight: 600;
+            overflow-wrap: anywhere;
+        }
+
+        .profile-about {
+            margin-block: 0.85rem;
+        }
+
+        .profile-info .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .profile-info .social-links a {
+            margin: 0;
+        }
+
+        @media (max-width: 36rem) {
+            .profile-header {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .profile-photo {
+                width: min(100%, 140px);
+            }
+        }
+
+        .profile-about p,
+        .profile-about p a {
+            font: 400 clamp(0.8125rem, 0.7625rem + 0.25vw, 0.9375rem)/1.7 'Lora', Georgia, serif;
+        }
+
+        .profile-about p {
+            margin: 0;
+            color: #374151;
+        }
+
+        .profile-about p + p {
+            margin-top: 0.65em;
+        }
+
+        .profile-about p a {
+            font-weight: 600;
+            text-underline-offset: 0.18em;
+        }
+
         /* ── Recent Highlights timeline ── */
         .timeline {
             padding-left: 20px;
@@ -170,21 +242,28 @@
         <tr>
             <td style="padding:2.5%;">
                 <!-- ── Profile header: photo left · info right ── -->
-                <div style="display:flex;align-items:stretch;gap:28px;">
+                <div class="profile-header">
                     <!-- Photo -->
-                    <div style="flex:0 0 180px;">
-                        <a href="images/profile.jpg">
-                            <img src="profile/profile.JPG" alt="profile photo"
-                                 style="width:180px;height:225px;object-fit:cover;object-position:center top;border-radius:10px;display:block;">
+                    <div class="profile-photo">
+                        <a href="profile/profile.JPG">
+                            <img src="profile/profile.JPG" alt="profile photo" width="5712" height="4284">
                         </a>
                     </div>
                     <!-- Name · institutions · links -->
-                    <div style="flex:1;display:flex;flex-direction:column;justify-content:space-between;">
+                    <div class="profile-info">
                         <div>
                             <p style="margin:0 0 6px 0;font-size:2.5em;font-weight:700;line-height:1.2;">Minjoon Jung</p>
                             <p style="margin:0 0 2px 0;color:#374151;">Ph.D. Student, <a href="https://en.snu.ac.kr/">Seoul National University</a></p>
 <!--                            <p style="margin:0 0 4px 0;color:#374151;">Visiting Researcher, <a href="https://www.northeastern.edu/">Northeastern University</a></p>-->
-                            <p style="margin:0;color:#6b7280;font-size:0.92em;"><a href="mailto:minjoon507@gmail.com" style="color:#6b7280;">minjoon507@gmail.com</a></p>
+                            <p class="profile-email"><a href="mailto:minjoon507@gmail.com">minjoon507@gmail.com</a></p>
+                        </div>
+                        <div class="profile-about">
+                            <p>
+                                I'm a Ph.D. student at <a href="https://en.snu.ac.kr/">Seoul National University</a>.
+                                My research focuses on video understanding and multimodal learning, with an emphasis on fine-grained visual perception and robust temporal reasoning for real-world AI applications.
+                                In the past, I visited <a href="https://farsightlab.github.io/">FarSight Lab</a> at <a href="https://www.northeastern.edu/">Northeastern University</a>, working with <a href="https://ltorresa.github.io/home.html">Lorenzo Torresani</a>.
+                                I also worked with <a href="https://doc-doc.github.io/cv/">Junbin Xiao</a> and <a href="https://www.comp.nus.edu.sg/~ayao/">Angela Yao</a> at <a href="https://www.comp.nus.edu.sg/~ayao/">National University of Singapore</a>.
+                            </p>
                         </div>
                         <div class="social-links">
                             <a href="https://x.com/minjoon507" title="X (Twitter)"><i class="fab fa-x-twitter" style="color:#000000;"></i> X</a>
@@ -196,26 +275,6 @@
                     </div>
                 </div>
 
-                <!-- ── About + Research Interests ── -->
-                <div style="margin-top:20px;">
-                    <div style="background-color:#f0f4f8;border-radius:8px;padding:12px 16px;margin-bottom:10px;">
-                        <p style="margin:0 0 6px 0;font-weight:bold;font-size:1.0em;">About</p>
-                        <p style="margin:0;">
-                            I'm a Ph.D. student at <a href="https://en.snu.ac.kr/">Seoul National University</a>.
-                            My research focuses on video understanding and multimodal learning, with an emphasis on fine-grained visual perception and robust temporal reasoning for real-world AI applications.
-                            In the past, I visited <a href="https://farsightlab.github.io/">FarSight Lab</a> at <a href="https://www.northeastern.edu/">Northeastern University</a>, working with <a href="https://ltorresa.github.io/home.html">Lorenzo Torresani</a>.
-                            I also worked with <a href="https://doc-doc.github.io/cv/">Junbin Xiao</a> and <a href="https://www.comp.nus.edu.sg/~ayao/">Angela Yao</a> at <a href="https://www.comp.nus.edu.sg/~ayao/">National University of Singapore</a>.
-                        </p>
-                    </div>
-<!--                    <div style="background-color:#f0f7f0;border-radius:8px;padding:12px 16px;">-->
-<!--                        <p style="margin:0 0 6px 0;font-weight:bold;font-size:1.0em;">Research Interests</p>-->
-<!--                        <p style="margin:0;">-->
-<!--                            My research focuses on <span style="font-weight:bold;">multimodal AI — bridging language with vision, video, and robotics</span>.-->
-<!--                            I am particularly interested in building AI agents that can <em>reason precisely</em> about the temporal and spatial structure of the real world.-->
-<!--                            My long-term goal is to develop fine-grained, trustworthy multimodal agents that see, understand, and act reliably.-->
-<!--                        </p>-->
-<!--                    </div>-->
-                </div>
             </td>
         </tr>
         </tbody></table>
