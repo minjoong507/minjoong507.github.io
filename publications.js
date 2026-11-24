@@ -26,8 +26,26 @@ function setPubView(view) {
 }
 
 
-document.addEventListener('DOMContentLoaded', function () {
+async function loadSelectedPublications(list) {
+    const source = list.closest('.pub-box').querySelector('.all-pubs-btn').href;
+    try {
+        const response = await fetch(source);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const page = new DOMParser().parseFromString(await response.text(), 'text/html');
+        const publications = page.querySelector('#papers-all');
+        if (!publications) throw new Error('Publication list missing');
+        list.replaceChildren(...publications.querySelectorAll('.pub-card[data-selected="true"]'));
+    } catch (error) {
+        list.textContent = 'Selected publications could not load. See All Publications below.';
+        console.error('Could not load selected publications:', error);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', async function () {
+    const list = document.getElementById('papers-all');
+    if (!list) return;
     setPubView('list');
+    if (list.hasAttribute('data-load-selected')) await loadSelectedPublications(list);
 
     // Auto-populate hrefs for author links from the registry above
     document.querySelectorAll('.author-list a').forEach(function(a) {
